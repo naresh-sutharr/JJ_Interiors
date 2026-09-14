@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp, PublicRoute } from '../../context/AppContext.tsx';
 import { JJLogo } from '../common/JJLogo.tsx';
-import { Menu, X, Shield, Phone, MessageSquare, Heart, UserCheck } from 'lucide-react';
+import { Menu, X, Shield, Phone, MessageSquare, Heart, UserCheck, ChevronDown } from 'lucide-react';
 
 export const PublicHeader: React.FC = () => {
   const { 
@@ -51,8 +51,8 @@ export const PublicHeader: React.FC = () => {
           </button>
 
           {/* Center Desktop Navigation */}
-          <nav className="hidden 2xl:flex items-center gap-5 2xl:gap-7">
-            {navLinks.map((link) => {
+          <nav className="hidden xl:flex items-center gap-4 xl:gap-5">
+            {navLinks.slice(0, 4).map((link) => {
               const isActive = publicRoute === link.path;
               return (
                 <button
@@ -74,10 +74,34 @@ export const PublicHeader: React.FC = () => {
                 </button>
               );
             })}
+
+            {/* Dropdown for remaining links */}
+            <div className="relative group py-2">
+              <button className="flex items-center gap-1 text-xs tracking-[0.15em] uppercase py-1 text-[#2c2825] font-medium hover:text-[#c5a059] cursor-pointer">
+                More <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              
+              <div className="absolute top-full right-0 w-48 bg-white border border-[#e8dfd5] shadow-xl py-2 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                {navLinks.slice(4).map((link) => {
+                  const isActive = publicRoute === link.path;
+                  return (
+                    <button
+                      key={link.label}
+                      onClick={() => handleNavClick(link.path)}
+                      className={`block w-full text-left px-5 py-2.5 text-[11px] tracking-[0.15em] uppercase hover:bg-black/5 hover:text-[#c5a059] cursor-pointer transition-colors ${
+                        isActive ? 'text-[#c5a059] font-bold' : 'text-[#2c2825]'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </nav>
 
           {/* Right Action Bar */}
-          <div className="hidden 2xl:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             
             {/* Saved Moodboard / Heart */}
             <button
@@ -111,7 +135,7 @@ export const PublicHeader: React.FC = () => {
               title="Client Project Portal"
             >
               <UserCheck className="w-3 h-3 text-[#c5a059]" />
-              <span>Portal</span>
+              <span className="hidden xl:inline">Portal</span>
             </button>
 
             {/* Quick WhatsApp contact */}
@@ -147,12 +171,12 @@ export const PublicHeader: React.FC = () => {
               title="Studio Management ERP"
             >
               <Shield className="w-3 h-3 text-[#c5a059]" />
-              <span>{isAuthenticated ? 'Admin' : 'Admin'}</span>
+              <span className="hidden xl:inline">{isAuthenticated ? 'Admin' : 'Admin'}</span>
             </button>
           </div>
 
           {/* Mobile Menu Action Buttons */}
-          <div className="flex 2xl:hidden items-center gap-1 sm:gap-2">
+          <div className="flex xl:hidden items-center gap-1 sm:gap-2">
             {/* Mobile Saved Heart */}
             <button
               type="button"
@@ -181,7 +205,7 @@ export const PublicHeader: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="2xl:hidden bg-[#faf8f5] border-b border-[#e8dfd5] px-4 py-5 shadow-xl animate-fade-in">
+        <div className="xl:hidden bg-[#faf8f5] border-b border-[#e8dfd5] px-4 py-5 shadow-xl animate-fade-in">
           <nav className="flex flex-col gap-1.5">
             {navLinks.map((link) => {
               const isActive = publicRoute === link.path;
