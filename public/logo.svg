@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" fill="none">
+  <defs>
+    <linearGradient id="jjGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b26f" />
+      <stop offset="50%" stop-color="#b88d44" />
+      <stop offset="100%" stop-color="#8a6326" />
+    </linearGradient>
+    <linearGradient id="jjRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eed8a1" />
+      <stop offset="100%" stop-color="#9d7432" />
+    </linearGradient>
+  </defs>
+
+  <!-- Monogram Circle & Pillars -->
+  <g transform="translate(10, 5)">
+    <!-- Outer Thin Ring -->
+    <circle cx="35" cy="35" r="32" stroke="url(#jjRing)" stroke-width="1.5" fill="none" opacity="0.85" />
+    <circle cx="35" cy="35" r="30" stroke="url(#jjRing)" stroke-width="0.75" fill="none" stroke-dasharray="2 2" opacity="0.5" />
+    
+    <!-- Left 'J' Column -->
+    <path d="M 27 18 L 33 18 L 33 42 C 33 47 29 50 24 50 C 19 50 16 46 16 42 L 20 42 C 20 44 22 46.5 24 46.5 C 26.5 46.5 28.5 44.5 28.5 42 L 28.5 22 L 25 22 L 25 18 Z" fill="url(#jjGold)" />
+    <!-- Architectural Fluting on Left J -->
+    <rect x="29.5" y="23" width="1.2" height="17" fill="#fdfaf4" opacity="0.6" />
+
+    <!-- Right 'J' Column Interlocking -->
+    <path d="M 37 18 L 47 18 L 47 22 L 43.5 22 L 43.5 42 C 43.5 47 40 50 35 50 C 31 50 28 47 28 43.5 L 32 43.5 C 32 45.2 33.5 46.8 35.5 46.8 C 38 46.8 39.5 45 39.5 42 L 39.5 18 Z" fill="url(#jjGold)" />
+    <!-- Architectural Fluting on Right J -->
+    <rect x="40.8" y="23" width="1.2" height="17" fill="#fdfaf4" opacity="0.6" />
+
+    <!-- Architectural Capital & Base Accents -->
+    <line x1="22" y1="18" x2="48" y2="18" stroke="url(#jjGold)" stroke-width="2" stroke-linecap="round" />
+    <line x1="20" y1="52" x2="44" y2="52" stroke="url(#jjGold)" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(85, 12)">
+    <!-- Primary Brand Name -->
+    <text x="0" y="26" font-family="'Cormorant Garamond', 'Cinzel', Georgia, serif" font-size="20" font-weight="700" letter-spacing="2.5" fill="#1e1b18">
+      J.J. INTERIORS &amp; MODUTECH
+    </text>
+    
+    <!-- Tagline Divider Line -->
+    <line x1="0" y1="34" x2="150" y2="34" stroke="#c5a059" stroke-width="0.75" opacity="0.6" />
+    
+    <!-- Tagline -->
+    <text x="0" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="600" letter-spacing="2.2" fill="#8c6f50">
+      SPACES | DESIGNED | FOR A BETTER TOMORROW
+    </text>
+  </g>
+</svg>

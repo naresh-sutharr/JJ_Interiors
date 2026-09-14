@@ -1,0 +1,6 @@
+{
+  "name": "J.J. INTERIORS & MODUTECH",
+  "description": "Premium interior design, modular furniture, and modutech solutions. Spaces designed for a better tomorrow.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
