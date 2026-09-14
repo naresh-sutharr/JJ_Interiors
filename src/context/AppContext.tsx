@@ -422,7 +422,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   function loadStored<T>(key: string, defaultVal: T): T {
     try {
       const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : defaultVal;
+      if (!item) return defaultVal;
+      const parsed = JSON.parse(item);
+      if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+        return { ...defaultVal, ...parsed };
+      }
+      return parsed;
     } catch {
       return defaultVal;
     }

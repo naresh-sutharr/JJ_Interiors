@@ -189,7 +189,6 @@ export const SettingsView: React.FC = () => {
               </label>
               <input
                 type="text"
-                required
                 value={formData.bankDetails.accountName}
                 onChange={(e) => setFormData({
                   ...formData,
@@ -205,7 +204,6 @@ export const SettingsView: React.FC = () => {
               </label>
               <input
                 type="text"
-                required
                 value={formData.bankDetails.bankName}
                 onChange={(e) => setFormData({
                   ...formData,
@@ -221,7 +219,6 @@ export const SettingsView: React.FC = () => {
               </label>
               <input
                 type="text"
-                required
                 value={formData.bankDetails.accountNumber}
                 onChange={(e) => setFormData({
                   ...formData,
@@ -237,7 +234,6 @@ export const SettingsView: React.FC = () => {
               </label>
               <input
                 type="text"
-                required
                 value={formData.bankDetails.ifscCode}
                 onChange={(e) => setFormData({
                   ...formData,

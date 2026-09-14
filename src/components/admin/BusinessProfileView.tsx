@@ -112,6 +112,19 @@ export const BusinessProfileView: React.FC = () => {
               />
             </div>
 
+            <div className="sm:col-span-2">
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                Custom Logo URL (Public site override)
+              </label>
+              <input
+                type="url"
+                value={formData.logoUrl || ''}
+                onChange={(e) => setFormData({ ...formData, logoUrl: e.target.value })}
+                placeholder="Leave blank to use default text logo"
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900 focus:outline-none focus:border-[#c5a059]"
+              />
+            </div>
+
             <div>
               <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
                 GSTIN Number (Surat)
@@ -121,6 +134,108 @@ export const BusinessProfileView: React.FC = () => {
                 value={formData.gstin}
                 onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
                 className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs font-mono font-bold text-stone-900"
+                disabled={!formData.gstEnabled}
+              />
+            </div>
+
+            <div className="flex items-center gap-2 mt-6">
+              <input
+                type="checkbox"
+                id="gstEnabled"
+                checked={!!formData.gstEnabled}
+                onChange={(e) => setFormData({ ...formData, gstEnabled: e.target.checked })}
+                className="w-4 h-4 text-[#c5a059] border-stone-300 rounded focus:ring-[#c5a059]"
+              />
+              <label htmlFor="gstEnabled" className="text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer">
+                Enable GST on Invoices
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {/* Payment & Bank Details */}
+        <div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 mb-4 flex items-center gap-2">
+            <Award className="w-4 h-4 text-[#c5a059]" />
+            <span>Payment &amp; Bank Coordinates</span>
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                UPI / GPay ID *
+              </label>
+              <input
+                type="text"
+                value={formData.upiId || ''}
+                onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs font-mono font-bold text-stone-900 focus:outline-none focus:border-[#c5a059]"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                UPI QR Code Image URL
+              </label>
+              <input
+                type="url"
+                value={formData.upiQrUrl || ''}
+                onChange={(e) => setFormData({ ...formData, upiQrUrl: e.target.value })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                Bank Name
+              </label>
+              <input
+                type="text"
+                value={formData.bankDetails?.bankName || ''}
+                onChange={(e) => setFormData({ ...formData, bankDetails: { ...formData.bankDetails, bankName: e.target.value } as any })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                Account Name
+              </label>
+              <input
+                type="text"
+                value={formData.bankDetails?.accountName || ''}
+                onChange={(e) => setFormData({ ...formData, bankDetails: { ...formData.bankDetails, accountName: e.target.value } as any })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                Account Number
+              </label>
+              <input
+                type="text"
+                value={formData.bankDetails?.accountNumber || ''}
+                onChange={(e) => setFormData({ ...formData, bankDetails: { ...formData.bankDetails, accountNumber: e.target.value } as any })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs font-mono text-stone-900"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                IFSC Code
+              </label>
+              <input
+                type="text"
+                value={formData.bankDetails?.ifscCode || ''}
+                onChange={(e) => setFormData({ ...formData, bankDetails: { ...formData.bankDetails, ifscCode: e.target.value } as any })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs font-mono text-stone-900"
+              />
+            </div>
+            <div>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                Branch
+              </label>
+              <input
+                type="text"
+                value={formData.bankDetails?.branch || ''}
+                onChange={(e) => setFormData({ ...formData, bankDetails: { ...formData.bankDetails, branch: e.target.value } as any })}
+                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
               />
             </div>
           </div>

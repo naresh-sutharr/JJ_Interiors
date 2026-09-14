@@ -52,11 +52,11 @@ Amount Paid: ₹${formatIndianCurrency(doc.amountPaid)}
 Balance Due: ₹${formatIndianCurrency(doc.balanceDue)}
 
 Bank Details:
-Bank: ${systemSettings.bankDetails.bankName || 'HDFC Bank'}
-A/C Name: ${systemSettings.bankDetails.accountName || 'J.J. Interiors & Modutech'}
-A/C No: ${systemSettings.bankDetails.accountNumber || '1234 5678 9012'}
-IFSC: ${systemSettings.bankDetails.ifscCode || 'HDFC0001234'}
-UPI: ${systemSettings.bankDetails.upiId || 'jjinteriors@okhdfcbank'}
+Bank: ${systemSettings.bankDetails.bankName}
+A/C Name: ${systemSettings.bankDetails.accountName}
+A/C No: ${systemSettings.bankDetails.accountNumber}
+IFSC: ${systemSettings.bankDetails.ifscCode}
+UPI: ${systemSettings.bankDetails.upiId}
 
 Phone: ${businessProfile.phone}
 `.trim();
@@ -130,15 +130,15 @@ Phone: ${businessProfile.phone}
             <MapPin className="w-2.5 h-2.5 text-[#a87f43] shrink-0" />
           </div>
           <div className="flex items-center justify-end gap-1">
-            <span>+91 94270 54921</span>
+            <span>{businessProfile.phone}</span>
             <Phone className="w-2.5 h-2.5 text-[#a87f43] shrink-0" />
           </div>
           <div className="flex items-center justify-end gap-1">
-            <span>info@jjinteriors.site</span>
+            <span>{businessProfile.email}</span>
             <Mail className="w-2.5 h-2.5 text-[#a87f43] shrink-0" />
           </div>
           <div className="flex items-center justify-end gap-1">
-            <span>www.jjinteriors.site</span>
+            <span>{businessProfile.website}</span>
             <Globe className="w-2.5 h-2.5 text-[#a87f43] shrink-0" />
           </div>
         </div>
@@ -489,10 +489,12 @@ Phone: ${businessProfile.phone}
                         <span className="font-medium">₹ {formatIndianCurrency(doc.subtotal - doc.discountAmount)}</span>
                       </div>
 
-                      <div className="flex justify-between text-[#5c534a]">
-                        <span>GST @ {doc.taxPercent || 18}%</span>
-                        <span className="font-semibold text-[#1e1b18]">₹ {formatIndianCurrency(doc.taxAmount)}</span>
-                      </div>
+                      {(businessProfile.gstEnabled || doc.taxAmount > 0) && (
+                        <div className="flex justify-between text-[#5c534a]">
+                          <span>GST @ {doc.taxPercent || 18}%</span>
+                          <span className="font-semibold text-[#1e1b18]">₹ {formatIndianCurrency(doc.taxAmount)}</span>
+                        </div>
+                      )}
 
                       {doc.additionalCharges > 0 && (
                         <div className="flex justify-between text-[#5c534a]">
@@ -646,31 +648,31 @@ Phone: ${businessProfile.phone}
                       <div className="grid grid-cols-12 gap-1 py-0.5">
                         <span className="col-span-4 text-[#695f55]">Bank Name</span>
                         <span className="col-span-8 font-bold text-[#1e1b18]">
-                          : {systemSettings.bankDetails.bankName || 'HDFC Bank'}
+                          : {systemSettings.bankDetails.bankName}
                         </span>
                       </div>
                       <div className="grid grid-cols-12 gap-1 py-0.5">
                         <span className="col-span-4 text-[#695f55]">Account Name</span>
                         <span className="col-span-8 font-semibold text-[#1e1b18]">
-                          : {systemSettings.bankDetails.accountName || 'J.J. Interiors & Modutech'}
+                          : {systemSettings.bankDetails.accountName}
                         </span>
                       </div>
                       <div className="grid grid-cols-12 gap-1 py-0.5">
                         <span className="col-span-4 text-[#695f55]">Account Number</span>
                         <span className="col-span-8 font-mono font-bold text-[#1e1b18]">
-                          : {systemSettings.bankDetails.accountNumber || '1234 5678 9012'}
+                          : {systemSettings.bankDetails.accountNumber}
                         </span>
                       </div>
                       <div className="grid grid-cols-12 gap-1 py-0.5">
                         <span className="col-span-4 text-[#695f55]">IFSC</span>
                         <span className="col-span-8 font-mono font-bold text-[#1e1b18]">
-                          : {systemSettings.bankDetails.ifscCode || 'HDFC0001234'}
+                          : {systemSettings.bankDetails.ifscCode}
                         </span>
                       </div>
                       <div className="grid grid-cols-12 gap-1 py-0.5">
                         <span className="col-span-4 text-[#695f55]">UPI</span>
                         <span className="col-span-8 font-mono font-semibold text-[#8a6845]">
-                          : {systemSettings.bankDetails.upiId || 'jjinteriors@okhdfcbank'}
+                          : {systemSettings.bankDetails.upiId}
                         </span>
                       </div>
 
@@ -678,8 +680,14 @@ Phone: ${businessProfile.phone}
                       <div className="mt-2 pt-2 border-t border-[#f0eae1] flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <div className="w-12 h-12 bg-white border border-[#c8beaf] p-1 flex flex-col items-center justify-center shrink-0">
-                            <QrCode className="w-8 h-8 text-[#1e1b18]" />
-                            <span className="text-[5px] uppercase font-bold text-[#695f55] tracking-tighter">Scan &amp; Pay</span>
+                            {businessProfile.upiQrUrl ? (
+                              <img src={businessProfile.upiQrUrl} alt="UPI QR Code" className="w-full h-full object-contain" />
+                            ) : (
+                              <>
+                                <QrCode className="w-8 h-8 text-[#1e1b18]" />
+                                <span className="text-[5px] uppercase font-bold text-[#695f55] tracking-tighter">Scan &amp; Pay</span>
+                              </>
+                            )}
                           </div>
                           <div className="text-[7.5px] text-[#695f55] leading-tight">
                             <div className="font-semibold text-[#1e1b18]">Instant UPI Transfer</div>

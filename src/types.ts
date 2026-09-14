@@ -276,8 +276,19 @@ export interface BusinessProfile {
   city: string;
   state: string;
   pin: string;
+  gstEnabled?: boolean;
   gstin: string;
   panNo?: string;
+  logoUrl?: string;
+  upiId?: string;
+  upiQrUrl?: string;
+  bankDetails?: {
+    bankName: string;
+    accountName: string;
+    accountNumber: string;
+    ifscCode: string;
+    branch: string;
+  };
   businessHours: string;
   googleMapsUrl: string;
   googleBusinessUrl: string;
@@ -344,6 +355,27 @@ export interface MediaItem {
   uploadedAt: string;
 }
 
+export type AdminTab = 
+  | 'dashboard'
+  | 'projects'
+  | 'leads'
+  | 'clients'
+  | 'catalog'
+  | 'bills'
+  | 'receipts'
+  | 'expenses'
+  | 'suppliers'
+  | 'site-visits'
+  | 'blog'
+  | 'media'
+  | 'testimonials'
+  | 'faqs'
+  | 'analytics'
+  | 'team'
+  | 'seo'
+  | 'settings'
+  | 'receipts';
+
 export type AdminRole = 'Administrator' | 'Manager' | 'Staff';
 
 export interface AdminUser {
@@ -388,6 +420,8 @@ export interface SiteVisit {
   assignedPerson: string;
   notes: string;
   status: SiteVisitStatus;
+  purpose?: string;
+  followUpDate?: string;
   createdAt: string;
 }
 
@@ -398,7 +432,12 @@ export type ExpenseCategory =
   | 'Transport' 
   | 'Design/Software' 
   | 'Site Overhead' 
-  | 'Miscellaneous';
+  | 'Miscellaneous'
+  | 'Office'
+  | 'Marketing'
+  | 'Software'
+  | 'Other'
+  | 'Materials & Hardware';
 
 export interface Expense {
   id: string;
@@ -406,11 +445,15 @@ export interface Expense {
   category: ExpenseCategory;
   projectId?: string;
   projectName?: string;
+  clientId?: string;
   supplierId?: string;
   supplierName?: string;
-  description: string;
+  description?: string;
   amount: number;
-  paymentMethod: 'Bank Transfer' | 'UPI' | 'Cash' | 'Cheque';
+  paidTo?: string;
+  paymentMode?: string;
+  referenceNo?: string;
+  paymentMethod?: 'Bank Transfer' | 'UPI' | 'Cash' | 'Cheque';
   receiptNumber?: string;
   notes?: string;
   createdAt: string;
@@ -422,10 +465,14 @@ export interface Supplier {
   phone: string;
   email: string;
   category: string;
-  products: string[];
+  products?: string[];
   address: string;
   notes: string;
-  outstandingAmount: number;
+  outstandingAmount?: number;
+  contactPerson?: string;
+  gstin?: string;
+  paymentTerms?: string;
+  outstandingBalance?: number;
   createdAt: string;
 }
 
@@ -434,16 +481,17 @@ export interface PaymentReceipt {
   receiptNumber: string;
   date: string;
   billId: string;
-  docNumber: string;
+  docNumber?: string;
   clientName: string;
   clientPhone: string;
-  clientAddress: string;
+  clientAddress?: string;
   projectName: string;
   amountPaid: number;
   paymentMode: string;
   referenceNumber?: string;
-  totalBillAmount: number;
-  remainingBalance: number;
+  referenceNo?: string;
+  totalBillAmount?: number;
+  remainingBalance?: number;
   notes?: string;
   createdAt: string;
 }

@@ -32,18 +32,18 @@ export const SiteVisitsAdminView: React.FC = () => {
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingVisit, setEditingVisit] = useState<SiteVisit | null>(null);
-  const [statusFilter, setStatusFilter] = useState<'ALL' | 'SCHEDULED' | 'COMPLETED' | 'CANCELLED'>('ALL');
+  const [statusFilter, setStatusFilter] = useState<'ALL' | 'Scheduled' | 'Completed' | 'Cancelled'>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
 
   const initialFormData: Omit<SiteVisit, 'id' | 'createdAt'> = {
     clientName: '',
     clientPhone: '',
-    siteAddress: '',
-    scheduledDate: new Date().toISOString().split('T')[0],
-    scheduledTime: '11:00 AM',
+    address: '',
+    date: new Date().toISOString().split('T')[0],
+    time: '11:00 AM',
     purpose: 'Site Measurement & Floor Inspection',
-    assignedTo: 'Jay Jasol (Principal)',
-    status: 'SCHEDULED',
+    assignedPerson: 'Jay Jasol (Principal)',
+    status: 'Scheduled',
     notes: '',
     followUpDate: '',
   };
@@ -63,11 +63,11 @@ export const SiteVisitsAdminView: React.FC = () => {
       clientId: v.clientId,
       clientName: v.clientName,
       clientPhone: v.clientPhone,
-      siteAddress: v.siteAddress,
-      scheduledDate: v.scheduledDate,
-      scheduledTime: v.scheduledTime,
+      address: v.address,
+      date: v.date,
+      time: v.time,
       purpose: v.purpose,
-      assignedTo: v.assignedTo,
+      assignedPerson: v.assignedPerson,
       status: v.status,
       notes: v.notes,
       followUpDate: v.followUpDate,
@@ -93,7 +93,7 @@ export const SiteVisitsAdminView: React.FC = () => {
   };
 
   const handleSendWhatsAppReminder = (visit: SiteVisit) => {
-    const text = `Hello ${visit.clientName}, this is a reminder from *${businessProfile.businessName}* regarding our scheduled site appointment:\n\n📅 Date: ${visit.scheduledDate}\n⏰ Time: ${visit.scheduledTime}\n📍 Site Location: ${visit.siteAddress}\n🎯 Purpose: ${visit.purpose}\n👷 Assigned Architect: ${visit.assignedTo}\n\nPlease let us know if you need to reschedule. Thank you!`;
+    const text = `Hello ${visit.clientName}, this is a reminder from *${businessProfile.businessName}* regarding our scheduled site appointment:\n\n📅 Date: ${visit.date}\n⏰ Time: ${visit.time}\n📍 Site Location: ${visit.address}\n🎯 Purpose: ${visit.purpose}\n👷 Assigned Architect: ${visit.assignedPerson}\n\nPlease let us know if you need to reschedule. Thank you!`;
     const phone = visit.clientPhone.replace(/[^0-9]/g, '');
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
   };
@@ -105,7 +105,7 @@ export const SiteVisitsAdminView: React.FC = () => {
       return (
         v.clientName.toLowerCase().includes(q) ||
         v.clientPhone.includes(q) ||
-        v.siteAddress.toLowerCase().includes(q) ||
+        v.address.toLowerCase().includes(q) ||
         v.purpose.toLowerCase().includes(q)
       );
     }
@@ -137,7 +137,7 @@ export const SiteVisitsAdminView: React.FC = () => {
       {/* Filters & Search */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-4 border border-stone-200">
         <div className="flex items-center gap-2">
-          {(['ALL', 'SCHEDULED', 'COMPLETED', 'CANCELLED'] as const).map((st) => (
+          {(['ALL', 'Scheduled', 'Completed', 'Cancelled'] as const).map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
@@ -180,8 +180,8 @@ export const SiteVisitsAdminView: React.FC = () => {
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <span className={`px-2 py-0.5 text-[10px] uppercase font-mono font-bold ${
-                    v.status === 'COMPLETED' ? 'bg-emerald-100 text-emerald-800' :
-                    v.status === 'CANCELLED' ? 'bg-red-100 text-red-800' :
+                    v.status === 'Completed' ? 'bg-emerald-100 text-emerald-800' :
+                    v.status === 'Cancelled' ? 'bg-red-100 text-red-800' :
                     'bg-amber-100 text-amber-800'
                   }`}>
                     {v.status}
@@ -221,15 +221,15 @@ export const SiteVisitsAdminView: React.FC = () => {
                 <div className="mt-3 pt-3 border-t border-stone-100 space-y-2 text-xs text-stone-600">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3.5 h-3.5 text-stone-400" />
-                    <span className="font-semibold text-stone-800">{v.scheduledDate}</span>
+                    <span className="font-semibold text-stone-800">{v.date}</span>
                     <span>•</span>
                     <Clock className="w-3.5 h-3.5 text-stone-400" />
-                    <span>{v.scheduledTime}</span>
+                    <span>{v.time}</span>
                   </div>
 
                   <div className="flex items-start gap-2">
                     <MapPin className="w-3.5 h-3.5 text-[#c5a059] shrink-0 mt-0.5" />
-                    <span className="line-clamp-2">{v.siteAddress}</span>
+                    <span className="line-clamp-2">{v.address}</span>
                   </div>
 
                   <div className="bg-[#faf8f5] p-2 border border-stone-200 text-[11px]">
@@ -255,10 +255,10 @@ export const SiteVisitsAdminView: React.FC = () => {
                   <span>WhatsApp</span>
                 </button>
 
-                {v.status === 'SCHEDULED' && (
+                {v.status === 'Scheduled' && (
                   <button
                     onClick={() => {
-                      updateSiteVisit(v.id, { status: 'COMPLETED' });
+                      updateSiteVisit(v.id, { status: 'Completed' });
                       showToast('Marked as Completed');
                     }}
                     className="px-3 py-1.5 bg-[#1e1b18] hover:bg-black text-white text-[11px] uppercase font-semibold tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
@@ -317,8 +317,8 @@ export const SiteVisitsAdminView: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    value={formData.assignedTo}
-                    onChange={(e) => setFormData({ ...formData, assignedTo: e.target.value })}
+                    value={formData.assignedPerson}
+                    onChange={(e) => setFormData({ ...formData, assignedPerson: e.target.value })}
                     className="w-full px-3 py-2 border border-stone-300 text-sm focus:border-[#c5a059] focus:outline-none"
                   />
                 </div>
@@ -332,8 +332,8 @@ export const SiteVisitsAdminView: React.FC = () => {
                   type="text"
                   required
                   placeholder="e.g. Flat 902, Rajhans Bellanza, Vesu, Surat"
-                  value={formData.siteAddress}
-                  onChange={(e) => setFormData({ ...formData, siteAddress: e.target.value })}
+                  value={formData.address}
+                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   className="w-full px-3 py-2 border border-stone-300 text-sm focus:border-[#c5a059] focus:outline-none"
                 />
               </div>
@@ -346,8 +346,8 @@ export const SiteVisitsAdminView: React.FC = () => {
                   <input
                     type="date"
                     required
-                    value={formData.scheduledDate}
-                    onChange={(e) => setFormData({ ...formData, scheduledDate: e.target.value })}
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                     className="w-full px-3 py-2 border border-stone-300 text-sm focus:border-[#c5a059] focus:outline-none"
                   />
                 </div>
@@ -359,8 +359,8 @@ export const SiteVisitsAdminView: React.FC = () => {
                   <input
                     type="text"
                     placeholder="e.g. 11:30 AM"
-                    value={formData.scheduledTime}
-                    onChange={(e) => setFormData({ ...formData, scheduledTime: e.target.value })}
+                    value={formData.time}
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     className="w-full px-3 py-2 border border-stone-300 text-sm focus:border-[#c5a059] focus:outline-none"
                   />
                 </div>
