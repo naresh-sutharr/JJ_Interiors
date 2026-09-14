@@ -30,7 +30,7 @@ export const initialBusinessProfile: BusinessProfile = {
   ownerName: "Mukesh Suthar",
   ownerDesignation: "Founder & Creative Director",
   ownerExperienceYears: 0,
-  ownerPhoto: "/owner-photo.png",
+  ownerPhoto: "/mukeshbhai.jpeg",
   ownerBio: "With over a decade of dedicated craftsmanship and architectural precision, Mukesh Suthar founded J.J. INTERIORS & MODUTECH to synthesize bespoke residential and commercial design with factory-grade modular manufacturing. Every space is curated with disciplined proportions, honest materials, and enduring functional quality.",
   ownerVision: "To transform living and working environments by combining architectural aesthetics with high-precision Modutech engineering, delivering transparent craftsmanship, enduring durability, and timeless spaces.",
   phone: "9898412998",
