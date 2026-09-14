@@ -1,11 +1,12 @@
 export type ProjectCategory = 
+  | 'All'
   | 'Residential' 
+  | 'Modular Kitchens' 
+  | 'Bedrooms' 
+  | 'Living Rooms' 
+  | 'Offices' 
   | 'Commercial' 
-  | 'Modular Kitchen' 
-  | 'Bedroom' 
-  | 'Living Room' 
-  | 'Office' 
-  | 'Wardrobe' 
+  | 'Custom Furniture'
   | 'Other';
 
 export type ProjectStatus = 'Planning' | 'Design' | 'Execution' | 'Completed' | 'On Hold';
@@ -160,6 +161,7 @@ export type CatalogCategory =
   | 'Hardware' 
   | 'Woodwork' 
   | 'Modular' 
+  | 'Commercial'
   | 'Other';
 
 export interface CatalogItem {
@@ -362,10 +364,12 @@ export type AdminTab =
   | 'clients'
   | 'catalog'
   | 'bills'
+  | 'bills-history'
   | 'receipts'
   | 'expenses'
   | 'suppliers'
   | 'site-visits'
+  | 'services'
   | 'blog'
   | 'media'
   | 'testimonials'
@@ -373,8 +377,7 @@ export type AdminTab =
   | 'analytics'
   | 'team'
   | 'seo'
-  | 'settings'
-  | 'receipts';
+  | 'settings';
 
 export type AdminRole = 'Administrator' | 'Manager' | 'Staff';
 

@@ -11,6 +11,7 @@ import { TestimonialsPage } from './pages/TestimonialsPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';
 import { SavedProjectsPage } from './pages/SavedProjectsPage.tsx';
 import { ClientPortalPage } from './pages/ClientPortalPage.tsx';
+import { ProcessPage } from './pages/ProcessPage.tsx';
 
 // Public Header & Footer
 import { PublicHeader } from './components/public/PublicHeader.tsx';
@@ -129,6 +130,7 @@ const MainApplication: React.FC = () => {
           {publicRoute === '/services' && <ServicesPage />}
           {publicRoute === '/projects' && <ProjectsPage />}
           {publicRoute.startsWith('/projects/') && <ProjectDetailPage />}
+          {publicRoute === '/process' && <ProcessPage />}
           {publicRoute === '/testimonials' && <TestimonialsPage />}
           {publicRoute === '/contact' && <ContactPage />}
           {publicRoute === '/saved-projects' && <SavedProjectsPage />}

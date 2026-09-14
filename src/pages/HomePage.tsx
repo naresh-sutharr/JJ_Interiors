@@ -6,6 +6,7 @@ import { ProjectsShowcase } from '../components/public/ProjectsShowcase.tsx';
 import { ServicesSection } from '../components/public/ServicesSection.tsx';
 import { ProcessSection } from '../components/public/ProcessSection.tsx';
 import { WhyChooseUsSection } from '../components/public/WhyChooseUsSection.tsx';
+import { MaterialsSection } from '../components/public/MaterialsSection.tsx';
 import { TrustStatsSection } from '../components/public/TrustStatsSection.tsx';
 import { TestimonialsSection } from '../components/public/TestimonialsSection.tsx';
 import { FAQSection } from '../components/public/FAQSection.tsx';
@@ -27,6 +28,7 @@ export const HomePage: React.FC = () => {
       <ServicesSection />
       <ProcessSection />
       <WhyChooseUsSection />
+      <MaterialsSection />
       <TrustStatsSection />
       <TestimonialsSection />
       <FAQSection />

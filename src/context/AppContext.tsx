@@ -48,16 +48,7 @@ import {
   initialAnalytics
 } from '../data/initialData.ts';
 
-export type PublicRoute = 
-  | '/' 
-  | '/about' 
-  | '/services' 
-  | '/projects' 
-  | `/projects/${string}`
-  | '/testimonials' 
-  | '/contact'
-  | '/saved-projects'
-  | '/client-portal';
+export type PublicRoute = '/' | '/about' | '/services' | '/projects' | '/process' | '/testimonials' | '/contact' | '/saved-projects' | '/client-portal' | string;
 
 export type AdminTab = 
   | 'dashboard' 
@@ -77,7 +68,8 @@ export type AdminTab =
   | 'media' 
   | 'blog' 
   | 'seo'
-  | 'settings';
+  | 'settings'
+  | 'receipts';
 
 interface Toast {
   id: string;

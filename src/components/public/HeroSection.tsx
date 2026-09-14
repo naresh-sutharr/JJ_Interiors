@@ -36,14 +36,14 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Short Premium Headline */}
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6">
-              SPACES CRAFTED <br />
-              <span className="italic font-normal text-[#e8d5b8]">FOR MODERN LIVING.</span>
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6 uppercase">
+              INTERIORS MADE FOR <br />
+              <span className="italic font-normal text-[#e8d5b8]">THE WAY YOU LIVE.</span>
             </h1>
 
             {/* Short Supporting Sentence */}
             <p className="text-stone-300 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl leading-relaxed mb-8">
-              Bespoke interior architecture, factory-precision modular furniture, and turnkey project execution across Vadodara, Surat, and Gujarat.
+              Thoughtfully designed interiors, precision-made modular furniture and custom spaces crafted around your lifestyle.
             </p>
 
             {/* CTAs: EXPLORE PROJECTS & START YOUR PROJECT */}
@@ -52,7 +52,7 @@ export const HeroSection: React.FC = () => {
                 onClick={() => navigateTo('/projects')}
                 className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#1e1b18] hover:bg-[#282420] text-[#faf8f5] border border-[#c5a059]/70 hover:border-[#c5a059] rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl cursor-pointer flex items-center justify-center gap-2.5 group w-full sm:w-auto"
               >
-                <span>EXPLORE PROJECTS</span>
+                <span>VIEW OUR PROJECTS</span>
                 <ArrowUpRight className="w-4 h-4 text-[#c5a059] transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
 
@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
                 onClick={() => setIsConsultationModalOpen(true)}
                 className="px-6 py-3.5 sm:px-8 sm:py-4 bg-transparent hover:bg-white/10 text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto"
               >
-                START YOUR PROJECT
+                BOOK A CONSULTATION
               </button>
             </div>
 

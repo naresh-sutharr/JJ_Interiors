@@ -213,7 +213,7 @@ export const AboutPage: React.FC = () => {
                   {businessProfile.ownerBio}
                 </p>
                 <p>
-                  With more than a decade of hands-on expertise in interior joinery and spatial styling, {businessProfile.ownerName.split(' ')[0]} ji oversees every architectural concept from the first pencil layout to the final laser leveling on-site.
+                  With more than a decade of hands-on expertise in interior design and modular furniture craftsmanship, {businessProfile.ownerName.split(' ')[0]} ji oversees every project from the first pencil layout to the final laser leveling on-site, ensuring a customer-focused approach and complete turnkey execution.
                 </p>
               </div>
 

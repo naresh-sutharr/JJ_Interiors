@@ -18,8 +18,8 @@ export const ContactSection: React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    address: '',
-    projectType: '4BHK Residential Interiors',
+    propertyType: '',
+    projectType: 'Residential Interiors',
     budgetRange: '₹20 - 30 Lakhs',
     notes: '',
   });
@@ -37,12 +37,12 @@ export const ContactSection: React.FC = () => {
       name: formData.name,
       phone: formData.phone,
       email: formData.email || 'not-provided@client.com',
-      address: formData.address || 'Surat, Gujarat',
+      address: 'Not Provided',
       city: 'Surat',
       projectType: formData.projectType,
       status: 'New',
       budgetRange: formData.budgetRange,
-      measurementsNotes: `Inquiry via website contact form. Project Type: ${formData.projectType}. Scope: ${formData.notes}`,
+      measurementsNotes: `Property Type: ${formData.propertyType}. Message: ${formData.notes}`,
       followUpNotes: 'Newly generated website lead. Needs introductory consultation call.',
       lastContact: new Date().toISOString().split('T')[0],
     });
@@ -142,18 +142,40 @@ export const ContactSection: React.FC = () => {
                   className="flex-1 py-3 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  <span>Call Now</span>
+                  <span>CALL NOW</span>
                 </a>
 
                 <a
-                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to book a consultation in Gujarat.')}`}
+                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to book a consultation.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
-                  <span>WhatsApp</span>
+                  <span>WHATSAPP</span>
                 </a>
+              </div>
+              <div className="mt-3 flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const form = document.querySelector('form');
+                    form?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex-1 py-3 bg-[#c5a059] hover:bg-[#d4b06a] text-black text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"
+                >
+                  <span>GET A QUOTE</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const form = document.querySelector('form');
+                    form?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex-1 py-3 bg-transparent hover:bg-black/5 text-[#1e1b18] border border-[#1e1b18] text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"
+                >
+                  <span>BOOK A CONSULTATION</span>
+                </button>
               </div>
             </div>
 
@@ -204,8 +226,8 @@ export const ContactSection: React.FC = () => {
                       name: '',
                       phone: '',
                       email: '',
-                      address: '',
-                      projectType: '4BHK Residential Interiors',
+                      propertyType: '',
+                      projectType: 'Residential Interiors',
                       budgetRange: '₹20 - 30 Lakhs',
                       notes: '',
                     });
@@ -220,12 +242,12 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Full Name *
+                      Name
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Rajesh K. Patel"
+                      placeholder="e.g. Rajesh Patel"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 bg-[#faf8f5] border border-[#e8dfd5] focus:border-[#c5a059] focus:outline-none text-sm text-[#1e1b18] transition-colors"
@@ -234,7 +256,7 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Phone Number (WhatsApp) *
+                      Phone
                     </label>
                     <input
                       type="tel"
@@ -250,7 +272,7 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Email Address
+                      Email
                     </label>
                     <input
                       type="email"
@@ -263,13 +285,13 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Site Location / Society (Surat)
+                      Property Type
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Vesu / VIP Circle / Dumas Rd"
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      placeholder="e.g. 3BHK Apartment / Villa / Commercial"
+                      value={formData.propertyType}
+                      onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
                       className="w-full px-4 py-3 bg-[#faf8f5] border border-[#e8dfd5] focus:border-[#c5a059] focus:outline-none text-sm text-[#1e1b18] transition-colors"
                     />
                   </div>
@@ -278,7 +300,7 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Project Discipline
+                      Project Type
                     </label>
                     <select
                       value={formData.projectType}
@@ -296,7 +318,7 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                      Estimated Investment Budget
+                      Approximate Budget
                     </label>
                     <select
                       value={formData.budgetRange}
@@ -314,11 +336,11 @@ export const ContactSection: React.FC = () => {
 
                 <div>
                   <label className="block text-xs uppercase tracking-wider font-semibold text-stone-700 mb-1.5">
-                    Specific Requirements or Timeline
+                    Message
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Tell us about your possession date, specific material preferences (quartz, acrylic, Italian marble), or custom needs..."
+                    placeholder="Tell us more about your project needs..."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     className="w-full px-4 py-3 bg-[#faf8f5] border border-[#e8dfd5] focus:border-[#c5a059] focus:outline-none text-sm text-[#1e1b18] transition-colors"

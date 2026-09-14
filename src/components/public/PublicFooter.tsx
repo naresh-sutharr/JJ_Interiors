@@ -43,7 +43,6 @@ export const PublicFooter: React.FC = () => {
             <div className="text-[11px] text-stone-400 tracking-wider font-mono">
               PAN: {businessProfile.panNo || 'CMPYS4786H'}
             </div>
-            </div>
           </div>
 
           {/* Col 3: Navigation */}

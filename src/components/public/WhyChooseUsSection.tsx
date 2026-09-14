@@ -14,7 +14,7 @@ export const WhyChooseUsSection: React.FC = () => {
   const materialPillars = [
     {
       icon: <Sparkles className="w-6 h-6 text-[#c5a059]" />,
-      title: "Customized Designs",
+      title: "Custom Design",
       tag: "Bespoke Interiors",
       desc: "Every project is uniquely designed to reflect your lifestyle and preferences, ensuring your space is as individual as you are."
     },
@@ -26,33 +26,27 @@ export const WhyChooseUsSection: React.FC = () => {
     },
     {
       icon: <Cpu className="w-6 h-6 text-[#c5a059]" />,
-      title: "Precision Manufacturing",
+      title: "Precision Furniture",
       tag: "Factory Engineered",
       desc: "Our proprietary Modutech facility utilizes European CNC machines for millimeter-accurate cutting and zero-joint edge banding."
     },
     {
-      icon: <ShieldCheck className="w-6 h-6 text-[#c5a059]" />,
-      title: "Practical Space Planning",
-      tag: "Optimized Layouts",
-      desc: "Intelligent spatial layouts that maximize every square foot, balancing aesthetic beauty with everyday functional utility."
+      icon: <CheckCircle2 className="w-6 h-6 text-[#c5a059]" />,
+      title: "Complete Execution",
+      tag: "Turnkey Solutions",
+      desc: "From the first 3D concept to the final site handover, we provide a seamless single-point-of-contact experience."
     },
     {
       icon: <Award className="w-6 h-6 text-[#c5a059]" />,
-      title: "Transparent Quotations",
+      title: "Transparent Estimation",
       tag: "Zero Cost Creep",
       desc: "Detailed, itemized room-by-room estimates with clear dimensions and material specs. No hidden charges or surprises."
     },
     {
-      icon: <Wrench className="w-6 h-6 text-[#c5a059]" />,
-      title: "Professional Installation",
-      tag: "Dust-Free Assembly",
-      desc: "Our trained technicians assemble interlocking factory-finished units on-site with zero mess and immaculate alignment."
-    },
-    {
-      icon: <CheckCircle2 className="w-6 h-6 text-[#c5a059]" />,
-      title: "End-to-End Solutions",
-      tag: "Turnkey Execution",
-      desc: "From the first 3D concept to the final site handover, we provide a seamless single-point-of-contact experience."
+      icon: <ShieldCheck className="w-6 h-6 text-[#c5a059]" />,
+      title: "After-Sales Support",
+      tag: "10-Year Warranty",
+      desc: "Our relationship doesn't end at handover. We provide comprehensive after-sales support and official warranties for your peace of mind."
     }
   ];
 

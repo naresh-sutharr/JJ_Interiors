@@ -13,7 +13,7 @@ import {
   Eye
 } from 'lucide-react';
 
-type FilterTab = 'all' | 'residential' | 'modular-kitchen' | 'wardrobe' | 'living-room' | 'bedroom' | 'commercial' | 'custom-furniture';
+type FilterTab = 'all' | 'residential' | 'modular-kitchens' | 'bedrooms' | 'living-rooms' | 'offices' | 'commercial' | 'custom-furniture';
 
 export const ProjectsPage: React.FC = () => {
   const { 
@@ -35,10 +35,10 @@ export const ProjectsPage: React.FC = () => {
   const categories: { id: FilterTab; label: string }[] = [
     { id: 'all', label: 'All Projects' },
     { id: 'residential', label: 'Residential' },
-    { id: 'modular-kitchen', label: 'Modular Kitchen' },
-    { id: 'wardrobe', label: 'Wardrobe' },
-    { id: 'living-room', label: 'Living Room' },
-    { id: 'bedroom', label: 'Bedroom' },
+    { id: 'modular-kitchens', label: 'Modular Kitchens' },
+    { id: 'bedrooms', label: 'Bedrooms' },
+    { id: 'living-rooms', label: 'Living Rooms' },
+    { id: 'offices', label: 'Offices' },
     { id: 'commercial', label: 'Commercial' },
     { id: 'custom-furniture', label: 'Custom Furniture' },
   ];

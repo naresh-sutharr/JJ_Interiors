@@ -20,6 +20,7 @@ export const PublicHeader: React.FC = () => {
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
     { label: 'Projects', path: '/projects' },
+    { label: 'Process', path: '/process' },
     { label: 'Testimonials', path: '/testimonials' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -50,7 +51,7 @@ export const PublicHeader: React.FC = () => {
           </button>
 
           {/* Center Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-5 xl:gap-7">
+          <nav className="hidden 2xl:flex items-center gap-5 2xl:gap-7">
             {navLinks.map((link) => {
               const isActive = publicRoute === link.path;
               return (
@@ -76,7 +77,7 @@ export const PublicHeader: React.FC = () => {
           </nav>
 
           {/* Right Action Bar */}
-          <div className="hidden xl:flex items-center gap-3">
+          <div className="hidden 2xl:flex items-center gap-3">
             
             {/* Saved Moodboard / Heart */}
             <button
@@ -151,7 +152,7 @@ export const PublicHeader: React.FC = () => {
           </div>
 
           {/* Mobile Menu Action Buttons */}
-          <div className="flex xl:hidden items-center gap-1 sm:gap-2">
+          <div className="flex 2xl:hidden items-center gap-1 sm:gap-2">
             {/* Mobile Saved Heart */}
             <button
               type="button"
@@ -180,7 +181,7 @@ export const PublicHeader: React.FC = () => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#faf8f5] border-b border-[#e8dfd5] px-4 py-5 shadow-xl animate-fade-in">
+        <div className="2xl:hidden bg-[#faf8f5] border-b border-[#e8dfd5] px-4 py-5 shadow-xl animate-fade-in">
           <nav className="flex flex-col gap-1.5">
             {navLinks.map((link) => {
               const isActive = publicRoute === link.path;
