@@ -61,9 +61,11 @@ export const FounderSection: React.FC = () => {
 
               {/* Monogram watermark caption */}
               <div className="mt-4 flex items-center justify-between text-xs text-stone-400">
-                <span className="font-mono text-[11px] tracking-wider text-stone-400">
-                  GST: <strong className="text-stone-200">{businessProfile.gstin}</strong>
-                </span>
+                {businessProfile.gstEnabled && businessProfile.gstin && (
+                  <span className="font-mono text-[11px] tracking-wider text-stone-400">
+                    GST: <strong className="text-stone-200">{businessProfile.gstin}</strong>
+                  </span>
+                )}
                 <span className="text-[11px] text-[#c5a059] uppercase tracking-wider font-semibold">
                   Verified Studio
                 </span>
@@ -146,7 +148,7 @@ export const FounderSection: React.FC = () => {
               </button>
 
               <a
-                href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20Gopalram%20ji,%20I%20would%20like%20to%20discuss%20an%20interior%20project%20with%20J.J.%20INTERIORS%20%26%20MODUTECH`}
+                href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '')}?text=Hello%20${businessProfile.ownerName.split(' ')[0]}%20ji,%20I%20would%20like%20to%20discuss%20an%20interior%20project%20with%20J.J.%20INTERIORS%20%26%20MODUTECH`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/20 text-xs font-semibold uppercase tracking-[0.18em] transition-colors flex items-center gap-2"

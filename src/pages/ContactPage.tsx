@@ -231,10 +231,12 @@ export const ContactPage: React.FC = () => {
                     <span className="text-stone-400">Principal:</span>
                     <span className="font-medium text-white">{businessProfile.ownerName}</span>
                   </div>
-                  <div className="flex justify-between border-b border-white/10 pb-1">
-                    <span className="text-stone-400">GSTIN:</span>
-                    <span className="font-mono text-[#c5a059] font-bold">{businessProfile.gstin}</span>
-                  </div>
+                  {businessProfile.gstEnabled && businessProfile.gstin && (
+                    <div className="flex justify-between border-b border-white/10 pb-1">
+                      <span className="text-stone-400">GSTIN:</span>
+                      <span className="font-mono text-[#c5a059] font-bold">{businessProfile.gstin}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between">
                     <span className="text-stone-400">PAN:</span>
                     <span className="font-mono text-stone-200">{businessProfile.panNo || 'CMPYS4786H'}</span>
@@ -266,7 +268,7 @@ export const ContactPage: React.FC = () => {
                       Thank You, {formData.name}
                     </h4>
                     <p className="text-sm text-stone-600 max-w-md mx-auto font-light leading-relaxed">
-                      Your inquiry has been directly logged into our Studio Management ERP. Founder Gopalram ji or our senior design team will reach out at <strong className="text-black">{formData.phone}</strong> shortly.
+                      Your inquiry has been directly logged into our Studio Management ERP. Founder {businessProfile.ownerName.split(' ')[0]} ji or our senior design team will reach out at <strong className="text-black">{formData.phone}</strong> shortly.
                     </p>
                     <button
                       type="button"

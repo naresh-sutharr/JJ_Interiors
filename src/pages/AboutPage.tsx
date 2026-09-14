@@ -22,7 +22,7 @@ export const AboutPage: React.FC = () => {
 
   useSEO({
     title: 'About Studio | Architectural Turnkey & Modutech Solutions',
-    description: 'Discover the heritage and two-pillar philosophy of J.J. INTERIORS & MODUTECH. Founded by Gopalram P. Suthar, bridging artisan woodworking with European CNC precision.',
+    description: `Discover the heritage and two-pillar philosophy of J.J. INTERIORS & MODUTECH. Founded by ${businessProfile.ownerName}, bridging artisan woodworking with European CNC precision.`,
     canonical: 'https://www.jjinteriors.site/about'
   });
 
@@ -58,7 +58,7 @@ export const AboutPage: React.FC = () => {
               <span className="italic font-normal text-[#e8d5b8]">Joinery Mastery &amp; Precision.</span>
             </h1>
             <p className="text-stone-300 text-base sm:text-lg font-light leading-relaxed">
-              Founded in Gujarat by Gopalram P. Suthar, J.J. INTERIORS &amp; MODUTECH bridges traditional artisan woodworking with industrial European CNC precision for modern residences and commercial headquarters.
+              Founded in Gujarat by {businessProfile.ownerName}, J.J. INTERIORS &amp; MODUTECH bridges traditional artisan woodworking with industrial European CNC precision for modern residences and commercial headquarters.
             </p>
           </div>
         </div>
@@ -191,9 +191,11 @@ export const AboutPage: React.FC = () => {
                 </div>
 
                 <div className="mt-4 flex items-center justify-between text-xs text-stone-400">
+                {businessProfile.gstEnabled && businessProfile.gstin && (
                   <span className="font-mono text-[11px] tracking-wider text-stone-400">
                     GSTIN: <strong className="text-stone-200">{businessProfile.gstin}</strong>
                   </span>
+                )}
                   <span className="text-[11px] text-[#c5a059] uppercase tracking-wider font-semibold">
                     PAN Verified Studio
                   </span>
@@ -217,7 +219,7 @@ export const AboutPage: React.FC = () => {
                   {businessProfile.ownerBio}
                 </p>
                 <p>
-                  With more than a decade of hands-on expertise in interior joinery and spatial styling, Gopalram ji oversees every architectural concept from the first pencil layout to the final laser leveling on-site.
+                  With more than a decade of hands-on expertise in interior joinery and spatial styling, {businessProfile.ownerName.split(' ')[0]} ji oversees every architectural concept from the first pencil layout to the final laser leveling on-site.
                 </p>
               </div>
 
@@ -274,7 +276,7 @@ export const AboutPage: React.FC = () => {
                 </button>
 
                 <a
-                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Gopalram ji, I would like to discuss an interior project with J.J. INTERIORS & MODUTECH.')}`}
+                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${businessProfile.ownerName.split(' ')[0]} ji, I would like to discuss an interior project with J.J. INTERIORS & MODUTECH.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/20 text-xs font-semibold uppercase tracking-[0.18em] transition-colors flex items-center gap-2"

@@ -946,7 +946,10 @@ export const BillingGeneratorView: React.FC = () => {
               Issuing Entity:
             </div>
             <div className="font-semibold text-[#1e1b18]">{businessProfile.businessName}</div>
-            <div>Surat, Gujarat • GSTIN: {businessProfile.gstin}</div>
+            <div>
+              Surat, Gujarat
+              {businessProfile.gstEnabled && businessProfile.gstin && ` • GSTIN: ${businessProfile.gstin}`}
+            </div>
             <div>Phone: {businessProfile.phone}</div>
           </div>
 

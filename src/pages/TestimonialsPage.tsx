@@ -216,7 +216,7 @@ export const TestimonialsPage: React.FC = () => {
             Join Our Growing Family of Delighted Clients
           </h2>
           <p className="text-stone-300 text-sm sm:text-base font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-            Experience the peace of mind of working directly with Gopalram ji and our in-house Modutech manufacturing facility.
+            Experience the peace of mind of working directly with {businessProfile.ownerName.split(' ')[0]} ji and our in-house Modutech manufacturing facility.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
