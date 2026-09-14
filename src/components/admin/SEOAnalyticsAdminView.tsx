@@ -304,7 +304,7 @@ export const SEOAnalyticsAdminView: React.FC = () => {
               Schema.org Local Business JSON-LD
             </h3>
             <p className="text-xs text-stone-500 mt-1">
-              Provides Google Knowledge Graph and local search crawlers with structured verified studio credentials, coordinates, and GST details.
+              Provides Google Knowledge Graph and local search crawlers with structured verified studio credentials and coordinates.
             </p>
           </div>
 

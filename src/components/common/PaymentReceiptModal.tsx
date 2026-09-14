@@ -80,7 +80,7 @@ export const PaymentReceiptModal: React.FC = () => {
                 {businessProfile.address}
               </p>
               <p className="text-[11px] text-stone-600 font-mono mt-0.5">
-                Ph: {businessProfile.phone}{businessProfile.gstEnabled && businessProfile.gstin ? ` • GSTIN: ${businessProfile.gstin}` : ''}
+                Ph: {businessProfile.phone}
               </p>
             </div>
 

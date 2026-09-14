@@ -41,7 +41,6 @@ export const ItemCatalogView: React.FC = () => {
     size: 'Standard',
     material: 'BWP Plywood / Acrylic',
     rate: 1850,
-    taxPercent: 18,
     sku: 'JJ-MOD-01',
     active: true,
   });
@@ -68,8 +67,7 @@ export const ItemCatalogView: React.FC = () => {
       unit: 'Sq.Ft',
       size: 'Standard',
       material: 'BWP Plywood / Acrylic',
-      rate: 1850,
-      taxPercent: 18,
+      rate: 0,
       sku: `JJ-CAT-${Math.floor(100 + Math.random() * 900)}`,
       active: true,
     });
@@ -188,7 +186,7 @@ export const ItemCatalogView: React.FC = () => {
               <th className="py-3 px-4">Material / Spec</th>
               <th className="py-3 px-4">Standard Unit</th>
               <th className="py-3 px-4 text-right">Standard Rate (₹)</th>
-              <th className="py-3 px-4 text-center">GST %</th>
+
               <th className="py-3 px-4 text-center">Status</th>
               <th className="py-3 px-4 text-right">Actions</th>
             </tr>
@@ -214,9 +212,6 @@ export const ItemCatalogView: React.FC = () => {
                 </td>
                 <td className="py-3.5 px-4 text-right font-bold text-stone-900">
                   ₹{item.rate.toLocaleString('en-IN')}
-                </td>
-                <td className="py-3.5 px-4 text-center text-stone-500">
-                  {item.taxPercent}%
                 </td>
                 <td className="py-3.5 px-4 text-center">
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${item.active ? 'bg-emerald-100 text-emerald-900' : 'bg-stone-200 text-stone-600'}`}>
@@ -343,17 +338,7 @@ export const ItemCatalogView: React.FC = () => {
                     <option value="L.S.">L.S. (Lump Sum)</option>
                   </select>
                 </div>
-                <div>
-                  <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                    GST Tax %
-                  </label>
-                  <input
-                    type="number"
-                    value={formData.taxPercent}
-                    onChange={(e) => setFormData({ ...formData, taxPercent: parseFloat(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900 focus:outline-none focus:border-[#c5a059]"
-                  />
-                </div>
+
               </div>
 
               <div>

@@ -268,7 +268,7 @@ Phone: ${businessProfile.phone}
                 <div className="my-3 px-3 py-2 bg-[#f4eee7] border-y border-[#d8cec0] flex items-center justify-between">
                   <div>
                     <h2 className="font-display text-xl font-bold tracking-[0.2em] uppercase text-[#1e1b18] leading-none">
-                      {doc.type === 'Invoice' ? 'TAX INVOICE' : 'PROJECT QUOTATION'}
+                      {doc.type === 'Invoice' ? 'INVOICE' : 'PROJECT QUOTATION'}
                     </h2>
                     <div className="text-[7.5px] font-semibold tracking-[0.25em] uppercase text-[#7a551e] mt-0.5">
                       INTERIOR | MODULAR | FURNITURE
@@ -485,7 +485,7 @@ Phone: ${businessProfile.phone}
                       )}
 
                       <div className="flex justify-between text-[#5c534a]">
-                        <span>TAXABLE AMOUNT</span>
+                        <span>NET AMOUNT</span>
                         <span className="font-medium">₹ {formatIndianCurrency(doc.subtotal - doc.discountAmount)}</span>
                       </div>
 
@@ -518,7 +518,7 @@ Phone: ${businessProfile.phone}
                 {/* 6. Page 1 Authorized Signatory & Stamp Placeholder */}
                 <div className="flex justify-between items-end pb-2 mb-2 border-t border-[#d8cec0] text-[8px]">
                   <div className="text-[#695f55] space-y-0.5">
-                    <div>• Computer generated tax invoice. Subject to realization of payments.</div>
+                    <div>• Computer generated invoice. Subject to realization of payments.</div>
                     <div>• Page 2 contains detailed Bank/UPI details, Terms &amp; Payment Schedule.</div>
                   </div>
                   <div className="text-right">

@@ -37,7 +37,7 @@ interface AdminLayoutProps {
 export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const { 
     adminTab, 
-    setAdminTab, 
+    navigateAdminTo, 
     currentUser, 
     logout, 
     setViewMode, 
@@ -107,7 +107,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   ];
 
   const handleTabClick = (tab: AdminTab) => {
-    setAdminTab(tab);
+    navigateAdminTo(tab);
     setMobileDrawerOpen(false);
     setQuickActionModalOpen(false);
     if (mainScrollRef.current) {
@@ -139,18 +139,18 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setMobileDrawerOpen(!mobileDrawerOpen)}
-            className="lg:hidden p-2 text-stone-300 hover:text-white rounded hover:bg-white/10"
+            className="lg:hidden p-2 text-stone-300 hover:text-white rounded hover:bg-white/10 shrink-0"
             aria-label="Toggle Menu"
           >
             {mobileDrawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          <div className="flex items-center gap-2">
-            <span className="font-display text-xl font-bold tracking-wider text-white">
+          <div className="flex items-center gap-2 max-w-[200px] sm:max-w-none">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 rounded bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] text-xs sm:text-sm">
+              JJ
+            </div>
+            <span className="font-display text-sm sm:text-lg font-bold tracking-wider text-white leading-tight line-clamp-2">
               {businessProfile.brandName}
-            </span>
-            <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-[#c5a059] text-[#141210]">
-              INTERIOR BUSINESS MANAGEMENT
             </span>
           </div>
         </div>
@@ -450,8 +450,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                     <Receipt className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">+ New Tax Invoice</div>
-                    <div className="text-[11px] text-stone-400">Create itemized tax invoice with GST & bank info</div>
+                    <div className="text-sm font-semibold text-white">+ New Invoice</div>
+                    <div className="text-[11px] text-stone-400">Create itemized invoice with bank info</div>
                   </div>
                 </button>
 

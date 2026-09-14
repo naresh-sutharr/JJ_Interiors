@@ -94,7 +94,7 @@ export const BillingGeneratorView: React.FC = () => {
   // Adjustments & Totals
   const [discountType, setDiscountType] = useState<'percentage' | 'fixed'>('percentage');
   const [discountValue, setDiscountValue] = useState<number>(5);
-  const [taxPercent, setTaxPercent] = useState<number>(18);
+
   const [additionalCharges, setAdditionalCharges] = useState<number>(0);
   const [additionalChargesDesc, setAdditionalChargesDesc] = useState<string>('Site Freight & Deep Cleaning');
   const [amountPaid, setAmountPaid] = useState<number>(0);
@@ -122,7 +122,7 @@ export const BillingGeneratorView: React.FC = () => {
       setSections(editingBill.sections);
       setDiscountType(editingBill.discountType);
       setDiscountValue(editingBill.discountValue);
-      setTaxPercent(editingBill.taxPercent);
+
       setAdditionalCharges(editingBill.additionalCharges || 0);
       setAdditionalChargesDesc(editingBill.additionalChargesDesc || '');
       setAmountPaid(editingBill.amountPaid);
@@ -285,8 +285,7 @@ export const BillingGeneratorView: React.FC = () => {
     : discountValue;
 
   const taxableAmount = Math.max(0, subtotal - discountAmount);
-  const taxAmount = docType === 'Invoice' ? Math.round((taxableAmount * taxPercent) / 100) : 0;
-  const grandTotal = taxableAmount + taxAmount + (Number(additionalCharges) || 0);
+  const grandTotal = taxableAmount + (Number(additionalCharges) || 0);
   const balanceDue = Math.max(0, grandTotal - (Number(amountPaid) || 0));
 
   const paymentStatus = balanceDue <= 0 && grandTotal > 0 ? 'Paid' : amountPaid > 0 ? 'Partial' : 'Pending';
@@ -310,8 +309,6 @@ export const BillingGeneratorView: React.FC = () => {
       discountType,
       discountValue,
       discountAmount,
-      taxPercent: docType === 'Invoice' ? taxPercent : 0,
-      taxAmount,
       additionalCharges: Number(additionalCharges) || 0,
       additionalChargesDesc,
       grandTotal,
@@ -376,7 +373,7 @@ export const BillingGeneratorView: React.FC = () => {
             </h1>
           </div>
           <p className="text-xs text-stone-500 mt-0.5">
-            Create detailed room-by-room estimates, Modutech quotations, and GST tax invoices.
+            Create detailed room-by-room estimates, Modutech quotations, and invoices.
           </p>
         </div>
 
@@ -402,7 +399,7 @@ export const BillingGeneratorView: React.FC = () => {
                 : 'text-stone-600 hover:text-stone-900'
             }`}
           >
-            Tax Invoice (GST)
+            Invoice
           </button>
         </div>
       </div>
@@ -756,7 +753,7 @@ export const BillingGeneratorView: React.FC = () => {
 
         </div>
 
-        {/* Right 4 Cols: Mathematical Calculator, GST Tax, Settlement & Action Toolbar */}
+        {/* Right 4 Cols: Mathematical Calculator, Settlement & Action Toolbar */}
         <div className="lg:col-span-4 space-y-6">
           
           {/* Summary Box */}
@@ -933,7 +930,7 @@ export const BillingGeneratorView: React.FC = () => {
             <div className="font-semibold text-[#1e1b18]">{businessProfile.businessName}</div>
             <div>
               Surat, Gujarat
-              {businessProfile.gstEnabled && businessProfile.gstin && ` • GSTIN: ${businessProfile.gstin}`}
+
             </div>
             <div>Phone: {businessProfile.phone}</div>
           </div>

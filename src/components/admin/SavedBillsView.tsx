@@ -83,7 +83,7 @@ export const SavedBillsView: React.FC = () => {
   const handleConvertToInvoice = (b: BillDocument) => {
     const newInvoice = convertQuotationToInvoice(b.id);
     if (newInvoice) {
-      showToast(`Quotation converted to Tax Invoice: ${newInvoice.docNumber}`);
+      showToast(`Quotation converted to Invoice: ${newInvoice.docNumber}`);
       setViewerDoc(newInvoice);
     }
   };
@@ -118,7 +118,7 @@ export const SavedBillsView: React.FC = () => {
             </h1>
           </div>
           <p className="text-xs text-stone-500 mt-0.5">
-            Audit trail of issued estimates, GST invoices, and chronological payment records.
+            Audit trail of issued estimates, invoices, and chronological payment records.
           </p>
         </div>
 
@@ -265,7 +265,7 @@ export const SavedBillsView: React.FC = () => {
                   <button
                     onClick={() => handleConvertToInvoice(bill)}
                     className="px-2.5 py-1.5 bg-blue-50 hover:bg-blue-100 border border-blue-300 text-blue-800 rounded text-xs font-semibold flex items-center gap-1 transition-colors"
-                    title="Convert this approved Quotation into a Tax Invoice"
+                    title="Convert this approved Quotation into an Invoice"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
                     <span>To Invoice</span>

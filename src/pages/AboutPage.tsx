@@ -337,7 +337,7 @@ export const AboutPage: React.FC = () => {
                 Transparent Billing
               </h3>
               <p className="text-xs text-stone-600 font-light leading-relaxed">
-                Every square foot and hardware component is itemized with clear GST rates. Zero hidden costs or post-agreement surprises.
+                Every square foot and hardware component is itemized with clear rates. Zero hidden costs or post-agreement surprises.
               </p>
             </div>
 

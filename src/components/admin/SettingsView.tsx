@@ -121,7 +121,7 @@ export const SettingsView: React.FC = () => {
         <div className="bg-white p-6 sm:p-8 border border-[#e2dcd4] shadow-sm space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 flex items-center gap-2">
             <Receipt className="w-4 h-4 text-[#c5a059]" />
-            <span>Commercial Billing &amp; Tax Defaults</span>
+            <span>Commercial Billing Defaults</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -149,17 +149,7 @@ export const SettingsView: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                Default GST Tax (%)
-              </label>
-              <input
-                type="number"
-                value={formData.defaultTaxPercent}
-                onChange={(e) => setFormData({ ...formData, defaultTaxPercent: parseFloat(e.target.value) || 0 })}
-                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
-              />
-            </div>
+
           </div>
 
           <div>

@@ -61,15 +61,6 @@ export const FounderSection: React.FC = () => {
                 )}
               </div>
 
-              {/* Monogram watermark caption */}
-              <div className="mt-4 flex items-center justify-between text-xs text-stone-400">
-                {businessProfile.gstEnabled && businessProfile.gstin && (
-                  <span className="font-mono text-[11px] tracking-wider text-stone-400">
-                    GST: <strong className="text-stone-200">{businessProfile.gstin}</strong>
-                  </span>
-                )}
-              </div>
-
             </div>
           </div>
 

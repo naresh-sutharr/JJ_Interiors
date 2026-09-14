@@ -40,12 +40,12 @@ export const ProjectsAdminView: React.FC = () => {
   // Form State
   const [formData, setFormData] = useState<Partial<Project>>({
     title: '',
-    category: 'Residential',
+    category: 'COMPLETE HOME INTERIOR',
     clientName: '',
     location: 'Surat, Gujarat',
     year: '2025',
     budget: '₹28,00,000',
-    status: 'Completed',
+    status: 'COMPLETED',
     featured: false,
     published: true,
     coverImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
@@ -63,12 +63,12 @@ export const ProjectsAdminView: React.FC = () => {
   const resetForm = () => {
     setFormData({
       title: '',
-      category: 'Residential',
+      category: 'COMPLETE HOME INTERIOR',
       clientName: '',
       location: 'Surat, Gujarat',
       year: '2025',
       budget: '₹28,00,000',
-      status: 'Completed',
+      status: 'COMPLETED',
       featured: false,
       published: true,
       coverImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
@@ -171,7 +171,7 @@ export const ProjectsAdminView: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
-          {['ALL', 'Residential', 'Modular Kitchen', 'Commercial', 'Wardrobe'].map((cat) => (
+          {['ALL', 'COMPLETE HOME INTERIOR', 'MODULAR KITCHEN', 'COMMERCIAL', 'WARDROBE'].map((cat) => (
             <button
               key={cat}
               onClick={() => setCategoryFilter(cat)}
@@ -344,12 +344,13 @@ export const ProjectsAdminView: React.FC = () => {
                     onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
                     className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900 focus:outline-none focus:border-[#c5a059]"
                   >
-                    <option value="Residential">Residential</option>
-                    <option value="Modular Kitchen">Modular Kitchen</option>
-                    <option value="Commercial">Commercial</option>
-                    <option value="Wardrobe">Wardrobe</option>
-                    <option value="Living">Living</option>
-                    <option value="Office">Office</option>
+                    <option value="COMPLETE HOME INTERIOR">Complete Home Interior</option>
+                    <option value="MODULAR KITCHEN">Modular Kitchen</option>
+                    <option value="COMMERCIAL">Commercial</option>
+                    <option value="WARDROBE">Wardrobe</option>
+                    <option value="LIVING ROOM">Living Room</option>
+                    <option value="BEDROOM">Bedroom</option>
+                    <option value="CUSTOM FURNITURE">Custom Furniture</option>
                   </select>
                 </div>
 

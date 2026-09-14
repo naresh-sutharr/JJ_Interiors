@@ -1,24 +1,24 @@
 export type ProjectCategory = 
   | 'All'
-  | 'Residential' 
-  | 'Modular Kitchens' 
-  | 'Bedrooms' 
-  | 'Living Rooms' 
-  | 'Offices' 
-  | 'Commercial' 
-  | 'Custom Furniture'
-  | 'Other';
+  | 'COMPLETE HOME INTERIOR' 
+  | 'MODULAR KITCHEN' 
+  | 'WARDROBE' 
+  | 'LIVING ROOM' 
+  | 'BEDROOM' 
+  | 'OFFICE' 
+  | 'COMMERCIAL' 
+  | 'CUSTOM FURNITURE';
 
-export type ProjectStatus = 'Planning' | 'Design' | 'Execution' | 'Completed' | 'On Hold';
+export type ProjectStatus = 'ENQUIRY' | 'SITE VISIT' | 'DESIGN' | 'APPROVAL' | 'PRODUCTION' | 'INSTALLATION' | 'COMPLETED';
 
 export type ProjectProgressStage = 
-  | 'Planning' 
-  | 'Design' 
-  | 'Approval' 
-  | 'Production' 
-  | 'Delivery' 
-  | 'Installation' 
-  | 'Completed';
+  | 'ENQUIRY' 
+  | 'SITE VISIT' 
+  | 'DESIGN' 
+  | 'APPROVAL' 
+  | 'PRODUCTION' 
+  | 'INSTALLATION' 
+  | 'COMPLETED';
 
 export interface ProjectDocument {
   id: string;
@@ -81,13 +81,11 @@ export interface Project {
 }
 
 export type LeadStatus = 
-  | 'NEW' 
-  | 'CONTACTED' 
-  | 'CONSULTATION' 
-  | 'SITE VISIT' 
-  | 'QUOTATION'
-  | 'PROPOSAL SENT' 
-  | 'NEGOTIATION' 
+  | 'LEAD' 
+  | 'ACTIVE' 
+  | 'COMPLETED' 
+  | 'FOLLOW-UP' 
+  | 'INACTIVE'
   | 'WON' 
   | 'LOST';
 
@@ -175,7 +173,6 @@ export interface CatalogItem {
   finish?: string;
   brand?: string;
   rate: number;
-  taxPercent: number;
   sku?: string;
   image?: string;
   supplier?: string;
@@ -244,8 +241,6 @@ export interface BillDocument {
   discountType: 'percentage' | 'fixed';
   discountValue: number;
   discountAmount: number;
-  taxPercent: number;
-  taxAmount: number;
   additionalCharges: number;
   additionalChargesDesc: string;
   grandTotal: number;
@@ -278,8 +273,6 @@ export interface BusinessProfile {
   city: string;
   state: string;
   pin: string;
-  gstEnabled?: boolean;
-  gstin: string;
   panNo?: string;
   logoUrl?: string;
   upiId?: string;
@@ -394,7 +387,6 @@ export interface SystemSettings {
   quotationPrefix: string;
   lastInvoiceSeq?: number;
   lastQuotationSeq?: number;
-  defaultTaxPercent: number;
   currencySymbol: string;
   defaultPaymentTerms: string;
   defaultNotes: string;
@@ -473,7 +465,6 @@ export interface Supplier {
   notes: string;
   outstandingAmount?: number;
   contactPerson?: string;
-  gstin?: string;
   paymentTerms?: string;
   outstandingBalance?: number;
   createdAt: string;

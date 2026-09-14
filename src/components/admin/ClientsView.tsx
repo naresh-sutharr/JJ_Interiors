@@ -279,7 +279,7 @@ export const ClientsView: React.FC = () => {
                     title="Generate quotation or invoice for this client"
                   >
                     <Receipt className="w-3.5 h-3.5" />
-                    <span>Bill Client</span>
+                    <span className="hidden sm:inline">Bill Client</span>
                   </button>
 
                   <button

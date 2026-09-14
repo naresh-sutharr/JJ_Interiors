@@ -39,7 +39,7 @@ export const BusinessProfileView: React.FC = () => {
             </h1>
           </div>
           <p className="text-xs text-stone-500 mt-0.5">
-            Single source of truth for business contact details, founder identity, GSTIN, and public site credentials.
+            Single source of truth for business contact details, founder identity, and public site credentials.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export const BusinessProfileView: React.FC = () => {
         <div className="space-y-1">
           <div className="font-bold">Owner Name &amp; Contact Notice:</div>
           <p>
-            You can customize the <strong>Owner Name</strong>, phone number, and Surat address below. All changes immediately sync across both the public landing page and generated GST invoices.
+            You can customize the <strong>Owner Name</strong>, phone number, and Surat address below. All changes immediately sync across both the public landing page and generated invoices.
           </p>
         </div>
       </div>

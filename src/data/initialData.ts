@@ -40,9 +40,7 @@ export const initialBusinessProfile: BusinessProfile = {
   city: "Vadodara",
   state: "Gujarat",
   pin: "390008",
-  gstEnabled: false,
   panNo: "",
-  gstin: "",
   upiId: "ns680578@okicici",
   upiQrUrl: "/upi-qr.jpg",
   bankDetails: {
@@ -198,7 +196,7 @@ export const initialProjects: Project[] = [
     id: "prj-1",
     title: "The Vesu Penthouse Residence",
     slug: "vesu-penthouse-residence",
-    category: "Residential",
+    category: 'COMPLETE HOME INTERIOR',
     clientName: "Private Client (Vesu)",
     location: "Vesu, Surat",
     year: "2025",
@@ -224,7 +222,7 @@ export const initialProjects: Project[] = [
     },
     viewsCount: 480,
     inquiriesCount: 24,
-    progressStage: "Completed",
+    progressStage: 'COMPLETED',
     progressPercent: 100,
     documents: [
       {
@@ -272,7 +270,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
     budget: "₹38 Lakhs - ₹45 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: true,
     published: true,
     order: 1,
@@ -281,7 +279,7 @@ export const initialProjects: Project[] = [
     id: "prj-2",
     title: "Bespoke Island Kitchen & Modutech Pantry",
     slug: "island-kitchen-piplod",
-    category: "Modular Kitchens",
+    category: 'MODULAR KITCHEN',
     clientName: "Private Villa (Piplod)",
     location: "Piplod, Surat",
     year: "2025",
@@ -306,7 +304,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85",
     budget: "₹9.5 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: true,
     published: true,
     order: 2,
@@ -315,7 +313,7 @@ export const initialProjects: Project[] = [
     id: "prj-3",
     title: "Executive Diamond Trading Headquarters",
     slug: "diamond-trading-headquarters-surat",
-    category: "Commercial",
+    category: 'COMMERCIAL',
     clientName: "Gems & Jewelry Enterprise",
     location: "Ring Road, Surat",
     year: "2024",
@@ -338,7 +336,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
     budget: "₹28 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: true,
     published: true,
     order: 3,
@@ -347,7 +345,7 @@ export const initialProjects: Project[] = [
     id: "prj-4",
     title: "Monochrome Master Bedroom & Walk-in Wardrobe",
     slug: "monochrome-master-bedroom-vip-road",
-    category: "Bedrooms",
+    category: 'BEDROOM',
     clientName: "VIP Road Apartment",
     location: "VIP Road, Surat",
     year: "2025",
@@ -370,7 +368,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85",
     budget: "₹14 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: true,
     published: true,
     order: 4,
@@ -379,7 +377,7 @@ export const initialProjects: Project[] = [
     id: "prj-5",
     title: "Contemporary 4BHK Villa Living & Dining",
     slug: "contemporary-villa-pal",
-    category: "Living Rooms",
+    category: 'LIVING ROOM',
     clientName: "Private Villa (Pal)",
     location: "Pal, Surat",
     year: "2024",
@@ -402,7 +400,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
     budget: "₹24 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: true,
     published: true,
     order: 5,
@@ -411,7 +409,7 @@ export const initialProjects: Project[] = [
     id: "prj-6",
     title: "Luxury Walk-Through Dressing Chamber",
     slug: "luxury-walk-through-dressing-chamber",
-    category: "Custom Furniture",
+    category: 'CUSTOM FURNITURE',
     clientName: "Bungalow Project (Adajan)",
     location: "Adajan, Surat",
     year: "2025",
@@ -433,7 +431,7 @@ export const initialProjects: Project[] = [
     beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=1200&q=85",
     budget: "₹8 Lakhs",
-    status: "Completed",
+    status: 'COMPLETED',
     featured: false,
     published: true,
     order: 6,
@@ -453,7 +451,7 @@ export const initialLeads: Lead[] = [
     approxBudget: "₹25 - 35 Lakhs",
     expectedStartDate: "Immediate / Within 15 Days",
     message: "Possession received at Vesu. Looking for complete turnkey execution with modular kitchen, Italian marble polishing, and false ceiling with cove lighting.",
-    status: "SITE VISIT",
+    status: 'ACTIVE',
     notes: "Site visit conducted with founder Mukesh on Tuesday. Measurement drawings completed.",
     followUpDate: "2026-03-18",
     createdAt: "2026-03-02"
@@ -470,7 +468,7 @@ export const initialLeads: Lead[] = [
     approxBudget: "₹15 - 20 Lakhs",
     expectedStartDate: "Next Month",
     message: "Requires clean acoustic partitions, dust-free modular cabinetry, and patient waiting lounge with branded reception desk.",
-    status: "PROPOSAL SENT",
+    status: 'FOLLOW-UP',
     notes: "Detailed quotation and 3D schematic presentation submitted.",
     followUpDate: "2026-03-20",
     createdAt: "2026-03-06"
@@ -487,7 +485,7 @@ export const initialLeads: Lead[] = [
     approxBudget: "₹20 - 30 Lakhs",
     expectedStartDate: "In 2-3 Months",
     message: "Interested in Modutech acrylic waterproof kitchen with island counter and walk-in wardrobe with bronze fluted glass.",
-    status: "NEW",
+    status: 'LEAD',
     notes: "Inquiry received via website consultation form.",
     followUpDate: "2026-03-16",
     createdAt: "2026-03-11"
@@ -567,7 +565,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Standard Base Height 34 inches, Depth 24 inches",
     material: "HDHMR + Acrylic + PVC Gaskets",
     rate: 1850,
-    taxPercent: 18,
+
     sku: "MK-BASE-ACR-01",
     active: true,
   },
@@ -580,7 +578,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Height 24-30 inches, Depth 14 inches",
     material: "HDHMR + Aluminum Profile + Glass",
     rate: 2100,
-    taxPercent: 18,
+
     sku: "MK-WALL-LIFT-02",
     active: true,
   },
@@ -593,7 +591,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Up to 10 ft Height, 24 inches Depth",
     material: "Action TESA HDHMR + Aluminum Rails",
     rate: 1950,
-    taxPercent: 18,
+
     sku: "WD-SLIDE-CEIL-01",
     active: true,
   },
@@ -606,7 +604,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Custom Cut to Size",
     material: "Toughened Fluted Glass + Aluminum",
     rate: 2450,
-    taxPercent: 18,
+
     sku: "WD-GLASS-BRZ-02",
     active: true,
   },
@@ -619,7 +617,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Length 8 to 12 ft, Height 8 ft",
     material: "Charcoal Louver Panels + PU Finish",
     rate: 3200,
-    taxPercent: 18,
+
     sku: "LR-TV-LOUV-01",
     active: true,
   },
@@ -632,7 +630,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "72 x 78 inches (King)",
     material: "Marine Ply + High Density Foam",
     rate: 42000,
-    taxPercent: 18,
+
     sku: "BD-KING-HYD-01",
     active: true,
   },
@@ -645,7 +643,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "Custom Slabs",
     material: "93% Natural Quartz Stone",
     rate: 950,
-    taxPercent: 18,
+
     sku: "KT-QUARTZ-FAB-01",
     active: true,
   },
@@ -658,7 +656,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "500mm / 550mm",
     material: "Epoxy Coated Steel",
     rate: 3400,
-    taxPercent: 18,
+
     sku: "HW-BLUM-TND-01",
     active: true,
   },
@@ -671,7 +669,7 @@ export const initialCatalogItems: CatalogItem[] = [
     size: "4 ft x 2 ft per user",
     material: "MS Steel + Action TESA Prelam",
     rate: 8500,
-    taxPercent: 18,
+
     sku: "MOD-WS-LOOP-01",
     active: true,
   }
@@ -797,8 +795,8 @@ export const initialBills: BillDocument[] = [
     discountType: "percentage",
     discountValue: 5,
     discountAmount: 25330,
-    taxPercent: 18,
-    taxAmount: 86628.6,
+
+
     additionalCharges: 0,
     additionalChargesDesc: "",
     grandTotal: 567898.6,
@@ -960,8 +958,8 @@ export const initialBills: BillDocument[] = [
     discountType: "percentage",
     discountValue: 5,
     discountAmount: 37480,
-    taxPercent: 18,
-    taxAmount: 128181,
+
+
     additionalCharges: 0,
     additionalChargesDesc: "",
     grandTotal: 840301,
@@ -1174,13 +1172,12 @@ export const initialSystemSettings: SystemSettings = {
   quotationPrefix: "QT-2026-",
   lastInvoiceSeq: 4,
   lastQuotationSeq: 3,
-  defaultTaxPercent: 18,
+
   currencySymbol: "₹",
   defaultPaymentTerms: `1. Payment terms as agreed with the client.
 2. Material specifications are subject to approved selections.
 3. Any additional work will be billed separately.
-4. Changes after approval may affect cost and timeline.
-5. Taxes will be applicable as per prevailing regulations.
+4. Any additions or alterations post approval will be charged extra.
 6. Goods once delivered will not be taken back.
 7. Subject to Gujarat jurisdiction only.
 8. This is a computer generated invoice and does not require a physical signature.`,

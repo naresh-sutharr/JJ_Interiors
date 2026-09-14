@@ -132,7 +132,7 @@ export const ReceiptsAdminView: React.FC = () => {
             Accounting Compliance
           </span>
           <div className="text-sm font-medium text-stone-800 mt-1">
-            GST &amp; PAN compliant print voucher with Indian words conversion
+            Print voucher with Indian words conversion
           </div>
         </div>
       </div>

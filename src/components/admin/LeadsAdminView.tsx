@@ -169,24 +169,22 @@ export const LeadsAdminView: React.FC = () => {
 
   // KPI Metrics
   const totalLeads = leads.length;
-  const newLeads = leads.filter((l) => l.status === 'NEW').length;
-  const siteVisits = leads.filter((l) => l.status === 'SITE VISIT').length;
+  const newLeads = leads.filter((l) => l.status === 'LEAD').length;
+  const siteVisits = leads.filter((l) => l.status === 'FOLLOW-UP').length;
   const convertedWon = leads.filter((l) => l.status === 'WON').length;
 
   const getStatusBadge = (status: LeadStatus) => {
     switch (status) {
-      case 'NEW':
+      case 'LEAD':
         return 'bg-amber-100 text-amber-800 border-amber-300';
-      case 'CONTACTED':
+      case 'ACTIVE':
         return 'bg-blue-100 text-blue-800 border-blue-300';
-      case 'CONSULTATION':
+      case 'FOLLOW-UP':
         return 'bg-indigo-100 text-indigo-800 border-indigo-300';
-      case 'SITE VISIT':
-        return 'bg-purple-100 text-purple-800 border-purple-300';
-      case 'PROPOSAL SENT':
-        return 'bg-cyan-100 text-cyan-800 border-cyan-300';
-      case 'NEGOTIATION':
-        return 'bg-orange-100 text-orange-800 border-orange-300';
+      case 'COMPLETED':
+        return 'bg-emerald-100 text-emerald-800 border-emerald-300';
+      case 'INACTIVE':
+        return 'bg-stone-100 text-stone-700 border-stone-300';
       case 'WON':
         return 'bg-emerald-100 text-emerald-800 border-emerald-300';
       case 'LOST':
@@ -748,7 +746,7 @@ export const LeadsAdminView: React.FC = () => {
                 Convert Lead to Client
               </h3>
               <p className="text-stone-600 text-xs mt-1">
-                This will promote <strong>{convertConfirmLead.name}</strong> into your active client database, mark this lead as <span className="text-emerald-700 font-bold">WON</span>, and make them available for GST quotations and project invoicing.
+                This will promote <strong>{convertConfirmLead.name}</strong> into your active client database, mark this lead as <span className="text-emerald-700 font-bold">WON</span>, and make them available for quotations and project invoicing.
               </p>
             </div>
 

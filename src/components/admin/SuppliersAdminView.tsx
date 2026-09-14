@@ -40,7 +40,6 @@ export const SuppliersAdminView: React.FC = () => {
     phone: '',
     email: '',
     address: '',
-    gstin: '',
     paymentTerms: '30 Days Credit',
     outstandingBalance: 0,
     notes: '',
@@ -63,7 +62,6 @@ export const SuppliersAdminView: React.FC = () => {
       phone: sup.phone,
       email: sup.email,
       address: sup.address,
-      gstin: sup.gstin,
       paymentTerms: sup.paymentTerms,
       outstandingBalance: sup.outstandingBalance,
       notes: sup.notes,
@@ -96,7 +94,6 @@ export const SuppliersAdminView: React.FC = () => {
         s.name.toLowerCase().includes(q) ||
         s.phone.includes(q) ||
         (s.contactPerson || '').toLowerCase().includes(q) ||
-        (s.gstin || '').toLowerCase().includes(q) ||
         (s.address || '').toLowerCase().includes(q)
       );
     }
@@ -183,7 +180,7 @@ export const SuppliersAdminView: React.FC = () => {
           <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search vendor name, person, GSTIN..."
+            placeholder="Search vendor name, person..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-3 py-1.5 bg-stone-50 border border-stone-300 text-xs focus:outline-none focus:border-[#c5a059]"
@@ -260,12 +257,6 @@ export const SuppliersAdminView: React.FC = () => {
                     <div className="flex items-start gap-2">
                       <MapPin className="w-3.5 h-3.5 text-[#c5a059] shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{s.address}</span>
-                    </div>
-                  )}
-
-                  {s.gstin && (
-                    <div className="text-[11px] font-mono text-stone-500">
-                      GSTIN: <span className="text-stone-800 font-semibold">{s.gstin}</span>
                     </div>
                   )}
 
@@ -368,19 +359,6 @@ export const SuppliersAdminView: React.FC = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3 py-2 border border-stone-300 text-sm focus:border-[#c5a059] focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-semibold text-stone-700 mb-1">
-                    GSTIN
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="24AAAAA0000A1Z5"
-                    value={formData.gstin}
-                    onChange={(e) => setFormData({ ...formData, gstin: e.target.value.toUpperCase() })}
-                    className="w-full px-3 py-2 border border-stone-300 text-sm font-mono focus:border-[#c5a059] focus:outline-none"
                   />
                 </div>
               </div>

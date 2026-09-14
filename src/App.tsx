@@ -72,7 +72,7 @@ const MainApplication: React.FC = () => {
               Protected Studio Portal
             </p>
             <p className="text-xs text-stone-400 leading-relaxed">
-              Please sign in with administrative credentials to access CRM clients, project portfolios, and GST quotation/invoicing engines.
+              Please sign in with administrative credentials to access CRM clients, project portfolios, and quotation/invoicing engines.
             </p>
           </div>
 

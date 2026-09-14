@@ -331,10 +331,29 @@ const getInitialPublicRoute = (): PublicRoute => {
   return normalizePublicRoute(window.location.pathname);
 };
 
+const getInitialAdminTab = (): AdminTab => {
+  if (typeof window === 'undefined') return 'dashboard';
+  const path = window.location.pathname;
+  if (path.startsWith('/admin')) {
+    const tab = path.replace('/admin', '').replace(/^\//, '');
+    if (tab) {
+      return tab as AdminTab;
+    }
+  }
+  return 'dashboard';
+};
+
+const getInitialViewMode = (): 'public' | 'admin' => {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')) {
+    return 'admin';
+  }
+  return 'public';
+};
+
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Navigation
-  const [viewMode, setViewMode] = useState<'public' | 'admin'>('public');
-  const [adminTab, setAdminTab] = useState<AdminTab>('dashboard');
+  const [viewMode, setViewMode] = useState<'public' | 'admin'>(getInitialViewMode);
+  const [adminTab, setAdminTab] = useState<AdminTab>(getInitialAdminTab);
   const [publicRoute, setPublicRoute] = useState<PublicRoute>(getInitialPublicRoute);
 
   const navigateTo = (targetRoute: string) => {
@@ -356,8 +375,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   // Listen for browser Back / Forward buttons
   useEffect(() => {
     const handlePopState = () => {
-      const route = getInitialPublicRoute();
-      setPublicRoute(route);
+      const path = window.location.pathname;
+      if (path.startsWith('/admin')) {
+        setViewMode('admin');
+        const tab = path.replace('/admin', '').replace(/^\//, '');
+        setAdminTab(tab ? (tab as AdminTab) : 'dashboard');
+      } else {
+        setViewMode('public');
+        const route = getInitialPublicRoute();
+        setPublicRoute(route);
+      }
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
@@ -1099,6 +1126,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const navigateAdminTo = (tab: AdminTab, itemId?: string, itemType?: string) => {
     setViewMode('admin');
     setAdminTab(tab);
+    if (typeof window !== 'undefined') {
+      try {
+        window.history.pushState(null, '', `/admin/${tab === 'dashboard' ? '' : tab}`);
+      } catch {
+        // ignore
+      }
+    }
     if (itemType === 'client' && itemId) {
       setSelectedClientIdForView(itemId);
     } else if (itemType === 'lead' && itemId) {
