@@ -489,12 +489,7 @@ Phone: ${businessProfile.phone}
                         <span className="font-medium">₹ {formatIndianCurrency(doc.subtotal - doc.discountAmount)}</span>
                       </div>
 
-                      {(businessProfile.gstEnabled || doc.taxAmount > 0) && (
-                        <div className="flex justify-between text-[#5c534a]">
-                          <span>GST @ {doc.taxPercent || 18}%</span>
-                          <span className="font-semibold text-[#1e1b18]">₹ {formatIndianCurrency(doc.taxAmount)}</span>
-                        </div>
-                      )}
+
 
                       {doc.additionalCharges > 0 && (
                         <div className="flex justify-between text-[#5c534a]">
@@ -723,10 +718,7 @@ Phone: ${businessProfile.phone}
                       <span className="font-bold text-[#8a6845] shrink-0">4.</span>
                       <span><strong>Timeline:</strong> Delivery schedule commences only after site readiness, clear access, 3D sign-off, and realization of initial advance payment.</span>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="font-bold text-[#8a6845] shrink-0">5.</span>
-                      <span><strong>Taxes:</strong> GST and government levies are applicable as per prevailing statutory rates.</span>
-                    </div>
+
                     <div className="flex items-start gap-2">
                       <span className="font-bold text-[#8a6845] shrink-0">6.</span>
                       <span><strong>Warranty:</strong> 10-year structural warranty on factory-manufactured Modutech cabinetry. Hardware warranties as per OEM brand policies (Blum/Hettich/Hafele).</span>

@@ -21,37 +21,44 @@ export const ProcessSection: React.FC = () => {
     },
     {
       num: "02",
-      title: "CONCEPT & 3D DESIGN",
-      subtitle: "Photorealistic Architectural Visualizations",
-      desc: "Development of spatial layouts, lighting calculations, and high-fidelity 3D renderings so you experience every volume before production.",
-      deliverable: "Detailed 3D renders & ergonomic elevations"
+      title: "SITE VISIT & MEASUREMENTS",
+      subtitle: "Accurate Spatial Survey",
+      desc: "Our team visits your property to take precise millimeter-accurate measurements, analyze site conditions, and understand natural lighting.",
+      deliverable: "Detailed site survey & measurement drawings"
     },
     {
       num: "03",
-      title: "MATERIAL SELECTION",
-      subtitle: "Tactile Swatches & Hardware Specification",
-      desc: "Physical curation of natural smoked veneers, Italian quartz, anti-fingerprint acrylics, and certified Blum / Hettich architectural hardware.",
-      deliverable: "Signed material sample docket"
+      title: "DESIGN & MATERIAL SELECTION",
+      subtitle: "Visualizing the Space",
+      desc: "Development of spatial layouts, lighting calculations, 3D renderings, and physical curation of laminates, veneers, and hardware.",
+      deliverable: "3D renders & signed material docket"
     },
     {
       num: "04",
-      title: "FACTORY MANUFACTURING (MODUTECH)",
-      subtitle: "European CNC Precision in Our Own Facility",
-      desc: "Unlike traditional carpentry on dusty sites, all cutting, boring, grooving, and edge sealing happens in our proprietary Modutech plant with zero wood dust on-site.",
-      deliverable: "100% factory pre-assembled components"
+      title: "QUOTATION & APPROVAL",
+      subtitle: "Transparent Financial Outline",
+      desc: "A comprehensive itemized estimate categorized room by room with explicit dimensions, core material specifications, and transparent unit rates.",
+      deliverable: "Finalized quotation & project sign-off"
     },
     {
       num: "05",
-      title: "INSTALLATION",
-      subtitle: "Silent, Dust-Free On-Site Joinery",
-      desc: "Trained factory technicians assemble precision interlocking units on-site in a fraction of traditional time, with zero mess and immaculate alignment.",
-      deliverable: "Fast-track, calibrated site assembly"
+      title: "MANUFACTURING",
+      subtitle: "Factory Precision Engineering",
+      desc: "All cutting, boring, grooving, and edge sealing happens in our proprietary manufacturing plant with zero wood dust on-site.",
+      deliverable: "100% factory pre-assembled components"
     },
     {
       num: "06",
-      title: "HANDOVER",
-      subtitle: "10-Year Warranty & Comprehensive Dossier",
-      desc: "Complete quality audit signoff, hardware calibration, deep site clean, and official 10-year structural warranty certificate delivery.",
+      title: "INSTALLATION",
+      subtitle: "Silent, Dust-Free On-Site Joinery",
+      desc: "Trained technicians assemble precision interlocking units on-site in a fraction of traditional time, with zero mess and immaculate alignment.",
+      deliverable: "Fast-track, calibrated site assembly"
+    },
+    {
+      num: "07",
+      title: "FINAL HANDOVER",
+      subtitle: "Quality Signoff & Warranty",
+      desc: "Complete quality audit, hardware calibration, deep site clean, and official warranty certificate delivery for your new space.",
       deliverable: "Turnkey handover & warranty certificate"
     }
   ];
@@ -68,7 +75,7 @@ export const ProcessSection: React.FC = () => {
               The Architectural Journey
             </span>
             <h2 className="font-display text-4xl sm:text-6xl font-light text-[#faf8f5] tracking-tight leading-[1.05]">
-              Six Steps to <br />
+              Seven Steps to <br />
               <span className="italic font-normal text-[#e8d5b8]">Enduring Perfection.</span>
             </h2>
           </div>
@@ -84,10 +91,10 @@ export const ProcessSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 6 Step Editorial Grid */}
+        {/* 7 Step Editorial Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {steps.map((step) => {
-            const isFactory = step.num === "04";
+            const isFactory = step.num === "05";
             return (
               <div
                 key={step.num}

@@ -148,7 +148,7 @@ export const ServicesPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeServices.map((service, index) => {
               const indexStr = (index + 1).toString().padStart(2, '0');
-              const isHighlight = service.slug === 'modutech-solutions' || service.slug === 'interior-design';
+              const isHighlight = service.slug === 'residential-interiors' || service.slug === 'turnkey-interior-solutions';
 
               return (
                 <div

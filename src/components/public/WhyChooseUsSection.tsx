@@ -13,40 +13,46 @@ import {
 export const WhyChooseUsSection: React.FC = () => {
   const materialPillars = [
     {
-      icon: <Cpu className="w-6 h-6 text-[#c5a059]" />,
-      title: "European CNC Precision",
-      tag: "Factory Automation",
-      desc: "Computer numerical controlled routing, boring, and groove cutting ensures sub-millimeter tolerances for every cabinet box, eliminating crooked joinery forever."
-    },
-    {
-      icon: <Wrench className="w-6 h-6 text-[#c5a059]" />,
-      title: "High-Grade Hardware",
-      tag: "Blum • Hettich • Hafele",
-      desc: "We exclusively integrate German servo-drive lift systems, soft-closing tandem drawer runners, and tested hydraulic stays tested for 200,000 opening cycles."
+      icon: <Sparkles className="w-6 h-6 text-[#c5a059]" />,
+      title: "Customized Designs",
+      tag: "Bespoke Interiors",
+      desc: "Every project is uniquely designed to reflect your lifestyle and preferences, ensuring your space is as individual as you are."
     },
     {
       icon: <Layers className="w-6 h-6 text-[#c5a059]" />,
-      title: "Certified Plywood & Boards",
-      tag: "IS:710 Marine & HDHMR",
-      desc: "Zero compromise on core integrity. 100% boiling waterproof marine plywood and high-density moisture-resistant boards that resist warping and termite attacks."
+      title: "Quality Materials",
+      tag: "Premium Selection",
+      desc: "We source only the finest marine plywood, HDHMR boards, and premium laminates to guarantee longevity and a flawless finish."
     },
     {
-      icon: <Leaf className="w-6 h-6 text-[#c5a059]" />,
-      title: "Zero On-Site Mess",
-      tag: "Silent Clean Assembly",
-      desc: "All wood cutting, edge-banding, and drilling is executed in our factory. Your home remains pristine, quiet, and 100% dust-free during on-site installation."
+      icon: <Cpu className="w-6 h-6 text-[#c5a059]" />,
+      title: "Precision Manufacturing",
+      tag: "Factory Engineered",
+      desc: "Our proprietary Modutech facility utilizes European CNC machines for millimeter-accurate cutting and zero-joint edge banding."
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-[#c5a059]" />,
-      title: "10-Year Structural Warranty",
-      tag: "Enduring Assurance",
-      desc: "Every custom modular kitchen, wardrobe unit, and bespoke cabinetry installation is backed by an official, signed 10-year structural warranty certificate."
+      title: "Practical Space Planning",
+      tag: "Optimized Layouts",
+      desc: "Intelligent spatial layouts that maximize every square foot, balancing aesthetic beauty with everyday functional utility."
     },
     {
       icon: <Award className="w-6 h-6 text-[#c5a059]" />,
-      title: "Transparent Fixed Estimates",
+      title: "Transparent Quotations",
       tag: "Zero Cost Creep",
-      desc: "Comprehensive itemized bills with clear dimensions, rates, and room-by-room breakdowns. No surprise surcharges or mid-execution price hikes."
+      desc: "Detailed, itemized room-by-room estimates with clear dimensions and material specs. No hidden charges or surprises."
+    },
+    {
+      icon: <Wrench className="w-6 h-6 text-[#c5a059]" />,
+      title: "Professional Installation",
+      tag: "Dust-Free Assembly",
+      desc: "Our trained technicians assemble interlocking factory-finished units on-site with zero mess and immaculate alignment."
+    },
+    {
+      icon: <CheckCircle2 className="w-6 h-6 text-[#c5a059]" />,
+      title: "End-to-End Solutions",
+      tag: "Turnkey Execution",
+      desc: "From the first 3D concept to the final site handover, we provide a seamless single-point-of-contact experience."
     }
   ];
 
@@ -58,7 +64,7 @@ export const WhyChooseUsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#c5a059] block mb-2">
-              Craftsmanship &amp; Engineering
+              Why Choose Us
             </span>
             <h2 className="font-display text-4xl sm:text-6xl font-light text-[#1e1b18] tracking-tight leading-[1.05]">
               Materials Selected <br />
@@ -71,7 +77,7 @@ export const WhyChooseUsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Material & Craftsmanship Cards */}
+        {/* 7 Material & Craftsmanship Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {materialPillars.map((pillar, idx) => (
             <div

@@ -47,10 +47,10 @@ export const HeroSection: React.FC = () => {
             </p>
 
             {/* CTAs: EXPLORE PROJECTS & START YOUR PROJECT */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-8">
               <button
                 onClick={() => navigateTo('/projects')}
-                className="px-8 py-4 bg-[#1e1b18] hover:bg-[#282420] text-[#faf8f5] border border-[#c5a059]/70 hover:border-[#c5a059] rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl cursor-pointer flex items-center justify-center gap-2.5 group"
+                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#1e1b18] hover:bg-[#282420] text-[#faf8f5] border border-[#c5a059]/70 hover:border-[#c5a059] rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl cursor-pointer flex items-center justify-center gap-2.5 group w-full sm:w-auto"
               >
                 <span>EXPLORE PROJECTS</span>
                 <ArrowUpRight className="w-4 h-4 text-[#c5a059] transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -58,7 +58,7 @@ export const HeroSection: React.FC = () => {
 
               <button
                 onClick={() => setIsConsultationModalOpen(true)}
-                className="px-8 py-4 bg-transparent hover:bg-white/10 text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center"
+                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-transparent hover:bg-white/10 text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto"
               >
                 START YOUR PROJECT
               </button>

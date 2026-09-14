@@ -125,31 +125,7 @@ export const BusinessProfileView: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                GSTIN Number (Surat)
-              </label>
-              <input
-                type="text"
-                value={formData.gstin}
-                onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
-                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs font-mono font-bold text-stone-900"
-                disabled={!formData.gstEnabled}
-              />
-            </div>
 
-            <div className="flex items-center gap-2 mt-6">
-              <input
-                type="checkbox"
-                id="gstEnabled"
-                checked={!!formData.gstEnabled}
-                onChange={(e) => setFormData({ ...formData, gstEnabled: e.target.checked })}
-                className="w-4 h-4 text-[#c5a059] border-stone-300 rounded focus:ring-[#c5a059]"
-              />
-              <label htmlFor="gstEnabled" className="text-xs font-bold text-stone-700 uppercase tracking-wider cursor-pointer">
-                Enable GST on Invoices
-              </label>
-            </div>
           </div>
         </div>
 

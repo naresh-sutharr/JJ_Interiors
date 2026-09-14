@@ -231,12 +231,7 @@ export const ContactPage: React.FC = () => {
                     <span className="text-stone-400">Principal:</span>
                     <span className="font-medium text-white">{businessProfile.ownerName}</span>
                   </div>
-                  {businessProfile.gstEnabled && businessProfile.gstin && (
-                    <div className="flex justify-between border-b border-white/10 pb-1">
-                      <span className="text-stone-400">GSTIN:</span>
-                      <span className="font-mono text-[#c5a059] font-bold">{businessProfile.gstin}</span>
-                    </div>
-                  )}
+
                   <div className="flex justify-between">
                     <span className="text-stone-400">PAN:</span>
                     <span className="font-mono text-stone-200">{businessProfile.panNo || 'CMPYS4786H'}</span>

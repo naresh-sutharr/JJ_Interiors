@@ -260,7 +260,7 @@ export const DashboardView: React.FC = () => {
             {/* Quick Metrics Ticker */}
             <div className="grid grid-cols-3 gap-3 pt-4 border-t border-stone-100 text-center">
               <div className="p-3 bg-[#faf8f5] rounded border border-stone-200">
-                <div className="text-[10px] uppercase font-bold text-stone-500">Tax Collected (GST)</div>
+                <div className="text-[10px] uppercase font-bold text-stone-500">Tax / VAT</div>
                 <div className="text-sm font-bold text-[#1e1b18] mt-0.5">
                   ₹{invoices.reduce((acc, i) => acc + i.taxAmount, 0).toLocaleString('en-IN')}
                 </div>

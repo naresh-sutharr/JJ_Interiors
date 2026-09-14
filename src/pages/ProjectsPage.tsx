@@ -13,7 +13,7 @@ import {
   Eye
 } from 'lucide-react';
 
-type FilterTab = 'all' | 'residential' | 'commercial' | 'modular';
+type FilterTab = 'all' | 'residential' | 'modular-kitchen' | 'wardrobe' | 'living-room' | 'bedroom' | 'commercial' | 'custom-furniture';
 
 export const ProjectsPage: React.FC = () => {
   const { 
@@ -35,17 +35,18 @@ export const ProjectsPage: React.FC = () => {
   const categories: { id: FilterTab; label: string }[] = [
     { id: 'all', label: 'All Projects' },
     { id: 'residential', label: 'Residential' },
+    { id: 'modular-kitchen', label: 'Modular Kitchen' },
+    { id: 'wardrobe', label: 'Wardrobe' },
+    { id: 'living-room', label: 'Living Room' },
+    { id: 'bedroom', label: 'Bedroom' },
     { id: 'commercial', label: 'Commercial' },
-    { id: 'modular', label: 'Modular' },
+    { id: 'custom-furniture', label: 'Custom Furniture' },
   ];
 
   const matchesCategory = (categoryStr: string, tab: FilterTab) => {
     if (tab === 'all') return true;
-    const cat = categoryStr.toLowerCase();
-    if (tab === 'residential') return cat.includes('residential') || cat.includes('bedroom') || cat.includes('living');
-    if (tab === 'commercial') return cat.includes('commercial') || cat.includes('office');
-    if (tab === 'modular') return cat.includes('modular') || cat.includes('kitchen') || cat.includes('wardrobe');
-    return false;
+    const cat = categoryStr.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    return cat.includes(tab);
   };
 
   const filteredProjects = projects.filter((project) => matchesCategory(project.category, selectedCategory));

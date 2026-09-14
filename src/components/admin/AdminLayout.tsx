@@ -150,7 +150,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               {businessProfile.brandName}
             </span>
             <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-[#c5a059] text-[#141210]">
-              ERP &amp; CRM
+              INTERIOR BUSINESS MANAGEMENT
             </span>
           </div>
         </div>

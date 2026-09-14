@@ -41,11 +41,8 @@ export const PublicFooter: React.FC = () => {
               Founder &amp; Principal: {businessProfile.ownerName}
             </div>
             <div className="text-[11px] text-stone-400 tracking-wider font-mono">
-            {businessProfile.gstEnabled && businessProfile.gstin ? (
-              <>GSTIN: {businessProfile.gstin} &bull; PAN: {businessProfile.panNo || 'CMPYS4786H'}</>
-            ) : (
-              <>PAN: {businessProfile.panNo || 'CMPYS4786H'}</>
-            )}
+              PAN: {businessProfile.panNo || 'CMPYS4786H'}
+            </div>
             </div>
           </div>
 

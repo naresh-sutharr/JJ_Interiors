@@ -803,22 +803,7 @@ export const BillingGeneratorView: React.FC = () => {
                 </div>
               </div>
 
-              {/* GST Tax if Invoice */}
-              {docType === 'Invoice' && (
-                <div className="flex items-center justify-between gap-2 pt-2 border-t border-stone-100">
-                  <div className="flex items-center gap-1 text-stone-600">
-                    <span>GST Rate:</span>
-                    <input
-                      type="number"
-                      value={taxPercent}
-                      onChange={(e) => setTaxPercent(parseFloat(e.target.value) || 0)}
-                      className="w-12 text-center border border-stone-300 rounded text-[10px] py-0.5"
-                    />
-                    <span>%</span>
-                  </div>
-                  <span className="font-semibold text-stone-900">+₹{taxAmount.toLocaleString('en-IN')}</span>
-                </div>
-              )}
+
 
               {/* Additional Freight / Packing */}
               <div className="pt-2 border-t border-stone-100 flex items-center justify-between gap-2">
