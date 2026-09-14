@@ -170,7 +170,7 @@ export const AboutPage: React.FC = () => {
                   <img
                     src={businessProfile.ownerPhoto}
                     alt={businessProfile.ownerName}
-                    className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover transition-all duration-700"
                     loading="lazy"
                   />
                 {!!businessProfile.ownerExperienceYears && (
