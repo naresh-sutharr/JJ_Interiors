@@ -28,7 +28,7 @@ export const SavedProjectsPage: React.FC = () => {
     recordWhatsAppClick();
     const projectNames = savedProjects.map((p) => `• ${p.title} (${p.category})`).join('\n');
     const text = `Hello J.J. INTERIORS & MODUTECH, I have curated a moodboard of ${savedProjects.length} projects from your portfolio that I love:\n\n${projectNames}\n\nI would like to discuss my property renovation with your design studio.`;
-    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921';
+    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 

@@ -138,7 +138,7 @@ export const ContactSection: React.FC = () => {
               {/* Direct Buttons */}
               <div className="mt-8 pt-6 border-t border-[#e8dfd5] flex flex-col sm:flex-row gap-3">
                 <a
-                  href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919427054921'}`}
+                  href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919898412998'}`}
                   className="flex-1 py-3 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"
                 >
                   <Phone className="w-3.5 h-3.5" />
@@ -146,7 +146,7 @@ export const ContactSection: React.FC = () => {
                 </a>
 
                 <a
-                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to book a consultation in Gujarat.')}`}
+                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to book a consultation in Gujarat.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs uppercase tracking-widest font-semibold text-center transition-all flex items-center justify-center gap-2"

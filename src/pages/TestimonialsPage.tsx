@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 export const TestimonialsPage: React.FC = () => {
-  const { testimonials, trustStats, setIsConsultationModalOpen, navigateTo } = useApp();
+  const { testimonials, trustStats, businessProfile, setIsConsultationModalOpen, navigateTo } = useApp();
 
   useSEO({
     title: 'Client Experiences & Testimonials | J.J. INTERIORS & MODUTECH',

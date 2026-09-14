@@ -257,7 +257,7 @@ export const BusinessProfileView: React.FC = () => {
               <input
                 type="text"
                 required
-                placeholder="e.g. Gopalram P. Suthar (Founder)"
+                placeholder="e.g. Mukesh Suthar (Founder)"
                 value={formData.ownerName}
                 onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
                 className="w-full px-3 py-2 bg-white border border-amber-300 rounded text-xs font-bold text-stone-900 focus:outline-none focus:border-[#c5a059]"

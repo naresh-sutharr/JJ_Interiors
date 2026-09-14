@@ -127,7 +127,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
     const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const shareUrl = `${window.location.origin}/projects/${slug}`;
     const text = `Hello J.J. INTERIORS & MODUTECH, I am viewing your project "${project.title}" (${project.category}, ${project.location}) and would love to enquire about a similar design for my space:\n${shareUrl}`;
-    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921';
+    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 

@@ -243,7 +243,7 @@ export const ClientPortalPage: React.FC = () => {
                   <div className="text-sm font-semibold text-[#1e1b18]">Jay Jasol (Studio Principal)</div>
                 </div>
                 <a
-                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921'}?text=${encodeURIComponent(`Hello, I am checking the client portal for "${client.projectName || client.name}".`)}`}
+                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent(`Hello, I am checking the client portal for "${client.projectName || client.name}".`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"

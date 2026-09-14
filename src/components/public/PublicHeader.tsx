@@ -115,7 +115,7 @@ export const PublicHeader: React.FC = () => {
 
             {/* Quick WhatsApp contact */}
             <a
-              href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to inquire about interior design & modular solutions.')}`}
+              href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to inquire about interior design & modular solutions.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full text-stone-600 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
@@ -126,7 +126,7 @@ export const PublicHeader: React.FC = () => {
 
             {/* Phone Call */}
             <a
-              href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919427054921'}`}
+              href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919898412998'}`}
               className="p-2 rounded-full text-stone-600 hover:text-[#c5a059] hover:bg-[#c5a059]/10 transition-colors"
               title="Call Us"
             >
@@ -250,14 +250,14 @@ export const PublicHeader: React.FC = () => {
           <div className="mt-5 pt-4 border-t border-[#e8dfd5] flex items-center justify-between">
             <div className="flex gap-4">
               <a
-                href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919427054921'}`}
+                href={`tel:${businessProfile.phone.replace(/[^0-9+]/g, '') || '+919898412998'}`}
                 className="flex items-center gap-1.5 text-xs font-medium text-stone-700"
               >
                 <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
                 <span>Call Studio</span>
               </a>
               <a
-                href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to inquire about interior design services.')}`}
+                href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent('Hello J.J. INTERIORS & MODUTECH, I would like to inquire about interior design services.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-xs font-medium text-emerald-700"

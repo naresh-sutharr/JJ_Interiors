@@ -29,7 +29,7 @@ export const initialBusinessProfile: BusinessProfile = {
   website: "www.jjinteriors.site",
   ownerName: "Mukesh Suthar",
   ownerDesignation: "Founder & Creative Director",
-  ownerExperienceYears: 10,
+  ownerExperienceYears: 0,
   ownerPhoto: "/owner-photo.png",
   ownerBio: "With over a decade of dedicated craftsmanship and architectural precision, Mukesh Suthar founded J.J. INTERIORS & MODUTECH to synthesize bespoke residential and commercial design with factory-grade modular manufacturing. Every space is curated with disciplined proportions, honest materials, and enduring functional quality.",
   ownerVision: "To transform living and working environments by combining architectural aesthetics with high-precision Modutech engineering, delivering transparent craftsmanship, enduring durability, and timeless spaces.",
@@ -442,15 +442,15 @@ export const initialLeads: Lead[] = [
     expectedStartDate: "Immediate / Within 15 Days",
     message: "Possession received at Vesu. Looking for complete turnkey execution with modular kitchen, Italian marble polishing, and false ceiling with cove lighting.",
     status: "SITE VISIT",
-    notes: "Site visit conducted with founder Gopalram on Tuesday. Measurement drawings completed.",
+    notes: "Site visit conducted with founder Mukesh on Tuesday. Measurement drawings completed.",
     followUpDate: "2026-03-18",
     createdAt: "2026-03-02"
   },
   {
     id: "lead-202",
     name: "Dr. Shalini Mehta",
-    phone: "+91 94270 88219",
-    whatsapp: "+91 94270 88219",
+    phone: "+91 9898412998",
+    whatsapp: "+91 9898412998",
     email: "shalini.mehta@cliniccare.in",
     city: "Surat",
     propertyType: "Commercial Clinic / Office",
@@ -802,7 +802,7 @@ export const initialBills: BillDocument[] = [
     docNumber: "INV-2026-0001",
     clientId: "cli-102",
     clientName: "Mr. Naresh Suthar",
-    clientPhone: "9427054921",
+    clientPhone: "9898412998",
     clientEmail: "naresh@example.com",
     clientAddress: "Anand, Gujarat - 388001, India",
     projectName: "3 BHK Residence",
@@ -811,7 +811,7 @@ export const initialBills: BillDocument[] = [
     designer: "J.J. Design Team",
     referenceNo: "PRJ-2026-001",
     siteAddress: "Same as above",
-    authorizedSignatoryName: "Gopalram P. Suthar",
+    authorizedSignatoryName: "Mukesh Suthar",
     authorizedSignatoryRole: "Proprietor",
     date: "2026-07-29",
     validUntilOrDueDate: "2026-08-05",
@@ -962,7 +962,7 @@ export const initialBills: BillDocument[] = [
         date: "2026-07-29",
         amount: 400000,
         mode: "UPI",
-        referenceNumber: "UPI-HDFC-9427054921",
+        referenceNumber: "UPI-HDFC-9898412998",
         notes: "Advance installment against manufacturing",
       }
     ],
@@ -1193,7 +1193,7 @@ export const initialSiteVisits: SiteVisit[] = [
     clientPhone: "+91 98251 23456",
     projectName: "4BHK Luxury Apartment, Vesu",
     address: "Tower B, Flat 1202, Greenwoods, VIP Road, Vesu, Surat",
-    assignedPerson: "Gopalram P. Suthar",
+    assignedPerson: "Mukesh Suthar",
     notes: "Initial spatial measurement for modular kitchen and master wardrobe suite. Client interested in acrylic shutters.",
     status: "Scheduled",
     createdAt: "2026-03-10"
@@ -1219,7 +1219,7 @@ export const initialSiteVisits: SiteVisit[] = [
     clientPhone: "+91 94260 11223",
     projectName: "Dental Clinic Interior",
     address: "Shop 204, Shivalik Square, Adajan, Surat",
-    assignedPerson: "Gopalram P. Suthar",
+    assignedPerson: "Mukesh Suthar",
     notes: "Site handover checklist completed with zero pending snags.",
     status: "Completed",
     createdAt: "2026-03-05"
@@ -1305,7 +1305,7 @@ export const initialExpenses: Expense[] = [
     description: "On-site precision installation team payout (Week 1)",
     amount: 48000,
     paymentMethod: "Bank Transfer",
-    notes: "Supervised by Gopalram Suthar",
+    notes: "Supervised by Mukesh Suthar",
     createdAt: "2026-03-06"
   },
   {
@@ -1393,8 +1393,8 @@ export const initialSEOSettings: SEOSettings = {
   },
   about: {
     title: "About J.J. INTERIORS & MODUTECH | 10+ Years of Craftsmanship & Factory Precision",
-    description: "Founded by Gopalram P. Suthar. Combining architectural elegance with zero-joint European factory modular manufacturing across Gujarat.",
-    keywords: ["About JJ Interiors", "Gopalram Suthar Interior Designer", "Interior Manufacturing Surat"]
+    description: "Founded by Mukesh Suthar. Combining architectural elegance with zero-joint European factory modular manufacturing across Gujarat.",
+    keywords: ["About JJ Interiors", "Mukesh Suthar Interior Designer", "Interior Manufacturing Surat"]
   },
   services: {
     title: "Our Services | Interior Design, Modular Kitchens & Turnkey Execution",
@@ -1413,7 +1413,7 @@ export const initialSEOSettings: SEOSettings = {
   },
   contact: {
     title: "Contact J.J. INTERIORS & MODUTECH | Book a Design Consultation",
-    description: "Visit our Vadodara studio or call +91 94270 54921 to schedule a site visit and discuss your interior design project.",
+    description: "Visit our Vadodara studio or call +91 9898412998 to schedule a site visit and discuss your interior design project.",
     keywords: ["Contact Interior Designer Vadodara", "Book Site Visit Surat"]
   },
   blog: {

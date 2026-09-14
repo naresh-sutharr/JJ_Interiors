@@ -283,30 +283,30 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  PROFILE: 'jj_business_profile_v2',
-  STATS: 'jj_trust_stats_v2',
-  PROJECTS: 'jj_projects_v2',
-  SAVED_PROJECTS: 'jj_saved_projects_v2',
-  SERVICES: 'jj_services_v2',
-  CLIENTS: 'jj_clients_v2',
-  LEADS: 'jj_leads_v2',
-  SITE_VISITS: 'jj_site_visits_v2',
-  EXPENSES: 'jj_expenses_v2',
-  SUPPLIERS: 'jj_suppliers_v2',
-  NOTIFICATIONS: 'jj_notifications_v2',
-  AUDIT_LOGS: 'jj_audit_logs_v2',
-  PAYMENT_RECEIPTS: 'jj_payment_receipts_v2',
-  SEO: 'jj_seo_settings_v2',
-  ANALYTICS: 'jj_analytics_v2',
-  ADMIN_THEME: 'jj_admin_theme_v2',
-  CATALOG: 'jj_catalog_v2',
-  BILLS: 'jj_bills_v2',
-  TESTIMONIALS: 'jj_testimonials_v2',
-  FAQS: 'jj_faqs_v2',
-  BLOG: 'jj_blog_v2',
-  MEDIA: 'jj_media_v2',
-  SETTINGS: 'jj_settings_v2',
-  AUTH: 'jj_auth_user_v2',
+  PROFILE: 'jj_business_profile_v3',
+  STATS: 'jj_trust_stats_v3',
+  PROJECTS: 'jj_projects_v3',
+  SAVED_PROJECTS: 'jj_saved_projects_v3',
+  SERVICES: 'jj_services_v3',
+  CLIENTS: 'jj_clients_v3',
+  LEADS: 'jj_leads_v3',
+  SITE_VISITS: 'jj_site_visits_v3',
+  EXPENSES: 'jj_expenses_v3',
+  SUPPLIERS: 'jj_suppliers_v3',
+  NOTIFICATIONS: 'jj_notifications_v3',
+  AUDIT_LOGS: 'jj_audit_logs_v3',
+  PAYMENT_RECEIPTS: 'jj_payment_receipts_v3',
+  SEO: 'jj_seo_settings_v3',
+  ANALYTICS: 'jj_analytics_v3',
+  ADMIN_THEME: 'jj_admin_theme_v3',
+  CATALOG: 'jj_catalog_v3',
+  BILLS: 'jj_bills_v3',
+  TESTIMONIALS: 'jj_testimonials_v3',
+  FAQS: 'jj_faqs_v3',
+  BLOG: 'jj_blog_v3',
+  MEDIA: 'jj_media_v3',
+  SETTINGS: 'jj_settings_v3',
+  AUTH: 'jj_auth_user_v3',
 };
 
 const normalizePublicRoute = (path: string): PublicRoute => {
@@ -865,7 +865,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   // Client Portal Session
   const [clientPortalUser, setClientPortalUser] = useState<{ phone: string; client: Client } | null>(() => {
     try {
-      const saved = localStorage.getItem('jj_client_portal_user_v2');
+      const saved = localStorage.getItem('jj_client_portal_user_v3');
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
@@ -881,7 +881,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     if (found) {
       const sess = { phone, client: found };
       setClientPortalUser(sess);
-      localStorage.setItem('jj_client_portal_user_v2', JSON.stringify(sess));
+      localStorage.setItem('jj_client_portal_user_v3', JSON.stringify(sess));
       showToast(`Welcome back, ${found.name}! Project portal unlocked.`);
       return true;
     }
@@ -890,7 +890,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       const fallback = clients[0];
       const sess = { phone, client: fallback };
       setClientPortalUser(sess);
-      localStorage.setItem('jj_client_portal_user_v2', JSON.stringify(sess));
+      localStorage.setItem('jj_client_portal_user_v3', JSON.stringify(sess));
       showToast(`Welcome, ${fallback.name}! Accessing project portal.`);
       return true;
     }
@@ -900,7 +900,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const logoutClientPortal = () => {
     setClientPortalUser(null);
-    localStorage.removeItem('jj_client_portal_user_v2');
+    localStorage.removeItem('jj_client_portal_user_v3');
     showToast('Signed out of Client Portal.');
   };
 

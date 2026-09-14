@@ -173,6 +173,7 @@ export const AboutPage: React.FC = () => {
                     className="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
                     loading="lazy"
                   />
+                {!!businessProfile.ownerExperienceYears && (
                   <div className="absolute bottom-4 left-4 right-4 bg-[#161412]/90 backdrop-blur-md border border-[#c5a059]/50 p-4 text-white">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-[#c5a059]/20 border border-[#c5a059] flex items-center justify-center shrink-0">
@@ -180,7 +181,7 @@ export const AboutPage: React.FC = () => {
                       </div>
                       <div>
                         <div className="text-xl font-display font-bold text-[#f5ebd7]">
-                          {businessProfile.ownerExperienceYears || 10}+ Years
+                          {businessProfile.ownerExperienceYears}+ Years
                         </div>
                         <div className="text-[10px] text-stone-300 uppercase tracking-widest font-medium">
                           Architectural &amp; Joinery Mastery
@@ -188,7 +189,8 @@ export const AboutPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
+              </div>
 
                 <div className="mt-4 flex items-center justify-between text-xs text-stone-400">
                 {businessProfile.gstEnabled && businessProfile.gstin && (
@@ -196,9 +198,6 @@ export const AboutPage: React.FC = () => {
                     GSTIN: <strong className="text-stone-200">{businessProfile.gstin}</strong>
                   </span>
                 )}
-                  <span className="text-[11px] text-[#c5a059] uppercase tracking-wider font-semibold">
-                    PAN Verified Studio
-                  </span>
                 </div>
               </div>
             </div>

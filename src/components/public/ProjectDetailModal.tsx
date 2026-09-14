@@ -255,7 +255,7 @@ export const ProjectDetailModal: React.FC = () => {
                 </button>
 
                 <a
-                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921'}?text=${encodeURIComponent(`Hello J.J. INTERIORS & MODUTECH, I would like to inquire about a project similar to "${activeProjectModal.title}".`)}`}
+                  href={`https://wa.me/${businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998'}?text=${encodeURIComponent(`Hello J.J. INTERIORS & MODUTECH, I would like to inquire about a project similar to "${activeProjectModal.title}".`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-medium tracking-wider uppercase flex items-center justify-center gap-2 transition-colors"

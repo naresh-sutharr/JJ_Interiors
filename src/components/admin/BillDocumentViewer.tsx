@@ -791,7 +791,7 @@ Phone: ${businessProfile.phone}
                       <div className="border-b border-stone-400 w-44 ml-auto mb-1"></div>
                       <div className="font-bold text-[9px] text-[#1e1b18]">Authorized Signatory</div>
                       <div className="text-[8px] text-[#695f55]">
-                        ({doc.authorizedSignatoryName || businessProfile.ownerName || 'Gopalram P. Suthar'})
+                        ({doc.authorizedSignatoryName || businessProfile.ownerName || ''})
                       </div>
                       <div className="text-[7.5px] text-[#8c6f50] uppercase tracking-wider">
                         {doc.authorizedSignatoryRole || 'Proprietor & Creative Director'}

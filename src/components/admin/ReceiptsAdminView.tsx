@@ -40,6 +40,7 @@ export const ReceiptsAdminView: React.FC = () => {
     referenceNo: '',
     date: new Date().toISOString().split('T')[0],
     notes: 'Advance against carpentry & modular materials',
+    billId: '',
   };
 
   const [formData, setFormData] = useState(initialFormData);

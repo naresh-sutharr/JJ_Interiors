@@ -74,7 +74,7 @@ export const ConsultationModal: React.FC = () => {
     const query = consultationPrefill?.projectName 
       ? `Hello J.J. INTERIORS & MODUTECH, I would like to book a consultation regarding project "${consultationPrefill.projectName}". My name is ${formData.name || 'Client'}.`
       : `Hello J.J. INTERIORS & MODUTECH, I would like to book an interior architecture consultation. My name is ${formData.name || 'Client'}.`;
-    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919427054921';
+    const phone = businessProfile.whatsapp.replace(/[^0-9]/g, '') || '919898412998';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(query)}`, '_blank', 'noopener,noreferrer');
   };
 
