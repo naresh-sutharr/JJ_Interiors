@@ -30,10 +30,7 @@ export const FounderSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Architectural Frame Border */}
-              <div className="absolute -inset-3 border border-[#c5a059]/40 -z-10" />
-
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#161412] shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden border border-[#c5a059]/40 shadow-2xl">
                 <img
                   src={businessProfile.ownerPhoto}
                   alt={businessProfile.ownerName}
