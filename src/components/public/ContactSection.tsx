@@ -47,8 +47,13 @@ export const ContactSection: React.FC = () => {
       lastContact: new Date().toISOString().split('T')[0],
     });
 
+    const whatsappNumber = "918764361145";
+    const text = `New Consultation Request:%0A- Name: ${formData.name}%0A- Phone: ${formData.phone}%0A- Email: ${formData.email || 'N/A'}%0A- Property: ${formData.propertyType || 'N/A'}%0A- Project Type: ${formData.projectType}%0A- Budget: ${formData.budgetRange}%0A- Message: ${formData.notes || 'N/A'}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
+    window.open(whatsappUrl, '_blank');
+
     setSubmitted(true);
-    showToast('Consultation request received! Our design team will contact you shortly.');
+    showToast('Redirecting to WhatsApp to complete your request...');
   };
 
   return (
@@ -325,11 +330,12 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
                       className="w-full px-4 py-3 bg-[#faf8f5] border border-[#e8dfd5] focus:border-[#c5a059] focus:outline-none text-sm text-[#1e1b18] transition-colors"
                     >
-                      <option value="₹5 - 10 Lakhs (Modular Kitchen / Wardrobe focus)">₹5 - 10 Lakhs</option>
+                      <option value="Less than ₹10 Lakhs">Less than ₹10 Lakhs</option>
                       <option value="₹10 - 20 Lakhs (Partial Home / Premium Modular)">₹10 - 20 Lakhs</option>
                       <option value="₹20 - 35 Lakhs (3BHK / 4BHK Turnkey)">₹20 - 35 Lakhs</option>
                       <option value="₹35 - 60 Lakhs (Luxury Penthouse / Villa)">₹35 - 60 Lakhs</option>
                       <option value="₹60 Lakhs+ (Ultra Luxury / Commercial)">₹60 Lakhs+</option>
+                      <option value="Custom Budget">Custom Budget</option>
                     </select>
                   </div>
                 </div>

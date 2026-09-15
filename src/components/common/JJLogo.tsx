@@ -16,11 +16,15 @@ export const JJLogo: React.FC<JJLogoProps> = ({
   customLogoUrl,
 }) => {
   if (customLogoUrl) {
+    // If the logo has a white background, mix-blend-multiply will make it transparent on light backgrounds.
+    // On dark backgrounds, we might need a different approach, but let's try to make it look seamless.
+    const blendMode = theme === 'dark' ? 'brightness-0 invert opacity-90' : 'mix-blend-multiply';
+
     return (
       <img
         src={customLogoUrl}
         alt="J.J. INTERIORS & MODUTECH"
-        className={`object-contain ${
+        className={`object-contain ${blendMode} ${
           size === 'sm' ? 'h-8' : size === 'md' ? 'h-11' : size === 'lg' ? 'h-16' : 'h-20'
         } ${className}`}
       />

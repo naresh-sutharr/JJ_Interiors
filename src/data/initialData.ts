@@ -24,6 +24,7 @@ import {
 export const initialBusinessProfile: BusinessProfile = {
   brandName: "J.J. INTERIORS & MODUTECH",
   businessName: "J.J. INTERIORS & MODUTECH",
+  logoUrl: "/mukeshlogo.png",
   tagline: "SPACES | DESIGNED | FOR A BETTER TOMORROW",
   industry: "Interior Design, Modular Furniture & Modutech Solutions",
   website: "www.jjinteriors.site",
@@ -36,10 +37,10 @@ export const initialBusinessProfile: BusinessProfile = {
   phone: "9898412998",
   whatsapp: "9898412998",
   email: "mukesh.jj.interiors@gmail.com",
-  address: "148, RandalDham Society, ChanakyaPuri, New Sama Road, Vadodara - 390008, Gujarat, India",
-  city: "Vadodara",
+  address: "Dindoli, Surat, Gujarat",
+  city: "Surat",
   state: "Gujarat",
-  pin: "390008",
+  pin: "394210",
   panNo: "",
   upiId: "ns680578@okicici",
   upiQrUrl: "/upi-qr.jpg",
@@ -50,8 +51,8 @@ export const initialBusinessProfile: BusinessProfile = {
     ifscCode: "",
     branch: ""
   },
-  businessHours: "Monday – Saturday: 10:00 AM – 7:30 PM (Sunday by Prior Appointment)",
-  googleMapsUrl: "https://maps.google.com/?q=Vadodara,Gujarat",
+  businessHours: "24 x 7",
+  googleMapsUrl: "https://maps.google.com/?q=Dindoli,Surat,Gujarat",
   googleBusinessUrl: "https://business.google.com/",
   socialLinks: {
     instagram: "https://instagram.com/jjinteriors.modutech",
@@ -263,9 +264,9 @@ export const initialProjects: Project[] = [
     coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
     galleryImages: [
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1600566753086-00f18efc204b?auto=format&fit=crop&w=1200&q=85"
     ],
     beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
@@ -295,14 +296,14 @@ export const initialProjects: Project[] = [
       "100% waterproof HDHMR carcass construction"
     ],
     services: ["Modular Kitchen", "Modutech Solutions"],
-    coverImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85",
+    coverImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=85",
     galleryImages: [
-      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=1200&q=85"
     ],
     beforeImage: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=1200&q=80",
-    afterImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=85",
     budget: "₹9.5 Lakhs",
     status: 'COMPLETED',
     featured: true,
@@ -328,13 +329,13 @@ export const initialProjects: Project[] = [
       "Lobby reception featuring back-lit translucent onyx stone counter"
     ],
     services: ["Commercial Interiors", "Office Interiors", "Modular Furniture"],
-    coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
+    coverImage: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
     galleryImages: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
     ],
     beforeImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
-    afterImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
     budget: "₹28 Lakhs",
     status: 'COMPLETED',
     featured: true,
@@ -360,13 +361,13 @@ export const initialProjects: Project[] = [
       "Acoustic fabric headboard spanning the full wall width"
     ],
     services: ["Bedroom Interiors", "Wardrobe Design", "Modular Furniture"],
-    coverImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85",
+    coverImage: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=85",
     galleryImages: [
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1200&q=85"
     ],
     beforeImage: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80",
-    afterImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85",
+    afterImage: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=85",
     budget: "₹14 Lakhs",
     status: 'COMPLETED',
     featured: true,
@@ -395,7 +396,7 @@ export const initialProjects: Project[] = [
     coverImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
     galleryImages: [
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?auto=format&fit=crop&w=1200&q=85"
     ],
     beforeImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     afterImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
@@ -1069,7 +1070,7 @@ In humid coastal weather and daily wet mopping routines, standard commercial ply
 Every square inch matters. With German blind-corner pullouts (LeMans units) and tandem pantry tall units, items once lost in deep corner corners glide effortlessly to hand height with the touch of a finger.`,
     category: "Modular Kitchen",
     tags: ["Modular Kitchen", "Interior Architecture", "Quartz Counter", "Gola Profile"],
-    coverImage: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=80",
+    coverImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80",
     author: "J.J. Design Studio",
     readTime: "4 min read",
     publishedAt: "2026-02-18",
@@ -1092,7 +1093,7 @@ Combining solid smoked walnut doors on the daily storage sections with semi-tran
 Warm 3000K recessed LED profiles triggered by magnetic door sensors transform dressing into a 5-star suite experience.`,
     category: "Wardrobes",
     tags: ["Wardrobes", "Walk-in Closet", "Luxury Bedroom", "Storage Solutions"],
-    coverImage: "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=900&q=80",
+    coverImage: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=900&q=80",
     author: "J.J. Design Studio",
     readTime: "5 min read",
     publishedAt: "2026-01-25",
@@ -1117,7 +1118,7 @@ Warm 3000K recessed LED profiles triggered by magnetic door sensors transform dr
 By sourcing factory-manufactured modular units directly from J.J. INTERIORS & MODUTECH, homeowners save on contractor markups while securing 10-year warranty coverage.`,
     category: "Cost Guide",
     tags: ["Cost Guide", "Budget Planning", "Turnkey Interiors", "Modular Costs"],
-    coverImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80",
+    coverImage: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=900&q=80",
     author: "J.J. Design Studio",
     readTime: "6 min read",
     publishedAt: "2026-03-01",
