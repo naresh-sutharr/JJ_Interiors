@@ -463,12 +463,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // One-time guaranteed sync for updates
   useEffect(() => {
-    if (!localStorage.getItem('jj_migration_v5')) {
+    if (!localStorage.getItem('jj_migration_v6')) {
       setProjects(initialProjects);
       setBlogPosts(initialBlogPosts);
       setTestimonials(initialTestimonials);
       setBusinessProfile(initialBusinessProfile);
-      localStorage.setItem('jj_migration_v5', 'done');
+      localStorage.setItem('jj_migration_v6', 'done');
     }
   }, []);
 
