@@ -466,6 +466,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     if (!localStorage.getItem('jj_migration_v5')) {
       setProjects(initialProjects);
       setBlogPosts(initialBlogPosts);
+      setTestimonials(initialTestimonials);
       setBusinessProfile(initialBusinessProfile);
       localStorage.setItem('jj_migration_v5', 'done');
     }

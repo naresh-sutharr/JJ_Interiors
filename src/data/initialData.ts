@@ -526,7 +526,7 @@ export const initialClients: Client[] = [
   },
   {
     id: "cli-103",
-    name: "Architect Bhavin Mehta",
+    name: "Naresh Suthar",
     phone: "+91 98980 XXXXX",
     email: "bhavin@studioform.in",
     address: "301, Corporate Hub, Ring Road",
@@ -1004,7 +1004,7 @@ export const initialTestimonials: Testimonial[] = [
   },
   {
     id: "tst-3",
-    clientName: "Architect Bhavin Mehta",
+    clientName: "Naresh Suthar",
     project: "Corporate Workspace & Workstations",
     location: "Ring Road, Surat",
     review: "We collaborated with J.J. INTERIORS & MODUTECH for our 3,000 sq.ft office furniture requirement. The edge banding precision, wire-management details, and acoustic wall panels were executed with masterclass engineering.",

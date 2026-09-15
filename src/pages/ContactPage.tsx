@@ -451,7 +451,7 @@ export const ContactPage: React.FC = () => {
               <div className="lg:col-span-7 aspect-[16/9] bg-[#161412] relative overflow-hidden border border-[#e8dfd5]">
                 <iframe
                   title="J.J. Interiors Studio Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119066.41709425405!2d72.75630689999999!3d21.1594627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.9328004724816!2d72.8576406751278!3d21.154942980526365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fbc87ebf4f5%3A0x6b4eb049eb0cb999!2sDindoli%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1711311029272!5m2!1sen!2sin"
                   className="w-full h-full border-0 grayscale contrast-125 opacity-85 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
