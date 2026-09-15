@@ -26,12 +26,9 @@ export const PublicFooter: React.FC = () => {
               onClick={() => navigateTo('/')} 
               className="text-left bg-transparent border-0 p-0 cursor-pointer block"
             >
-              <JJLogo 
-                variant="full" 
-                theme="dark" 
-                size="md" 
-                customLogoUrl={businessProfile.logoUrl}
-              />
+              <h2 className="font-display text-2xl tracking-widest uppercase text-white font-light">
+                {businessProfile.businessName}
+              </h2>
             </button>
             
             <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed max-w-sm pt-2">
