@@ -37,11 +37,16 @@ export const PublicFooter: React.FC = () => {
             <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed max-w-sm pt-2">
               Creating thoughtfully designed residential, modular, and commercial spaces in Gujarat. Dedicated to fine craftsmanship, structural durability, and modern spatial tranquility.
             </p>
-            <div className="text-[11px] text-[#ebd5b3] tracking-widest uppercase font-medium">
-              Founder &amp; Principal: {businessProfile.ownerName}
-            </div>
-            <div className="text-[11px] text-stone-400 tracking-wider font-mono">
-              PAN: {businessProfile.panNo || 'CMPYS4786H'}
+            <div className="flex items-center gap-3 pt-2">
+              <img 
+                src={businessProfile.ownerPhoto} 
+                alt={businessProfile.ownerName} 
+                className="w-10 h-10 rounded-full object-cover border border-[#443e38]"
+              />
+              <div className="flex flex-col">
+                <span className="text-xs text-stone-300 font-medium">{businessProfile.ownerName}</span>
+                <span className="text-[10px] text-[#ebd5b3] tracking-widest uppercase mt-0.5">Owner</span>
+              </div>
             </div>
           </div>
 

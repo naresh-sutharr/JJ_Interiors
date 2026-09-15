@@ -16,9 +16,9 @@ export const JJLogo: React.FC<JJLogoProps> = ({
   customLogoUrl,
 }) => {
   if (customLogoUrl) {
-    // If the logo has a white background, mix-blend-multiply will make it transparent on light backgrounds.
-    // On dark backgrounds, we might need a different approach, but let's try to make it look seamless.
-    const blendMode = theme === 'dark' ? 'brightness-0 invert opacity-90' : 'mix-blend-multiply';
+    // For light themes, multiply removes white bg. 
+    // For dark themes, invert(1) turns white bg to black & black logo to white, then mix-blend-screen removes the black bg!
+    const blendMode = theme === 'dark' ? 'invert mix-blend-screen opacity-90' : 'mix-blend-multiply';
 
     return (
       <img

@@ -461,20 +461,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     loadStored(STORAGE_KEYS.PROFILE, initialBusinessProfile)
   );
 
-  // One-time sync to force the new address, hours, logo, and project/blog image updates
+  // One-time guaranteed sync for updates
   useEffect(() => {
-    if (businessProfile.address.includes("148, RandalDham") || !businessProfile.logoUrl || businessProfile.businessHours.includes("Monday")) {
-      setBusinessProfile(initialBusinessProfile);
-    }
-    
-    // Check if blogs have old broken/duplicate images
-    if (blogPosts.some(p => p.coverImage.includes('1598928506311') || p.coverImage.includes('1558997519'))) {
-      setBlogPosts(initialBlogPosts);
-    }
-
-    // Check if projects have old duplicate images
-    if (projects.some(p => p.coverImage.includes('1556911220') || p.coverImage.includes('1497366216548'))) {
+    if (!localStorage.getItem('jj_migration_v5')) {
       setProjects(initialProjects);
+      setBlogPosts(initialBlogPosts);
+      setBusinessProfile(initialBusinessProfile);
+      localStorage.setItem('jj_migration_v5', 'done');
     }
   }, []);
 
