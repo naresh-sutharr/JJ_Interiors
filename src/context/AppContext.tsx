@@ -358,13 +358,20 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const navigateTo = (targetRoute: string) => {
     const norm = normalizePublicRoute(targetRoute);
+    
+    // Only push state if the route is actually changing
+    const isNewRoute = typeof window !== 'undefined' && window.location.pathname !== norm;
+    
     setPublicRoute(norm);
     setViewMode('public');
+    
     if (typeof window !== 'undefined') {
-      try {
-        window.history.pushState(null, '', norm);
-      } catch {
-        // ignore in strict sandboxed frames
+      if (isNewRoute) {
+        try {
+          window.history.pushState(null, '', norm);
+        } catch {
+          // ignore in strict sandboxed frames
+        }
       }
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
       document.documentElement.scrollTop = 0;
@@ -385,9 +392,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         const route = getInitialPublicRoute();
         setPublicRoute(route);
       }
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      // Let the browser handle scroll restoration on popstate naturally
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -1126,13 +1131,18 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const navigateAdminTo = (tab: AdminTab, itemId?: string, itemType?: string) => {
     setViewMode('admin');
     setAdminTab(tab);
+    
     if (typeof window !== 'undefined') {
-      try {
-        window.history.pushState(null, '', `/admin/${tab === 'dashboard' ? '' : tab}`);
-      } catch {
-        // ignore
+      const targetPath = `/admin/${tab === 'dashboard' ? '' : tab}`;
+      if (window.location.pathname !== targetPath) {
+        try {
+          window.history.pushState(null, '', targetPath);
+        } catch {
+          // ignore
+        }
       }
     }
+    
     if (itemType === 'client' && itemId) {
       setSelectedClientIdForView(itemId);
     } else if (itemType === 'lead' && itemId) {

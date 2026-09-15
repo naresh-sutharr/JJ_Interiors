@@ -77,7 +77,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
         <h2 className="font-display text-2xl text-stone-800 mb-2">Project Not Found</h2>
         <p className="text-stone-500 text-sm mb-6">The requested portfolio project could not be located.</p>
         <button
-          onClick={() => navigateTo('/projects')}
+          onClick={() => window.history.length > 2 ? window.history.back() : navigateTo('/projects')}
           className="px-6 py-2.5 bg-[#1e1b18] text-white text-xs uppercase tracking-wider font-semibold"
         >
           Return to All Projects
@@ -151,7 +151,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500 truncate">
             <button
-              onClick={() => navigateTo('/projects')}
+              onClick={() => window.history.length > 2 ? window.history.back() : navigateTo('/projects')}
               className="inline-flex items-center gap-1.5 text-stone-700 hover:text-[#c5a059] font-medium transition-colors cursor-pointer shrink-0"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
