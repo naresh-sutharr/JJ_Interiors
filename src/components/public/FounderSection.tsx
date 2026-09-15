@@ -30,33 +30,33 @@ export const FounderSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              <div className="relative aspect-[4/5] overflow-hidden border border-[#c5a059]/40 shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden border border-[#c5a059]/40 shadow-2xl mb-6">
                 <img
                   src={businessProfile.ownerPhoto}
                   alt={businessProfile.ownerName}
                   className="w-full h-full object-cover transition-all duration-700"
                   loading="lazy"
                 />
-                
-                {/* Overlay Experience Capsule */}
-                {!!businessProfile.ownerExperienceYears && (
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#161412]/90 backdrop-blur-md border border-[#c5a059]/50 p-4 text-white">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#c5a059]/20 border border-[#c5a059] flex items-center justify-center shrink-0">
-                        <Award className="w-5 h-5 text-[#c5a059]" />
+              </div>
+
+              {/* Experience Capsule (Moved below image to avoid hiding laptop) */}
+              {!!businessProfile.ownerExperienceYears && (
+                <div className="bg-[#161412]/95 backdrop-blur-md border border-[#c5a059]/50 p-4 text-white shadow-xl w-full">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#c5a059]/20 border border-[#c5a059] flex items-center justify-center shrink-0">
+                      <Award className="w-5 h-5 text-[#c5a059]" />
+                    </div>
+                    <div>
+                      <div className="text-xl font-display font-bold text-[#f5ebd7]">
+                        {businessProfile.ownerExperienceYears}+ Years
                       </div>
-                      <div>
-                        <div className="text-xl font-display font-bold text-[#f5ebd7]">
-                          {businessProfile.ownerExperienceYears}+ Years
-                        </div>
-                        <div className="text-[10px] text-stone-300 uppercase tracking-widest font-medium">
-                          Architectural &amp; Joinery Mastery
-                        </div>
+                      <div className="text-[10px] text-stone-300 uppercase tracking-widest font-medium">
+                        Architectural &amp; Joinery Mastery
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
 
             </div>
           </div>

@@ -462,13 +462,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   );
 
   // One-time guaranteed sync for updates
-  useEffect(() => {
-    if (!localStorage.getItem('jj_migration_v6')) {
+  useEffect(() => {    // Important: Force migration on client side (v7) to load newest testinomials/projects/services
+    if (!localStorage.getItem('jj_migration_v7')) {
       setProjects(initialProjects);
       setBlogPosts(initialBlogPosts);
       setTestimonials(initialTestimonials);
+      setServices(initialServices);
       setBusinessProfile(initialBusinessProfile);
-      localStorage.setItem('jj_migration_v6', 'done');
+      localStorage.setItem('jj_migration_v7', 'done');
     }
   }, []);
 
