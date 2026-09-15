@@ -4,11 +4,12 @@ import { ArrowUpRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Service } from '../../types.ts';
 
 export const ServicesSection: React.FC = () => {
-  const { services, setActiveServiceModal } = useApp();
+  const { services, setActiveServiceModal, navigateTo } = useApp();
 
   const activeServices = services
     .filter((s) => s.active)
-    .sort((a, b) => a.order - b.order);
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 6);
 
   return (
     <section id="services" className="py-24 sm:py-32 bg-[#faf8f5] border-b border-[#e8dfd5]">
@@ -104,6 +105,22 @@ export const ServicesSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* View All Services Button */}
+        {services.length > 6 && (
+          <div className="mt-16 flex justify-center">
+            <button
+              onClick={() => {
+                window.scrollTo(0, 0);
+                navigateTo('/services');
+              }}
+              className="px-8 py-4 bg-transparent border border-[#1e1b18] hover:bg-[#1e1b18] hover:text-white text-[#1e1b18] text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 cursor-pointer"
+            >
+              <span>View All Architectural Services</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
