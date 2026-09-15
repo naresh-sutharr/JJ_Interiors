@@ -39,15 +39,15 @@ export const ClientPortalPage: React.FC = () => {
   const client = clientPortalUser?.client;
 
   // Find linked project from portfolio (if any) or create project profile
-  const linkedProject = client?.projectName 
-    ? projects.find((p) => p.title.toLowerCase().includes(client.projectName.toLowerCase()) || client.projectName.toLowerCase().includes(p.title.toLowerCase()))
+  const linkedProject = client?.projectType 
+    ? projects.find((p) => p.title?.toLowerCase().includes(client.projectType?.toLowerCase() || '') || false)
     : null;
 
   // Find linked bills for this client
-  const clientBills = client ? bills.filter((b) => b.clientId === client.id || b.clientPhone === client.phone || (client.name && b.clientName.toLowerCase() === client.name.toLowerCase())) : [];
+  const clientBills = client ? bills.filter((b) => b.clientId === client.id || b.clientPhone === client.phone || (client.name && b.clientName?.toLowerCase() === client.name?.toLowerCase())) : [];
   
   // Find linked receipts
-  const clientReceipts = client ? paymentReceipts.filter((r) => r.clientPhone === client.phone || r.clientName.toLowerCase() === client.name.toLowerCase()) : [];
+  const clientReceipts = client ? paymentReceipts.filter((r) => r.clientPhone === client.phone || r.clientName?.toLowerCase() === client.name?.toLowerCase()) : [];
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,9 +75,9 @@ export const ClientPortalPage: React.FC = () => {
     { stage: 'Snag Rectification & Final Handover', completed: client?.stage === 'Completed', date: client?.stage === 'Completed' ? 'Handed Over' : 'Pending Finishing' },
   ];
 
-  const totalBillValue = clientBills.reduce((sum, b) => sum + b.totalAmount, 0);
+  const totalBillValue = clientBills.reduce((sum, b) => sum + (b.grandTotal || 0), 0);
   const totalPaidValue = clientBills.reduce((sum, b) => {
-    const paid = b.payments?.reduce((s, p) => s + p.amount, 0) || 0;
+    const paid = b.amountPaid || 0;
     return sum + paid;
   }, 0);
   const totalBalanceDue = Math.max(0, totalBillValue - totalPaidValue);
@@ -205,9 +205,9 @@ export const ClientPortalPage: React.FC = () => {
                   Project Title
                 </span>
                 <h4 className="font-display text-lg text-[#1e1b18] font-medium truncate">
-                  {client.projectName || 'Residential Interior Project'}
+                  {client.projectType || 'Residential Interior Project'}
                 </h4>
-                <p className="text-xs text-stone-500 mt-1">{client.projectType || 'Turnkey Execution'}</p>
+                <p className="text-xs text-stone-500 mt-1">{client.status || 'Turnkey Execution'}</p>
               </div>
 
               <div className="bg-white p-5 border border-[#e8dfd5] shadow-xs">
@@ -215,9 +215,9 @@ export const ClientPortalPage: React.FC = () => {
                   Current Stage
                 </span>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className={`w-2.5 h-2.5 rounded-full ${client.stage === 'Completed' ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}`} />
+                  <span className={`w-2.5 h-2.5 rounded-full ${client.status === 'Completed' ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}`} />
                   <span className="font-semibold text-sm text-[#1e1b18]">
-                    {client.stage || 'In Progress'}
+                    {client.status || 'In Progress'}
                   </span>
                 </div>
                 <p className="text-xs text-stone-500 mt-1">Site active under supervisor</p>
@@ -390,7 +390,7 @@ export const ClientPortalPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {linkedProject.galleryImages.map((img, idx) => (
+                  {linkedProject.galleryImages?.map((img, idx) => (
                     <div key={idx} className="relative aspect-square overflow-hidden bg-stone-900 border border-stone-200">
                       <img src={img} alt="" className="w-full h-full object-cover" />
                       <span className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-black/80 text-white text-[9px] font-mono">
