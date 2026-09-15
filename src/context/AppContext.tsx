@@ -461,6 +461,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     loadStored(STORAGE_KEYS.PROFILE, initialBusinessProfile)
   );
 
+  // One-time sync to force the new address, hours, and logo updates
+  useEffect(() => {
+    if (businessProfile.address.includes("148, RandalDham") || !businessProfile.logoUrl || businessProfile.businessHours.includes("Monday")) {
+      setBusinessProfile(initialBusinessProfile);
+    }
+  }, []);
+
   const [trustStats, setTrustStats] = useState<TrustStats>(() => 
     loadStored(STORAGE_KEYS.STATS, initialTrustStats)
   );

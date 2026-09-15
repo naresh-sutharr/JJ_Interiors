@@ -47,13 +47,15 @@ export const ContactSection: React.FC = () => {
       lastContact: new Date().toISOString().split('T')[0],
     });
 
+    setSubmitted(true);
+    showToast('Consultation request received! Our design team will contact you shortly.');
+  };
+
+  const handleWhatsAppRedirect = () => {
     const whatsappNumber = "918764361145";
     const text = `New Consultation Request:%0A- Name: ${formData.name}%0A- Phone: ${formData.phone}%0A- Email: ${formData.email || 'N/A'}%0A- Property: ${formData.propertyType || 'N/A'}%0A- Project Type: ${formData.projectType}%0A- Budget: ${formData.budgetRange}%0A- Message: ${formData.notes || 'N/A'}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
     window.open(whatsappUrl, '_blank');
-
-    setSubmitted(true);
-    showToast('Redirecting to WhatsApp to complete your request...');
   };
 
   return (
@@ -224,23 +226,32 @@ export const ContactSection: React.FC = () => {
                 <p className="text-stone-600 text-sm max-w-md mx-auto font-light">
                   Thank you, <strong>{formData.name}</strong>. Your project details have been assigned to our Surat design team. We will call you within 24 business hours.
                 </p>
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormData({
-                      name: '',
-                      phone: '',
-                      email: '',
-                      propertyType: '',
-                      projectType: 'Residential Interiors',
-                      budgetRange: '₹20 - 30 Lakhs',
-                      notes: '',
-                    });
-                  }}
-                  className="mt-4 px-6 py-2.5 bg-[#1e1b18] text-white text-xs uppercase tracking-widest font-semibold cursor-pointer"
-                >
-                  Submit Another Inquiry
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+                  <button
+                    onClick={handleWhatsAppRedirect}
+                    className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs uppercase tracking-widest font-semibold transition-colors flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Chat on WhatsApp
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: '',
+                        phone: '',
+                        email: '',
+                        propertyType: '',
+                        projectType: 'Residential Interiors',
+                        budgetRange: '₹20 - 30 Lakhs',
+                        notes: '',
+                      });
+                    }}
+                    className="px-6 py-2.5 bg-[#1e1b18] hover:bg-[#332e29] text-white text-xs uppercase tracking-widest font-semibold transition-colors"
+                  >
+                    Submit Another Inquiry
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
