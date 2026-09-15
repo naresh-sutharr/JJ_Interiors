@@ -16,6 +16,7 @@ export const HeroSection: React.FC = () => {
           alt="J.J. INTERIORS & MODUTECH Interior Architecture"
           className="w-full h-full object-cover object-center"
           loading="eager"
+        />
         {/* Very subtle gradient only on the left side for text readability, keeping the rest of the image HD */}
         <div className="absolute inset-y-0 left-0 w-full sm:w-[70%] bg-gradient-to-r from-[#161412]/80 via-[#161412]/30 to-transparent" />
       </div>
