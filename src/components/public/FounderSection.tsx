@@ -30,8 +30,8 @@ export const FounderSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Architectural Offset Frame Border */}
-              <div className="absolute -inset-4 border border-[#c5a059]/40 translate-x-3 translate-y-3 -z-10" />
+              {/* Architectural Frame Border */}
+              <div className="absolute -inset-3 border border-[#c5a059]/40 -z-10" />
 
               <div className="relative aspect-[4/5] overflow-hidden bg-[#161412] shadow-2xl">
                 <img
@@ -86,7 +86,7 @@ export const FounderSection: React.FC = () => {
 
             {/* Studio Vision Statement */}
             {businessProfile.ownerVision && (
-              <div className="p-6 bg-[#26221d] border-l-2 border-[#c5a059] text-stone-200">
+              <div className="py-6 pl-6 border-l-2 border-[#c5a059] text-stone-200 bg-transparent">
                 <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#c5a059] mb-2 flex items-center gap-2">
                   <Compass className="w-3.5 h-3.5" />
                   <span>The Architectural Vision</span>
