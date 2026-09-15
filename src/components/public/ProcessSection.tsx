@@ -103,7 +103,7 @@ export const ProcessSection: React.FC = () => {
                   isFactory 
                     ? 'bg-[#241f1a] border-2 border-[#c5a059] shadow-2xl' 
                     : 'bg-[#1e1b18] border border-white/10 hover:border-[#c5a059]/50'
-                } ${isLast ? 'md:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}
+                } ${isLast ? 'md:col-span-2 lg:col-span-3' : ''}`}
               >
                 {isFactory && (
                   <div className="absolute -top-3 right-6 px-3 py-0.5 bg-[#c5a059] text-black text-[9px] font-bold uppercase tracking-widest">
@@ -130,7 +130,7 @@ export const ProcessSection: React.FC = () => {
                     {step.subtitle}
                   </div>
 
-                  <p className="text-stone-300 text-xs sm:text-sm font-light leading-relaxed mb-6">
+                  <p className={`text-stone-300 text-xs sm:text-sm font-light leading-relaxed mb-6 ${isLast ? 'lg:max-w-4xl' : ''}`}>
                     {step.desc}
                   </p>
                 </div>
