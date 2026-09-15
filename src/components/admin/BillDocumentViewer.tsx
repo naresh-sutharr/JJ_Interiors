@@ -220,7 +220,7 @@ Phone: ${businessProfile.phone}
               title="Print directly or save as 2-page PDF"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print / PDF</span>
+              <span>Download PDF / Print</span>
             </button>
 
             <button
@@ -258,7 +258,7 @@ Phone: ${businessProfile.phone}
           {(activeTab === 'both' || activeTab === 'page1') && (
             <div 
               id="invoice-page-1"
-              className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-6 sm:p-8 border border-stone-300 relative print:border-none print:shadow-none print:p-0 print:max-w-none flex flex-col justify-between"
+              className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-6 sm:p-8 border border-stone-300 relative print:border-none print:shadow-none print:p-0 print:max-w-none flex flex-col justify-between print:block print:h-auto print:min-h-0 print:break-after-page"
             >
               <div>
                 {/* 1. Top Header */}
@@ -375,7 +375,7 @@ Phone: ${businessProfile.phone}
                       {doc.sections.map((sec, sIdx) => (
                         <React.Fragment key={sec.id}>
                           {/* Room/Section Heading */}
-                          <tr className="bg-[#eae2d5] font-bold text-[#1e1b18] text-[8.5px]">
+                          <tr className="bg-[#eae2d5] font-bold text-[#1e1b18] text-[8.5px] print:break-inside-avoid">
                             <td className="py-1 px-1.5 text-center font-bold">{sIdx + 1}</td>
                             <td colSpan={6} className="py-1 px-2 uppercase tracking-wider">
                               {sec.roomName}
@@ -384,7 +384,7 @@ Phone: ${businessProfile.phone}
 
                           {/* Line Items */}
                           {sec.items.map((it, itIdx) => (
-                            <tr key={it.id} className="hover:bg-[#fbf9f6] text-[#2c2722]">
+                            <tr key={it.id} className="hover:bg-[#fbf9f6] text-[#2c2722] print:break-inside-avoid">
                               <td className="py-1.5 px-1.5 text-center text-[#6e6358] font-mono border-r border-[#ece5da]">
                                 {sIdx + 1}.{itIdx + 1}
                               </td>
@@ -433,7 +433,7 @@ Phone: ${businessProfile.phone}
                 </div>
 
                 {/* 5. Financial Summary Stack anchored neatly near bottom of Page 1 */}
-                <div className="grid grid-cols-12 gap-3 pt-2 border-t border-[#d8cec0] text-[8.5px]">
+                <div className="grid grid-cols-12 gap-3 pt-2 border-t border-[#d8cec0] text-[8.5px] print:break-inside-avoid">
                   
                   {/* Left Column (Amount in words + Note + Legal) */}
                   <div className="col-span-12 sm:col-span-7 flex flex-col justify-between pr-2 space-y-2">
@@ -542,7 +542,7 @@ Phone: ${businessProfile.phone}
           {(activeTab === 'both' || activeTab === 'page2') && (
             <div 
               id="invoice-page-2"
-              className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-6 sm:p-8 border border-stone-300 relative print:border-none print:shadow-none print:p-0 print:max-w-none flex flex-col justify-between"
+              className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-6 sm:p-8 border border-stone-300 relative print:border-none print:shadow-none print:p-0 print:max-w-none flex flex-col justify-between print:block print:h-auto print:min-h-0"
             >
               <div>
                 {/* 1. Header */}
@@ -570,7 +570,7 @@ Phone: ${businessProfile.phone}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-[8.5px]">
                   
                   {/* Left Box: PAYMENT SUMMARY & MILESTONES */}
-                  <div className="border border-[#d8cec0] overflow-hidden flex flex-col justify-between">
+                  <div className="border border-[#d8cec0] overflow-hidden flex flex-col justify-between print:break-inside-avoid">
                     <div>
                       <div className="bg-[#eae2d5] px-2.5 py-1 font-bold text-[8.5px] uppercase tracking-wider text-[#24201c]">
                         PAYMENT SUMMARY

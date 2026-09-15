@@ -902,7 +902,7 @@ export const BillingGeneratorView: React.FC = () => {
                   className="py-2 bg-white hover:bg-stone-100 border border-stone-300 text-stone-800 rounded text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Printer className="w-3.5 h-3.5" />
-                  <span>Print / PDF</span>
+                  <span>Download PDF / Print</span>
                 </button>
 
                 <button

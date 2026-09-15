@@ -68,18 +68,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   const menuItems: { id: AdminTab; label: string; icon: React.ReactNode; badge?: number }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { 
-      id: 'leads', 
-      label: 'Inquiries CRM', 
-      icon: <UserCheck className="w-4 h-4" />, 
-      badge: leads.filter(l => l.status === 'NEW').length || undefined 
-    },
-    { 
-      id: 'site_visits', 
-      label: 'Site Visits', 
-      icon: <Calendar className="w-4 h-4" />, 
-      badge: siteVisits.filter(v => v.status === 'Scheduled').length || undefined 
-    },
-    { 
       id: 'clients', 
       label: 'Clients & Accounts', 
       icon: <Users className="w-4 h-4" />, 
@@ -93,18 +81,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       icon: <FileText className="w-4 h-4" />, 
       badge: bills.filter(b => b.paymentStatus === 'Pending').length || undefined 
     },
-    { id: 'receipts', label: 'Payment Receipts', icon: <CheckCircle2 className="w-4 h-4" /> },
-    { id: 'expenses', label: 'Project Expenses', icon: <TrendingDown className="w-4 h-4" /> },
-    { id: 'suppliers', label: 'Vendors & Suppliers', icon: <Package className="w-4 h-4" /> },
-    { id: 'catalog', label: 'Item Catalog', icon: <Layers className="w-4 h-4" /> },
-    { id: 'services', label: 'Services Manager', icon: <Compass className="w-4 h-4" /> },
-    { id: 'seo', label: 'SEO & Analytics', icon: <BarChart3 className="w-4 h-4" /> },
     { id: 'profile', label: 'Business Profile', icon: <Building2 className="w-4 h-4" /> },
     { id: 'content', label: 'Website Content', icon: <FileEdit className="w-4 h-4" /> },
     { id: 'testimonials', label: 'Testimonials', icon: <MessageSquare className="w-4 h-4" /> },
     { id: 'blog', label: 'Blog & Articles', icon: <Sparkles className="w-4 h-4" /> },
-    { id: 'media', label: 'Media Library', icon: <ImageIcon className="w-4 h-4" /> },
-    { id: 'settings', label: 'System Settings', icon: <SettingsIcon className="w-4 h-4" /> },
+    { id: 'media', label: 'Media Library', icon: <ImageIcon className="w-4 h-4" /> }
   ];
 
   const handleTabClick = (tab: AdminTab) => {
