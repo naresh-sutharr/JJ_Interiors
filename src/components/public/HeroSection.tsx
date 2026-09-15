@@ -17,9 +17,7 @@ export const HeroSection: React.FC = () => {
           className="w-full h-full object-cover object-center"
           loading="eager"
         />
-        {/* Subtle Vignette & Gradient Overlays for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#161412] via-transparent to-black/30" />
+        {/* No dark overlays as requested by user, keeping the image HD and natural */}
       </div>
 
       {/* Main Content Grid */}
@@ -30,19 +28,19 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-8 flex flex-col items-start text-left">
             
             {/* Studio Name Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#c5a059]/40 text-[#f5ebd7] text-xs font-semibold tracking-[0.22em] uppercase mb-4 sm:mb-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1e1b18]/80 backdrop-blur-md border border-[#c5a059]/40 text-[#f5ebd7] text-xs font-semibold tracking-[0.22em] uppercase mb-4 sm:mb-6 shadow-lg">
               <span className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></span>
               <span>{businessProfile.brandName || "J.J. INTERIORS & MODUTECH"}</span>
             </div>
 
             {/* Short Premium Headline */}
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6 uppercase">
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] mb-4 sm:mb-6 uppercase">
               INTERIORS MADE FOR <br />
-              <span className="italic font-normal text-[#e8d5b8]">THE WAY YOU LIVE.</span>
+              <span className="italic font-normal text-[#e8d5b8] drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">THE WAY YOU LIVE.</span>
             </h1>
 
             {/* Short Supporting Sentence */}
-            <p className="text-stone-300 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl leading-relaxed mb-8">
+            <p className="text-white text-sm sm:text-base md:text-lg font-medium tracking-wide max-w-xl leading-relaxed mb-8 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               Thoughtfully designed interiors, precision-made modular furniture and custom spaces crafted around your lifestyle.
             </p>
 
@@ -58,14 +56,14 @@ export const HeroSection: React.FC = () => {
 
               <button
                 onClick={() => setIsConsultationModalOpen(true)}
-                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-transparent hover:bg-white/10 text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto"
+                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#1e1b18]/80 backdrop-blur-sm hover:bg-[#1e1b18] text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto shadow-xl"
               >
                 BOOK A CONSULTATION
               </button>
             </div>
 
             {/* Micro Highlights */}
-            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 text-xs text-[#a89e92]">
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/20 text-xs text-white font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#c5a059]" />
                 <span>10+ Years Experience</span>
