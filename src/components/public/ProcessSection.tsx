@@ -95,6 +95,7 @@ export const ProcessSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {steps.map((step) => {
             const isFactory = step.num === "05";
+            const isLast = step.num === "07";
             return (
               <div
                 key={step.num}
@@ -102,7 +103,7 @@ export const ProcessSection: React.FC = () => {
                   isFactory 
                     ? 'bg-[#241f1a] border-2 border-[#c5a059] shadow-2xl' 
                     : 'bg-[#1e1b18] border border-white/10 hover:border-[#c5a059]/50'
-                }`}
+                } ${isLast ? 'md:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}
               >
                 {isFactory && (
                   <div className="absolute -top-3 right-6 px-3 py-0.5 bg-[#c5a059] text-black text-[9px] font-bold uppercase tracking-widest">
