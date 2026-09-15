@@ -16,15 +16,11 @@ export const JJLogo: React.FC<JJLogoProps> = ({
   customLogoUrl,
 }) => {
   if (customLogoUrl) {
-    // For light themes, multiply removes white bg. 
-    // For dark themes, invert(1) turns white bg to black & black logo to white, then mix-blend-screen removes the black bg!
-    const blendMode = theme === 'dark' ? 'invert mix-blend-screen opacity-90' : 'mix-blend-multiply';
-
     return (
       <img
         src={customLogoUrl}
         alt="J.J. INTERIORS & MODUTECH"
-        className={`object-contain ${blendMode} ${
+        className={`object-contain ${
           size === 'sm' ? 'h-8' : size === 'md' ? 'h-11' : size === 'lg' ? 'h-16' : 'h-20'
         } ${className}`}
       />
