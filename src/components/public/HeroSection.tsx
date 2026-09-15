@@ -14,12 +14,12 @@ export const HeroSection: React.FC = () => {
         <img
           src={featuredProject?.coverImage || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=88"}
           alt="J.J. INTERIORS & MODUTECH Interior Architecture"
-          className="w-full h-full object-cover object-center opacity-35"
+          className="w-full h-full object-cover object-center"
           loading="eager"
         />
-        {/* Subtle Vignette & Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#161412] via-[#161412]/85 to-[#161412]/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#161412] via-transparent to-[#161412]/50" />
+        {/* Subtle Vignette & Gradient Overlays for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#161412] via-transparent to-black/30" />
       </div>
 
       {/* Main Content Grid */}
