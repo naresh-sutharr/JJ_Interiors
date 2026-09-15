@@ -109,7 +109,7 @@ export const PublicHeader: React.FC = () => {
                 href={businessProfile.socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 rounded-full relative transition-colors cursor-pointer text-stone-600 hover:text-[#c5a059] hover:bg-[#c5a059]/10"
+                className="p-2 rounded-full text-stone-600 hover:text-pink-600 hover:bg-pink-50 transition-colors"
                 title="Follow us on Instagram"
                 aria-label="Instagram"
               >
@@ -163,7 +163,7 @@ export const PublicHeader: React.FC = () => {
                 href={businessProfile.socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 text-stone-600 relative cursor-pointer hover:bg-black/5 rounded-full"
+                className="p-2 text-stone-600 hover:text-pink-600 hover:bg-black/5 rounded-full transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
