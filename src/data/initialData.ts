@@ -1093,7 +1093,7 @@ Combining solid smoked walnut doors on the daily storage sections with semi-tran
 Warm 3000K recessed LED profiles triggered by magnetic door sensors transform dressing into a 5-star suite experience.`,
     category: "Wardrobes",
     tags: ["Wardrobes", "Walk-in Closet", "Luxury Bedroom", "Storage Solutions"],
-    coverImage: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=900&q=80",
+    coverImage: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=80",
     author: "J.J. Design Studio",
     readTime: "5 min read",
     publishedAt: "2026-01-25",
