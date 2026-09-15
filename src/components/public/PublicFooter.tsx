@@ -4,7 +4,7 @@ import { JJLogo } from '../common/JJLogo.tsx';
 import { Shield, Phone, MessageSquare, Mail, MapPin, ArrowUp } from 'lucide-react';
 
 export const PublicFooter: React.FC = () => {
-  const { businessProfile, setIsAdminLoginModalOpen, isAuthenticated, setViewMode, navigateTo } = useApp();
+  const { businessProfile, setIsAdminLoginModalOpen, isAuthenticated, navigateAdminTo, navigateTo } = useApp();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
@@ -140,7 +140,7 @@ export const PublicFooter: React.FC = () => {
             <button
               onClick={() => {
                 if (isAuthenticated) {
-                  setViewMode('admin');
+                  navigateAdminTo('dashboard');
                 } else {
                   setIsAdminLoginModalOpen(true);
                 }

@@ -967,7 +967,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       };
       setCurrentUser(user);
       setIsAdminLoginModalOpen(false);
-      setViewMode('admin');
+      navigateAdminTo('dashboard');
       showToast(`Welcome back, ${name} (${role})!`);
       return true;
     }
@@ -977,7 +977,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const logout = () => {
     setCurrentUser(null);
-    setViewMode('public');
+    navigateTo('/');
     showToast('Logged out securely from Business ERP.', 'info');
   };
 
