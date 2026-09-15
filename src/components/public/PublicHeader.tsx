@@ -123,20 +123,6 @@ export const PublicHeader: React.FC = () => {
               )}
             </button>
 
-            {/* Client Portal Link */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/client-portal')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium tracking-wider uppercase transition-colors cursor-pointer ${
-                publicRoute === '/client-portal'
-                  ? 'bg-[#1e1b18] text-white border-[#1e1b18]'
-                  : 'border-stone-300 text-stone-700 hover:text-black hover:border-stone-500 hover:bg-stone-100'
-              }`}
-              title="Client Project Portal"
-            >
-              <UserCheck className="w-3 h-3 text-[#c5a059]" />
-              <span className="hidden xl:inline">Portal</span>
-            </button>
 
             {/* Quick WhatsApp contact */}
             <a
@@ -226,21 +212,6 @@ export const PublicHeader: React.FC = () => {
               );
             })}
 
-            {/* Client Portal Link in Mobile Menu */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/client-portal')}
-              className={`text-left text-[13px] sm:text-sm uppercase tracking-wider py-3.5 px-4 transition-all flex items-center justify-between rounded-sm cursor-pointer ${
-                publicRoute === '/client-portal'
-                  ? 'bg-[#c5a059]/15 text-[#1e1b18] font-bold border-l-2 border-[#c5a059]'
-                  : 'text-[#1e1b18] font-medium hover:text-[#c5a059] hover:bg-black/5'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-[#c5a059]" />
-                <span>Client Project Portal</span>
-              </div>
-            </button>
 
             {/* Saved Projects in Mobile Menu */}
             <button

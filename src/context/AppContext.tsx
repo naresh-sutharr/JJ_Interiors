@@ -48,7 +48,7 @@ import {
   initialAnalytics
 } from '../data/initialData.ts';
 
-export type PublicRoute = '/' | '/about' | '/services' | '/projects' | '/process' | '/testimonials' | '/contact' | '/saved-projects' | '/client-portal' | string;
+export type PublicRoute = '/' | '/about' | '/services' | '/projects' | '/process' | '/testimonials' | '/contact' | '/saved-projects' | string;
 
 export type AdminTab = 
   | 'dashboard' 
@@ -308,7 +308,7 @@ const normalizePublicRoute = (path: string): PublicRoute => {
   if (clean === '/services') return '/services';
   if (clean === '/projects') return '/projects';
   if (clean === '/saved-projects') return '/saved-projects';
-  if (clean === '/client-portal') return '/client-portal';
+
   if (clean.startsWith('/projects/') && clean.length > 10) {
     return clean as PublicRoute;
   }
