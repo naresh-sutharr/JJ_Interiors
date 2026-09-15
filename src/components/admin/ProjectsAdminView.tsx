@@ -223,7 +223,7 @@ export const ProjectsAdminView: React.FC = () => {
               </div>
 
               <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-black/60 rounded text-[10px] text-white">
-                {project.gallery.length} photos
+                {project.galleryImages?.length || 0} photos
               </div>
             </div>
 

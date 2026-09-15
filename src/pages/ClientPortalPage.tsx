@@ -44,7 +44,7 @@ export const ClientPortalPage: React.FC = () => {
     : null;
 
   // Find linked bills for this client
-  const clientBills = client ? bills.filter((b) => b.clientId === client.id || b.client.phone === client.phone || (client.name && b.client.name.toLowerCase() === client.name.toLowerCase())) : [];
+  const clientBills = client ? bills.filter((b) => b.clientId === client.id || b.clientPhone === client.phone || (client.name && b.clientName.toLowerCase() === client.name.toLowerCase())) : [];
   
   // Find linked receipts
   const clientReceipts = client ? paymentReceipts.filter((r) => r.clientPhone === client.phone || r.clientName.toLowerCase() === client.name.toLowerCase()) : [];
