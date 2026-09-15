@@ -13,7 +13,6 @@ import {
   ArrowLeftRight, 
   ChevronRight,
   Share2,
-  Heart,
   Maximize2,
   X,
   Play,
@@ -37,8 +36,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
     openConsultationWithPrefill, 
     businessProfile,
     showToast,
-    isProjectSaved,
-    toggleSaveProject,
     recordProjectView,
     recordWhatsAppClick
   } = useApp();
@@ -96,7 +93,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
 
   const currentImage = images[activeImageIndex] || project.coverImage;
   const hasBeforeAfter = Boolean(project.beforeImage && project.afterImage);
-  const saved = isProjectSaved(project.id);
 
   const handleShare = () => {
     const slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -164,20 +160,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            {/* Save / Moodboard Button */}
-            <button
-              onClick={() => toggleSaveProject(project.id)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border transition-colors cursor-pointer ${
-                saved 
-                  ? 'bg-amber-50 text-amber-900 border-amber-300' 
-                  : 'bg-white text-stone-600 hover:text-black border-stone-200 hover:border-stone-400'
-              }`}
-              title={saved ? 'Saved in your collection' : 'Save to Moodboard'}
-            >
-              <Heart className={`w-3.5 h-3.5 ${saved ? 'fill-amber-600 text-amber-600' : ''}`} />
-              <span className="hidden sm:inline">{saved ? 'Saved' : 'Save'}</span>
-            </button>
-
             {/* Quick Share */}
             <button
               onClick={handleShare}
@@ -583,18 +565,6 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
                 <span>Enquire About Similar Project</span>
-              </button>
-
-              <button
-                onClick={() => toggleSaveProject(project.id)}
-                className={`w-full py-2.5 border text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                  saved 
-                    ? 'bg-amber-50 text-amber-900 border-amber-300'
-                    : 'bg-white hover:bg-stone-50 text-stone-700 border-stone-300'
-                }`}
-              >
-                <Heart className={`w-3.5 h-3.5 ${saved ? 'fill-amber-600 text-amber-600' : ''}`} />
-                <span>{saved ? 'Saved in Your Collection' : 'Save to Moodboard'}</span>
               </button>
             </div>
           </div>

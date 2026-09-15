@@ -9,7 +9,6 @@ import {
   Filter, 
   ChevronRight,
   Sparkles,
-  Heart,
   Eye
 } from 'lucide-react';
 
@@ -88,25 +87,6 @@ export const ProjectsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Moodboard Notification Banner if items saved */}
-      {savedProjectIds.length > 0 && (
-        <div className="bg-[#ebd5b3]/40 border-b border-[#ebd5b3] px-4 py-2.5">
-          <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <Heart className="w-3.5 h-3.5 fill-amber-600 text-amber-600" />
-              <span className="text-stone-800 font-medium">
-                You have <strong>{savedProjectIds.length}</strong> saved {savedProjectIds.length === 1 ? 'project' : 'projects'} in your moodboard collection.
-              </span>
-            </div>
-            <button
-              onClick={() => navigateTo('/saved-projects')}
-              className="text-[#1e1b18] font-bold underline hover:text-[#c5a059] uppercase tracking-wider text-[11px] cursor-pointer"
-            >
-              View Moodboard →
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* 2. Filterable Categories Bar */}
       <section className="sticky top-20 z-30 bg-[#faf8f5]/95 backdrop-blur-md border-b border-[#e8dfd5] py-4 shadow-xs">
@@ -210,21 +190,6 @@ export const ProjectsPage: React.FC = () => {
                         )}
                       </div>
 
-                      {/* Bookmark / Heart Button */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleSaveProject(project.id);
-                        }}
-                        className={`absolute top-3 right-3 p-2 rounded-full transition-all cursor-pointer shadow-md ${
-                          saved ? 'bg-white text-amber-600' : 'bg-black/50 hover:bg-black/80 text-white'
-                        }`}
-                        title={saved ? 'Saved in Moodboard' : 'Save to Moodboard'}
-                        aria-label="Save to Moodboard"
-                      >
-                        <Heart className={`w-4 h-4 ${saved ? 'fill-amber-600' : ''}`} />
-                      </button>
 
                       {/* Before / After Available Indicator */}
                       {project.beforeImage && project.afterImage && (

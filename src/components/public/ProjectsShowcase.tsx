@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
 import { Project } from '../../types.ts';
-import { MapPin, Calendar, ArrowUpRight, Filter, Heart } from 'lucide-react';
+import { MapPin, Calendar, ArrowUpRight, Filter } from 'lucide-react';
 
 export const ProjectsShowcase: React.FC = () => {
   const { projects, navigateTo, isProjectSaved, toggleSaveProject } = useApp();
@@ -116,18 +116,6 @@ export const ProjectsShowcase: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
                   
-                  {/* Heart save */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleSaveProject(filteredProjects[0].id);
-                    }}
-                    className="absolute top-4 right-4 p-2.5 rounded-full bg-black/60 hover:bg-black text-white transition-colors z-10"
-                    aria-label="Save to moodboard"
-                  >
-                    <Heart className={`w-4 h-4 ${isProjectSaved(filteredProjects[0].id) ? 'fill-amber-500 text-amber-500' : ''}`} />
-                  </button>
                 </div>
 
                 {/* Editorial Meta Panel */}
@@ -189,17 +177,6 @@ export const ProjectsShowcase: React.FC = () => {
                       <div className="absolute top-3 left-3 bg-[#1e1b18]/85 backdrop-blur-md px-2.5 py-1 text-[9px] uppercase font-bold tracking-widest text-[#c5a059] border border-[#c5a059]/30">
                         {project.category}
                       </div>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleSaveProject(project.id);
-                        }}
-                        className="absolute top-3 right-3 p-2 rounded-full bg-black/50 hover:bg-black/80 text-white transition-colors"
-                        aria-label="Save to moodboard"
-                      >
-                        <Heart className={`w-3.5 h-3.5 ${isProjectSaved(project.id) ? 'fill-amber-500 text-amber-500' : ''}`} />
-                      </button>
                     </div>
 
                     <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 bg-white space-y-4">

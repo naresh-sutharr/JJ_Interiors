@@ -9,7 +9,6 @@ import { ProjectsPage } from './pages/ProjectsPage.tsx';
 import { ProjectDetailPage } from './pages/ProjectDetailPage.tsx';
 import { TestimonialsPage } from './pages/TestimonialsPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';
-import { SavedProjectsPage } from './pages/SavedProjectsPage.tsx';
 
 import { ProcessPage } from './pages/ProcessPage.tsx';
 
@@ -133,7 +132,6 @@ const MainApplication: React.FC = () => {
           {publicRoute === '/process' && <ProcessPage />}
           {publicRoute === '/testimonials' && <TestimonialsPage />}
           {publicRoute === '/contact' && <ContactPage />}
-          {publicRoute === '/saved-projects' && <SavedProjectsPage />}
 
         </div>
       </main>

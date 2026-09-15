@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp, PublicRoute } from '../../context/AppContext.tsx';
 import { JJLogo } from '../common/JJLogo.tsx';
-import { Menu, X, Shield, Phone, MessageSquare, Heart, UserCheck, ChevronDown } from 'lucide-react';
+import { Menu, X, Shield, Phone, MessageSquare, Instagram, UserCheck, ChevronDown } from 'lucide-react';
 
 export const PublicHeader: React.FC = () => {
   const { 
@@ -103,25 +103,19 @@ export const PublicHeader: React.FC = () => {
           {/* Right Action Bar */}
           <div className="hidden xl:flex items-center gap-3">
             
-            {/* Saved Moodboard / Heart */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/saved-projects')}
-              className={`p-2 rounded-full relative transition-colors cursor-pointer ${
-                publicRoute === '/saved-projects' 
-                  ? 'bg-[#ebd5b3] text-amber-900' 
-                  : 'text-stone-600 hover:text-[#c5a059] hover:bg-[#c5a059]/10'
-              }`}
-              title="Saved Moodboard Projects"
-              aria-label="Saved Projects"
-            >
-              <Heart className={`w-4 h-4 ${savedProjectIds.length > 0 ? 'fill-amber-600 text-amber-600' : ''}`} />
-              {savedProjectIds.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#c5a059] text-black text-[9px] font-bold flex items-center justify-center">
-                  {savedProjectIds.length}
-                </span>
-              )}
-            </button>
+            {/* Instagram Link */}
+            {businessProfile.socialLinks?.instagram && (
+              <a
+                href={businessProfile.socialLinks.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-full relative transition-colors cursor-pointer text-stone-600 hover:text-[#c5a059] hover:bg-[#c5a059]/10"
+                title="Follow us on Instagram"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+            )}
 
 
             {/* Quick WhatsApp contact */}
@@ -163,20 +157,18 @@ export const PublicHeader: React.FC = () => {
 
           {/* Mobile Menu Action Buttons */}
           <div className="flex xl:hidden items-center gap-1 sm:gap-2">
-            {/* Mobile Saved Heart */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/saved-projects')}
-              className="p-2 text-stone-600 relative cursor-pointer hover:bg-black/5 rounded-full"
-              aria-label="Saved Projects"
-            >
-              <Heart className={`w-5 h-5 ${savedProjectIds.length > 0 ? 'fill-amber-600 text-amber-600' : ''}`} />
-              {savedProjectIds.length > 0 && (
-                <span className="absolute top-0 right-0 w-3.5 h-3.5 rounded-full bg-[#c5a059] text-black text-[8px] font-bold flex items-center justify-center">
-                  {savedProjectIds.length}
-                </span>
-              )}
-            </button>
+            {/* Mobile Instagram */}
+            {businessProfile.socialLinks?.instagram && (
+              <a
+                href={businessProfile.socialLinks.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 text-stone-600 relative cursor-pointer hover:bg-black/5 rounded-full"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+            )}
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -213,21 +205,7 @@ export const PublicHeader: React.FC = () => {
             })}
 
 
-            {/* Saved Projects in Mobile Menu */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/saved-projects')}
-              className={`text-left text-[13px] sm:text-sm uppercase tracking-wider py-3.5 px-4 transition-all flex items-center justify-between rounded-sm cursor-pointer ${
-                publicRoute === '/saved-projects'
-                  ? 'bg-[#c5a059]/15 text-[#1e1b18] font-bold border-l-2 border-[#c5a059]'
-                  : 'text-[#1e1b18] font-medium hover:text-[#c5a059] hover:bg-black/5'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <Heart className="w-4 h-4 text-[#c5a059]" />
-                <span>Saved Moodboard ({savedProjectIds.length})</span>
-              </div>
-            </button>
+
           </nav>
 
           <div className="mt-5 pt-4 border-t border-[#e8dfd5] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 justify-between">
@@ -248,6 +226,17 @@ export const PublicHeader: React.FC = () => {
                 <MessageSquare className="w-4 h-4" />
                 <span>WhatsApp</span>
               </a>
+              {businessProfile.socialLinks?.instagram && (
+                <a
+                  href={businessProfile.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[13px] sm:text-sm font-medium text-pink-600 py-2"
+                >
+                  <Instagram className="w-4 h-4" />
+                  <span>Instagram</span>
+                </a>
+              )}
             </div>
 
             <button
