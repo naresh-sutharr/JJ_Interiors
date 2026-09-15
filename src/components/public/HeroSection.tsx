@@ -16,8 +16,8 @@ export const HeroSection: React.FC = () => {
           alt="J.J. INTERIORS & MODUTECH Interior Architecture"
           className="w-full h-full object-cover object-center"
           loading="eager"
-        />
-        {/* No dark overlays as requested by user, keeping the image HD and natural */}
+        {/* Very subtle gradient only on the left side for text readability, keeping the rest of the image HD */}
+        <div className="absolute inset-y-0 left-0 w-full sm:w-[70%] bg-gradient-to-r from-[#161412]/80 via-[#161412]/30 to-transparent" />
       </div>
 
       {/* Main Content Grid */}
@@ -28,19 +28,19 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-8 flex flex-col items-start text-left">
             
             {/* Studio Name Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-[#c5a059]/40 text-[#1e1b18] text-xs font-bold tracking-[0.22em] uppercase mb-4 sm:mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#c5a059]/40 text-[#f5ebd7] text-xs font-semibold tracking-[0.22em] uppercase mb-4 sm:mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></span>
               <span>{businessProfile.brandName || "J.J. INTERIORS & MODUTECH"}</span>
             </div>
 
             {/* Short Premium Headline */}
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#1e1b18] mb-4 sm:mb-6 uppercase">
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6 uppercase">
               INTERIORS MADE FOR <br />
-              <span className="italic font-normal text-[#8c6f50]">THE WAY YOU LIVE.</span>
+              <span className="italic font-normal text-[#e8d5b8]">THE WAY YOU LIVE.</span>
             </h1>
 
             {/* Short Supporting Sentence */}
-            <p className="text-[#2a2622] text-sm sm:text-base md:text-lg font-medium tracking-wide max-w-xl leading-relaxed mb-8">
+            <p className="text-stone-300 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl leading-relaxed mb-8">
               Thoughtfully designed interiors, precision-made modular furniture and custom spaces crafted around your lifestyle.
             </p>
 
@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-8">
               <button
                 onClick={() => navigateTo('/projects')}
-                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#1e1b18] hover:bg-[#282420] text-[#faf8f5] border border-[#1e1b18] hover:border-[#c5a059] rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl cursor-pointer flex items-center justify-center gap-2.5 group w-full sm:w-auto"
+                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-[#1e1b18] hover:bg-[#282420] text-[#faf8f5] border border-[#c5a059]/70 hover:border-[#c5a059] rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-xl cursor-pointer flex items-center justify-center gap-2.5 group w-full sm:w-auto"
               >
                 <span>VIEW OUR PROJECTS</span>
                 <ArrowUpRight className="w-4 h-4 text-[#c5a059] transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -56,14 +56,14 @@ export const HeroSection: React.FC = () => {
 
               <button
                 onClick={() => setIsConsultationModalOpen(true)}
-                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-white/70 backdrop-blur-sm hover:bg-white text-[#1e1b18] border border-[#1e1b18]/20 hover:border-[#1e1b18]/40 rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto shadow-sm"
+                className="px-6 py-3.5 sm:px-8 sm:py-4 bg-transparent hover:bg-white/10 text-[#faf8f5] border border-white/40 hover:border-white rounded-none text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer flex items-center justify-center w-full sm:w-auto"
               >
                 BOOK A CONSULTATION
               </button>
             </div>
 
             {/* Micro Highlights */}
-            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-[#1e1b18]/20 text-xs text-[#1e1b18] font-bold">
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 text-xs text-[#a89e92]">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#c5a059]" />
                 <span>10+ Years Experience</span>
