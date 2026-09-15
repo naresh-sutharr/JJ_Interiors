@@ -15,18 +15,6 @@ export const JJLogo: React.FC<JJLogoProps> = ({
   size = 'md',
   customLogoUrl,
 }) => {
-  if (customLogoUrl) {
-    return (
-      <img
-        src={customLogoUrl}
-        alt="J.J. INTERIORS & MODUTECH"
-        className={`object-contain ${
-          size === 'sm' ? 'h-8' : size === 'md' ? 'h-11' : size === 'lg' ? 'h-16' : 'h-20'
-        } ${className}`}
-      />
-    );
-  }
-
   // Dimension scaling
   const scale =
     size === 'sm' ? 0.75 : size === 'md' ? 1 : size === 'lg' ? 1.35 : 1.7;
@@ -42,6 +30,30 @@ export const JJLogo: React.FC<JJLogoProps> = ({
     theme === 'dark'
       ? '#c5a059'
       : '#7d623d';
+
+  if (customLogoUrl) {
+    return (
+      <div className={`flex items-center gap-3 ${className}`}>
+        <img
+          src={customLogoUrl}
+          alt="J.J. INTERIORS & MODUTECH"
+          className={`object-contain ${
+            size === 'sm' ? 'h-8' : size === 'md' ? 'h-11' : size === 'lg' ? 'h-16' : 'h-20'
+          }`}
+        />
+        {variant !== 'mark-only' && (
+          <div className="flex flex-col text-left">
+            <span className="font-display font-medium tracking-[0.15em] leading-none mb-1" style={{ color: textColor, fontSize: size === 'sm' ? '14px' : size === 'md' ? '18px' : '22px' }}>
+              J.J. INTERIORS
+            </span>
+            <span className="font-sans font-semibold tracking-[0.25em] leading-none" style={{ color: subTextColor, fontSize: size === 'sm' ? '8px' : size === 'md' ? '10px' : '12px' }}>
+              & MODUTECH
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (variant === 'mark-only') {
     return (

@@ -17,8 +17,9 @@ export const HeroSection: React.FC = () => {
           className="w-full h-full object-cover object-center"
           loading="eager"
         />
-        {/* Very subtle gradient only on the left side for text readability, keeping the rest of the image HD */}
-        <div className="absolute inset-y-0 left-0 w-full sm:w-[70%] bg-gradient-to-r from-[#161412]/80 via-[#161412]/30 to-transparent" />
+        {/* Better gradient overlay for text readability on bright images */}
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-y-0 left-0 w-full sm:w-[85%] bg-gradient-to-r from-[#161412]/95 via-[#161412]/60 to-transparent" />
       </div>
 
       {/* Main Content Grid */}
@@ -34,8 +35,8 @@ export const HeroSection: React.FC = () => {
               <span>{businessProfile.brandName || "J.J. INTERIORS & MODUTECH"}</span>
             </div>
 
-            {/* Short Premium Headline */}
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6 uppercase">
+            {/* Short Premium Headline with Drop Shadow */}
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl lg:text-[5.2rem] font-light tracking-tight leading-[1.05] sm:leading-[0.98] text-[#fbf9f5] mb-4 sm:mb-6 uppercase drop-shadow-xl">
               INTERIORS MADE FOR <br />
               <span className="italic font-normal text-[#e8d5b8]">THE WAY YOU LIVE.</span>
             </h1>
