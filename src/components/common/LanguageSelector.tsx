@@ -66,18 +66,21 @@ export const LanguageSelector: React.FC = () => {
     }
   };
 
-  const currentLangName = LANGUAGES.find(l => l.code === currentLang)?.name || 'English';
+  const currentLangObj = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
+  const currentLangName = currentLangObj.name;
+  const currentLangCode = currentLangObj.code.toUpperCase();
 
   return (
     <div className="relative z-50" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-black/5 transition-colors text-sm font-medium"
+        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 rounded-lg hover:bg-black/5 transition-colors text-sm font-medium"
         aria-label="Select Language"
       >
         <Globe className="w-4 h-4 text-[#c5a059]" />
         <span className="hidden sm:inline-block truncate max-w-[100px]">{currentLangName}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <span className="sm:hidden inline-block text-[11px] font-bold tracking-wider">{currentLangCode}</span>
+        <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       <AnimatePresence>
