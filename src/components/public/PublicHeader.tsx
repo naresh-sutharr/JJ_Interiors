@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp, PublicRoute } from '../../context/AppContext.tsx';
 import { JJLogo } from '../common/JJLogo.tsx';
 import { Menu, X, Shield, Phone, MessageSquare, Instagram, UserCheck, ChevronDown } from 'lucide-react';
+import { LanguageSelector } from '../common/LanguageSelector.tsx';
 
 export const PublicHeader: React.FC = () => {
   const { 
@@ -103,6 +104,8 @@ export const PublicHeader: React.FC = () => {
           {/* Right Action Bar */}
           <div className="hidden xl:flex items-center gap-3">
             
+            <LanguageSelector />
+
             {/* Instagram Link */}
             {businessProfile.socialLinks?.instagram && (
               <a
@@ -157,6 +160,8 @@ export const PublicHeader: React.FC = () => {
 
           {/* Mobile Menu Action Buttons */}
           <div className="flex xl:hidden items-center gap-1 sm:gap-2">
+            <LanguageSelector />
+
             {/* Mobile Instagram */}
             {businessProfile.socialLinks?.instagram && (
               <a

@@ -30,6 +30,7 @@ import {
   Package,
   BarChart3
 } from 'lucide-react';
+import { LanguageSelector } from '../common/LanguageSelector.tsx';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -154,6 +155,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
         {/* Right User Bar */}
         <div className="flex items-center gap-3">
+          <LanguageSelector />
           {/* Quick Action Button */}
           <button
             onClick={() => setQuickActionModalOpen(true)}
