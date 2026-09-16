@@ -42,11 +42,21 @@ export const JJLogo: React.FC<JJLogoProps> = ({
           }`}
         />
         {variant !== 'mark-only' && (
-          <div className="flex flex-col text-left">
-            <span className="font-display font-medium tracking-[0.15em] leading-none mb-1" style={{ color: textColor, fontSize: size === 'sm' ? '14px' : size === 'md' ? '18px' : '22px' }}>
+          <div className="flex flex-col text-left justify-center min-w-0">
+            <span 
+              className={`font-display font-medium tracking-[0.05em] sm:tracking-[0.15em] leading-none mb-0.5 sm:mb-1 whitespace-nowrap truncate ${
+                size === 'sm' ? 'text-[12px] sm:text-[14px]' : size === 'md' ? 'text-[14px] sm:text-[18px]' : 'text-[18px] sm:text-[22px]'
+              }`} 
+              style={{ color: textColor }}
+            >
               J.J. INTERIORS
             </span>
-            <span className="font-sans font-semibold tracking-[0.25em] leading-none" style={{ color: subTextColor, fontSize: size === 'sm' ? '8px' : size === 'md' ? '10px' : '12px' }}>
+            <span 
+              className={`font-sans font-semibold tracking-[0.1em] sm:tracking-[0.25em] leading-none whitespace-nowrap truncate ${
+                size === 'sm' ? 'text-[7px] sm:text-[8px]' : size === 'md' ? 'text-[8px] sm:text-[10px]' : 'text-[10px] sm:text-[12px]'
+              }`} 
+              style={{ color: subTextColor }}
+            >
               & MODUTECH
             </span>
           </div>
