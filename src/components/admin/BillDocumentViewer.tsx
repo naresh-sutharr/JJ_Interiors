@@ -128,7 +128,7 @@ Balance Due: ₹${formatIndianCurrency(doc.balanceDue)}
         {(activeTab === 'both' || activeTab === 'page1') && (
           <div 
             id="invoice-page-1"
-            className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-10 sm:p-12 relative print:border-none print:shadow-none print:p-8 print:max-w-none flex flex-col print:block print:h-auto print:min-h-0 print:break-after-page"
+            className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl px-10 py-6 sm:px-12 sm:py-8 relative print:border-none print:shadow-none print:px-8 print:py-4 print:max-w-none flex flex-col print:block print:h-auto print:min-h-0 print:break-after-page"
           >
             {renderLetterhead()}
 
@@ -273,7 +273,7 @@ Balance Due: ₹${formatIndianCurrency(doc.balanceDue)}
         {(activeTab === 'both' || activeTab === 'page2') && (
           <div 
             id="invoice-page-2"
-            className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl p-10 sm:p-12 relative print:border-none print:shadow-none print:p-8 print:max-w-none flex flex-col print:block print:h-auto print:min-h-0"
+            className="a4-print-page w-full max-w-[210mm] min-h-[297mm] bg-white text-[#1e1b18] shadow-2xl px-10 py-6 sm:px-12 sm:py-8 relative print:border-none print:shadow-none print:px-8 print:py-4 print:max-w-none flex flex-col print:block print:h-auto print:min-h-0"
           >
             {renderLetterhead()}
 

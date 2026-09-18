@@ -75,6 +75,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       badge: clients.filter(c => c.status === 'New').length || undefined 
     },
     { id: 'projects', label: 'Projects & Portfolio', icon: <Briefcase className="w-4 h-4" /> },
+    { id: 'catalog', label: 'Item Catalog & Stock', icon: <Package className="w-4 h-4" /> },
     { id: 'billing', label: 'Billing Generator', icon: <Receipt className="w-4 h-4" /> },
     { 
       id: 'bills-history', 
@@ -130,9 +131,13 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
           {/* Always show in header */}
           <div className="flex items-center gap-2 max-w-[200px] sm:max-w-none">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 rounded bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] text-xs sm:text-sm">
-              JJ
-            </div>
+            {businessProfile.logoUrl ? (
+              <img src={businessProfile.logoUrl} alt="Logo" className="h-6 sm:h-8 object-contain bg-white rounded p-0.5" />
+            ) : (
+              <div className="w-6 h-6 sm:w-8 sm:h-8 shrink-0 rounded bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] text-xs sm:text-sm">
+                JJ
+              </div>
+            )}
             <span className="font-display text-sm sm:text-lg font-bold tracking-wider text-white leading-tight line-clamp-2">
               {businessProfile.brandName}
             </span>
@@ -145,9 +150,15 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
             <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 top-2.5" />
             <input
               type="text"
-              placeholder="Quick search clients, project names, bill numbers..."
+              placeholder="Quick search clients, project names, bill numbers... (Press Enter)"
               value={globalSearch}
               onChange={(e) => setGlobalSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  showToast(`Searching for "${globalSearch}"...`, 'info');
+                  // In a real app, you would filter the list or redirect to search results page
+                }
+              }}
               className="w-full pl-9 pr-3 py-1.5 bg-white/5 border border-white/10 rounded text-xs text-white placeholder:text-stone-400 focus:outline-none focus:border-[#c5a059]"
             />
           </div>
@@ -208,7 +219,20 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         {/* Desktop Left Sidebar */}
         <aside className="hidden lg:flex flex-col w-64 bg-[#1e1b18] text-stone-300 border-r border-[#2d2925] shrink-0 no-print">
           
-          {/* Removed logo from sidebar, keep clean and compact */}
+          {/* Logo in Sidebar */}
+          <div className="p-4 border-b border-white/5 flex items-center gap-3">
+            {businessProfile.logoUrl ? (
+              <img src={businessProfile.logoUrl} alt="Logo" className="w-12 h-12 object-contain bg-white rounded p-1" />
+            ) : (
+              <div className="w-10 h-10 rounded bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] overflow-hidden">
+                JJ
+              </div>
+            )}
+            <div className="overflow-hidden">
+              <div className="text-sm font-semibold text-white truncate font-display">{businessProfile.brandName}</div>
+              <div className="text-[10px] uppercase tracking-widest text-[#c5a059] truncate">Admin Portal</div>
+            </div>
+          </div>
 
           <div className="p-4 border-b border-white/5 flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] overflow-hidden">
