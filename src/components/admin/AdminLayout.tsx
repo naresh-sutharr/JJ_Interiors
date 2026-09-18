@@ -219,20 +219,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
         {/* Desktop Left Sidebar */}
         <aside className="hidden lg:flex flex-col w-64 bg-[#1e1b18] text-stone-300 border-r border-[#2d2925] shrink-0 no-print">
           
-          {/* Logo in Sidebar */}
-          <div className="p-4 border-b border-white/5 flex items-center gap-3">
-            {businessProfile.logoUrl ? (
-              <img src={businessProfile.logoUrl} alt="Logo" className="w-12 h-12 object-contain bg-white rounded p-1" />
-            ) : (
-              <div className="w-10 h-10 rounded bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] overflow-hidden">
-                JJ
-              </div>
-            )}
-            <div className="overflow-hidden">
-              <div className="text-sm font-semibold text-white truncate font-display">{businessProfile.brandName}</div>
-              <div className="text-[10px] uppercase tracking-widest text-[#c5a059] truncate">Admin Portal</div>
-            </div>
-          </div>
+          {/* Removed logo from sidebar, keep clean and compact */}
 
           <div className="p-4 border-b border-white/5 flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#c5a059]/10 border border-[#c5a059]/30 flex items-center justify-center font-display font-semibold text-[#c5a059] overflow-hidden">
