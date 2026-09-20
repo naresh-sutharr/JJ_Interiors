@@ -28,10 +28,12 @@ export const SEOAnalyticsAdminView: React.FC = () => {
 
   const [formData, setFormData] = useState(seoSettings);
   const [activeTab, setActiveTab] = useState<'analytics' | 'seo' | 'schema'>('analytics');
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleSaveSEO = (e: React.FormEvent) => {
     e.preventDefault();
     updateSeoSettings(formData);
+    setIsEditing(false);
     showToast('SEO settings saved successfully.');
   };
 
@@ -207,12 +209,33 @@ export const SEOAnalyticsAdminView: React.FC = () => {
       )}
 
       {activeTab === 'seo' && (
-        <div className="bg-white p-6 border border-stone-200 shadow-xs max-w-3xl">
-          <h3 className="font-display text-lg text-stone-900 font-semibold pb-3 mb-6 border-b border-stone-200">
-            Search Engine Meta Tags
-          </h3>
+        <div className={`bg-white p-6 border ${isEditing ? 'border-[#c5a059] ring-1 ring-[#c5a059]/20' : 'border-stone-200'} shadow-xs max-w-3xl transition-colors`}>
+          <div className="flex justify-between items-center pb-3 mb-6 border-b border-stone-200">
+            <h3 className="font-display text-lg text-stone-900 font-semibold">
+              Search Engine Meta Tags
+            </h3>
+            {!isEditing ? (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="px-3 py-1.5 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Edit SEO
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setFormData(seoSettings);
+                  setIsEditing(false);
+                }}
+                className="px-3 py-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
 
           <form onSubmit={handleSaveSEO} className="space-y-5 text-xs">
+            <fieldset disabled={!isEditing} className={`space-y-5 ${!isEditing ? 'opacity-80 grayscale-[20%]' : ''}`}>
             <div>
               <label className="block font-semibold text-stone-700 mb-1">
                 Site Title (SERP Tag)
@@ -280,15 +303,19 @@ export const SEOAnalyticsAdminView: React.FC = () => {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-stone-200 flex justify-end">
-              <button
-                type="submit"
-                className="px-6 py-2.5 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-black text-xs uppercase font-semibold tracking-wider transition-colors flex items-center gap-2 cursor-pointer"
-              >
-                <Save className="w-4 h-4" />
-                <span>Save SEO Settings</span>
-              </button>
-            </div>
+            </fieldset>
+
+            {isEditing && (
+              <div className="pt-4 border-t border-stone-200 flex justify-end animate-fade-in">
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-black text-xs uppercase font-semibold tracking-wider transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <Save className="w-4 h-4" />
+                  <span>Save SEO Settings</span>
+                </button>
+              </div>
+            )}
           </form>
         </div>
       )}

@@ -31,10 +31,12 @@ export const SettingsView: React.FC = () => {
 
   const [formData, setFormData] = useState({ ...systemSettings });
   const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     updateSystemSettings(formData);
+    setIsEditing(false);
     showToast('System billing settings updated successfully!');
   };
 
@@ -107,18 +109,38 @@ export const SettingsView: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-bold px-2 py-1 rounded bg-stone-100 text-stone-800 flex items-center gap-1.5">
+          <span className="text-[11px] font-bold px-2 py-1 rounded bg-stone-100 text-stone-800 flex items-center gap-1.5 hidden sm:flex">
             <UserCheck className="w-3.5 h-3.5 text-[#c5a059]" />
             <span>Role: {adminUser?.role} ({adminUser?.name})</span>
           </span>
+
+          {!isEditing ? (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="px-4 py-2 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              Edit Settings
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setFormData({ ...systemSettings });
+                setIsEditing(false);
+              }}
+              className="px-4 py-2 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+          )}
         </div>
       </div>
 
       {/* Main Settings Form */}
       <form onSubmit={handleSave} className="space-y-6">
+        <fieldset disabled={!isEditing} className={`space-y-6 ${!isEditing ? 'opacity-80 grayscale-[20%]' : ''}`}>
         
         {/* Billing & Tax Settings */}
-        <div className="bg-white p-6 sm:p-8 border border-[#e2dcd4] shadow-sm space-y-4">
+        <div className={`bg-white p-6 sm:p-8 border ${isEditing ? 'border-[#c5a059] ring-1 ring-[#c5a059]/20' : 'border-[#e2dcd4]'} shadow-sm space-y-4 transition-colors`}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 flex items-center gap-2">
             <Receipt className="w-4 h-4 text-[#c5a059]" />
             <span>Commercial Billing Defaults</span>
@@ -165,8 +187,10 @@ export const SettingsView: React.FC = () => {
           </div>
         </div>
 
+        </div>
+
         {/* Bank Details for Direct Client Invoicing */}
-        <div className="bg-white p-6 sm:p-8 border border-[#e2dcd4] shadow-sm space-y-4">
+        <div className={`bg-white p-6 sm:p-8 border ${isEditing ? 'border-[#c5a059] ring-1 ring-[#c5a059]/20' : 'border-[#e2dcd4]'} shadow-sm space-y-4 transition-colors`}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 flex items-center gap-2">
             <CreditCard className="w-4 h-4 text-[#c5a059]" />
             <span>Bank Account Details (Printed on Invoices &amp; Quotations)</span>
@@ -249,17 +273,22 @@ export const SettingsView: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-2 flex justify-end">
-            <button
-              type="submit"
-              className="px-6 py-2.5 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 shadow"
-            >
-              <Save className="w-4 h-4" />
-              <span>Save System Settings</span>
-            </button>
           </div>
+
+          {isEditing && (
+            <div className="pt-2 flex justify-end animate-fade-in">
+              <button
+                type="submit"
+                className="px-6 py-2.5 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-widest transition-colors flex items-center gap-2 shadow cursor-pointer"
+              >
+                <Save className="w-4 h-4" />
+                <span>Save System Settings</span>
+              </button>
+            </div>
+          )}
         </div>
 
+        </fieldset>
       </form>
 
       {/* Database Backup & Maintenance Section */}

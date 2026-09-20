@@ -20,10 +20,12 @@ export const BusinessProfileView: React.FC = () => {
   const { businessProfile, updateBusinessProfile, showToast, setViewMode } = useApp();
 
   const [formData, setFormData] = useState({ ...businessProfile });
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     updateBusinessProfile(formData);
+    setIsEditing(false);
     showToast('Business profile updated! Public website now reflects new details.');
   };
 
@@ -44,13 +46,34 @@ export const BusinessProfileView: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setViewMode('public')}
-          className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
-        >
-          <ExternalLink className="w-3.5 h-3.5 text-[#c5a059]" />
-          <span>Preview Public Site</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setViewMode('public')}
+            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <ExternalLink className="w-3.5 h-3.5 text-[#c5a059]" />
+            <span className="hidden sm:inline">Preview</span>
+          </button>
+          
+          {!isEditing ? (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="px-4 py-2 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              Edit Profile
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setFormData({ ...businessProfile });
+                setIsEditing(false);
+              }}
+              className="px-4 py-2 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Info Callout */}
@@ -65,10 +88,11 @@ export const BusinessProfileView: React.FC = () => {
       </div>
 
       {/* Profile Form */}
-      <form onSubmit={handleSave} className="bg-white p-6 sm:p-8 border border-[#e2dcd4] shadow-sm space-y-6">
+      <form onSubmit={handleSave} className={`bg-white p-6 sm:p-8 border ${isEditing ? 'border-[#c5a059] ring-1 ring-[#c5a059]/20' : 'border-[#e2dcd4]'} shadow-sm space-y-6 transition-colors`}>
         
-        {/* Brand & Identity */}
-        <div>
+        <fieldset disabled={!isEditing} className="space-y-8 group">
+          {/* Brand & Identity */}
+          <div className={!isEditing ? 'opacity-80 grayscale-[20%]' : ''}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 mb-4 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-[#c5a059]" />
             <span>Brand &amp; Legal Identity</span>
@@ -127,7 +151,7 @@ export const BusinessProfileView: React.FC = () => {
         </div>
 
         {/* Payment & Bank Details */}
-        <div>
+        <div className={!isEditing ? 'opacity-80 grayscale-[20%]' : ''}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 mb-4 flex items-center gap-2">
             <Award className="w-4 h-4 text-[#c5a059]" />
             <span>Payment &amp; Bank Coordinates</span>
@@ -385,16 +409,30 @@ export const BusinessProfileView: React.FC = () => {
           </div>
         </div>
 
+        </fieldset>
+
         {/* Save Bar */}
-        <div className="pt-4 border-t border-stone-200 flex justify-end">
-          <button
-            type="submit"
-            className="px-6 py-3 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-widest transition-all shadow flex items-center gap-2 cursor-pointer"
-          >
-            <Save className="w-4 h-4" />
-            <span>Save Profile &amp; Update Site</span>
-          </button>
-        </div>
+        {isEditing && (
+          <div className="pt-4 border-t border-stone-200 flex justify-end gap-3 animate-fade-in">
+            <button
+              type="button"
+              onClick={() => {
+                setFormData({ ...businessProfile });
+                setIsEditing(false);
+              }}
+              className="px-6 py-3 bg-stone-100 text-stone-700 hover:bg-stone-200 rounded text-xs font-bold uppercase tracking-widest transition-all cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-6 py-3 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-bold uppercase tracking-widest transition-all shadow flex items-center gap-2 cursor-pointer"
+            >
+              <Save className="w-4 h-4" />
+              <span>Save Profile &amp; Update Site</span>
+            </button>
+          </div>
+        )}
 
       </form>
 
