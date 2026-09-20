@@ -11,6 +11,8 @@ import { TestimonialsPage } from './pages/TestimonialsPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';
 
 import { ProcessPage } from './pages/ProcessPage.tsx';
+import { PWAInstallPrompt } from './components/public/PWAInstallPrompt.tsx';
+import { WhatsAppButton } from './components/public/WhatsAppButton.tsx';
 
 // Public Header & Footer
 import { PublicHeader } from './components/public/PublicHeader.tsx';
@@ -137,6 +139,9 @@ const MainApplication: React.FC = () => {
       </main>
 
       <PublicFooter />
+
+      <PWAInstallPrompt />
+      <WhatsAppButton />
 
       {/* Public Interactive Modals */}
       <ServiceDetailModal />

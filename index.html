@@ -8,7 +8,10 @@
     <meta property="og:title" content="J.J. INTERIORS &amp; MODUTECH | Interior Design, Modular Furniture &amp; Modutech" />
     <meta property="og:description" content="J.J. INTERIORS &amp; MODUTECH creates thoughtfully designed residential, modular, and commercial spaces. Spaces designed for a better tomorrow." />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/applogo.png" />
+    <link rel="apple-touch-icon" href="/applogo.png" />
+    <meta name="theme-color" content="#c5a059" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,6 +30,15 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(err => {
+            console.log('SW registration failed: ', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
 
