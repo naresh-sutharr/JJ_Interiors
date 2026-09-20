@@ -141,22 +141,22 @@ export const DashboardView: React.FC = () => {
           <h2 className="text-sm font-bold uppercase tracking-wider text-[#1e1b18] mb-4 flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-[#c5a059]" /> Financial Overview
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-[#faf8f5] p-5 border border-[#e2dcd4] flex items-center justify-between rounded">
-              <span className="text-xs uppercase font-semibold text-stone-600">Total Received</span>
-              <span className="text-base font-bold text-emerald-700">₹{totalRevenueCollected.toLocaleString('en-IN')}</span>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-[#faf8f5] p-4 sm:p-5 border border-[#e2dcd4] flex flex-col gap-1 rounded overflow-hidden">
+              <span className="text-xs uppercase font-semibold text-stone-600 line-clamp-1">Total Received</span>
+              <span className="text-lg sm:text-base font-bold text-emerald-700 truncate">₹{totalRevenueCollected.toLocaleString('en-IN')}</span>
             </div>
-            <div className="bg-[#faf8f5] p-5 border border-[#e2dcd4] flex items-center justify-between rounded">
-              <span className="text-xs uppercase font-semibold text-stone-600">Pending Due</span>
-              <span className="text-base font-bold text-amber-700">₹{pendingPaymentsTotal.toLocaleString('en-IN')}</span>
+            <div className="bg-[#faf8f5] p-4 sm:p-5 border border-[#e2dcd4] flex flex-col gap-1 rounded overflow-hidden">
+              <span className="text-xs uppercase font-semibold text-stone-600 line-clamp-1">Pending Due</span>
+              <span className="text-lg sm:text-base font-bold text-amber-700 truncate">₹{pendingPaymentsTotal.toLocaleString('en-IN')}</span>
             </div>
-            <div className="bg-[#faf8f5] p-5 border border-[#e2dcd4] flex items-center justify-between rounded">
-              <span className="text-xs uppercase font-semibold text-stone-600">Quotations Generated</span>
-              <span className="text-base font-bold text-[#1e1b18]">{quotations.length}</span>
+            <div className="bg-[#faf8f5] p-4 sm:p-5 border border-[#e2dcd4] flex flex-col gap-1 rounded overflow-hidden">
+              <span className="text-xs uppercase font-semibold text-stone-600 line-clamp-1">Quotes Done</span>
+              <span className="text-lg sm:text-base font-bold text-[#1e1b18] truncate">{quotations.length}</span>
             </div>
-            <div className="bg-[#faf8f5] p-5 border border-[#e2dcd4] flex items-center justify-between rounded">
-              <span className="text-xs uppercase font-semibold text-stone-600">Invoices Generated</span>
-              <span className="text-base font-bold text-[#1e1b18]">{invoices.length}</span>
+            <div className="bg-[#faf8f5] p-4 sm:p-5 border border-[#e2dcd4] flex flex-col gap-1 rounded overflow-hidden">
+              <span className="text-xs uppercase font-semibold text-stone-600 line-clamp-1">Invoices Done</span>
+              <span className="text-lg sm:text-base font-bold text-[#1e1b18] truncate">{invoices.length}</span>
             </div>
           </div>
         </section>

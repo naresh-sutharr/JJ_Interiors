@@ -292,7 +292,7 @@ const STORAGE_KEYS = {
   ANALYTICS: 'jj_analytics_v4',
   ADMIN_THEME: 'jj_admin_theme_v4',
   CATALOG: 'jj_catalog_v4',
-  BILLS: 'jj_bills_v4',
+  BILLS: 'jj_bills_v5',
   TESTIMONIALS: 'jj_testimonials_v4',
   FAQS: 'jj_faqs_v4',
   BLOG: 'jj_blog_v4',

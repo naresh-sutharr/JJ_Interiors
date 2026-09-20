@@ -115,7 +115,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f0ea] text-[#1c1917] flex flex-col antialiased">
+    <div className="h-[100dvh] bg-[#f3f0ea] text-[#1c1917] flex flex-col antialiased">
       
       {/* Top Navbar */}
       <header className="sticky top-0 z-30 bg-[#1a1715] text-[#fbf9f5] border-b border-[#2d2925] px-4 py-2.5 flex items-center justify-between no-print">
@@ -214,7 +214,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       </header>
 
       {/* Main Workspace Body */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         
         {/* Desktop Left Sidebar */}
         <aside className="hidden lg:flex flex-col w-64 bg-[#1e1b18] text-stone-300 border-r border-[#2d2925] shrink-0 no-print">
