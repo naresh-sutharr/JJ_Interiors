@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 import { BlogPost } from '../../types.ts';
 import { 
   Sparkles, 
@@ -244,17 +245,11 @@ export const BlogAdminView: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                  Cover Image URL
-                </label>
-                <input
-                  type="url"
-                  value={formData.coverImage}
-                  onChange={(e) => setFormData({ ...formData, coverImage: e.target.value })}
-                  className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900"
-                />
-              </div>
+              <ImageUploadControl
+                label="Cover Image URL"
+                value={formData.coverImage || ''}
+                onChange={(url) => setFormData({ ...formData, coverImage: url })}
+              />
 
               <div>
                 <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">

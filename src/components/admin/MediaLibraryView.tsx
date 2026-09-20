@@ -9,8 +9,11 @@ import {
   ExternalLink, 
   X, 
   Sparkles,
-  Layers
+  Layers,
+  Pencil,
+  Trash2
 } from 'lucide-react';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 
 interface MediaAsset {
   id: string;
@@ -92,6 +95,9 @@ export const MediaLibraryView: React.FC = () => {
   const [newUrl, setNewUrl] = useState('');
   const [newCat, setNewCat] = useState('Living');
 
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<MediaAsset | null>(null);
+
   const handleCopy = (id: string, url: string) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(url);
@@ -118,7 +124,26 @@ export const MediaLibraryView: React.FC = () => {
     setIsAddOpen(false);
     setNewTitle('');
     setNewUrl('');
-    showToast('Media asset registered successfully!');
+    showToast('Media asset registered successfully!', 'success');
+  };
+
+  const handleEditMedia = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingItem || !editingItem.title || !editingItem.url) {
+      showToast('Title and image URL are required.', 'error');
+      return;
+    }
+    setAssets(assets.map(a => a.id === editingItem.id ? editingItem : a));
+    setIsEditOpen(false);
+    setEditingItem(null);
+    showToast('Media asset updated successfully!', 'success');
+  };
+
+  const handleDeleteMedia = (id: string) => {
+    if (window.confirm('Are you sure you want to delete this media asset?')) {
+      setAssets(assets.filter(a => a.id !== id));
+      showToast('Media asset deleted.', 'success');
+    }
   };
 
   const filteredAssets = assets.filter(a => {
@@ -213,22 +238,41 @@ export const MediaLibraryView: React.FC = () => {
                   {asset.dimensions}
                 </span>
 
-                <button
-                  onClick={() => handleCopy(asset.id, asset.url)}
-                  className="px-2.5 py-1 bg-[#faf8f5] hover:bg-[#1e1b18] hover:text-white border border-stone-300 rounded text-[11px] font-semibold flex items-center gap-1 transition-colors cursor-pointer"
-                >
-                  {copiedId === asset.id ? (
-                    <>
-                      <Check className="w-3 h-3 text-emerald-600" />
-                      <span className="text-emerald-700">Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3 text-[#c5a059]" />
-                      <span>Copy URL</span>
-                    </>
-                  )}
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => {
+                      setEditingItem(asset);
+                      setIsEditOpen(true);
+                    }}
+                    className="p-1.5 text-stone-400 hover:text-[#c5a059] border border-transparent hover:border-stone-200 rounded transition-colors cursor-pointer"
+                    title="Edit Media"
+                  >
+                    <Pencil className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteMedia(asset.id)}
+                    className="p-1.5 text-stone-400 hover:text-rose-500 border border-transparent hover:border-stone-200 rounded transition-colors cursor-pointer"
+                    title="Delete Media"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => handleCopy(asset.id, asset.url)}
+                    className="px-2.5 py-1 ml-1 bg-[#faf8f5] hover:bg-[#1e1b18] hover:text-white border border-stone-300 rounded text-[11px] font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                  >
+                    {copiedId === asset.id ? (
+                      <>
+                        <Check className="w-3 h-3 text-emerald-600" />
+                        <span className="text-emerald-700">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3 h-3 text-[#c5a059]" />
+                        <span>Copy URL</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -282,17 +326,12 @@ export const MediaLibraryView: React.FC = () => {
                 </select>
               </div>
 
-              <div>
-                <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                  Image Direct HTTPS URL *
-                </label>
-                <input
-                  type="url"
-                  required
-                  placeholder="https://..."
+              <div className="pb-2">
+                <ImageUploadControl
+                  label="Image Direct HTTPS URL"
                   value={newUrl}
-                  onChange={(e) => setNewUrl(e.target.value)}
-                  className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900 font-mono"
+                  onChange={setNewUrl}
+                  required
                 />
               </div>
 
@@ -309,6 +348,82 @@ export const MediaLibraryView: React.FC = () => {
                   className="px-5 py-2 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-semibold uppercase tracking-wider transition-colors"
                 >
                   Add Media
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Modal */}
+      {isEditOpen && editingItem && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-fade-in no-print">
+          <div className="relative w-full max-w-md bg-white text-[#1e1b18] shadow-2xl border border-stone-300 rounded overflow-hidden my-auto">
+            <div className="p-5 border-b border-stone-200 bg-[#1e1b18] text-white flex justify-between items-center">
+              <h3 className="font-display text-lg font-normal text-white">
+                Edit Media Asset
+              </h3>
+              <button onClick={() => { setIsEditOpen(false); setEditingItem(null); }} className="p-1 text-stone-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleEditMedia} className="p-6 space-y-4">
+              <div>
+                <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                  Asset Title *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Master Bedroom Fluted Paneling"
+                  value={editingItem.title}
+                  onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
+                  className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
+                  Category
+                </label>
+                <select
+                  value={editingItem.category}
+                  onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
+                  className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900"
+                >
+                  <option value="Living">Living</option>
+                  <option value="Kitchen">Kitchen</option>
+                  <option value="Bedroom">Bedroom</option>
+                  <option value="Wardrobe">Wardrobe</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Dining">Dining</option>
+                  <option value="Factory">Factory</option>
+                </select>
+              </div>
+
+              <div className="pb-2">
+                <ImageUploadControl
+                  label="Image Direct HTTPS URL"
+                  value={editingItem.url}
+                  onChange={(url) => setEditingItem({ ...editingItem, url })}
+                  required
+                />
+              </div>
+
+              <div className="pt-3 border-t border-stone-200 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => { setIsEditOpen(false); setEditingItem(null); }}
+                  className="px-4 py-2 bg-stone-100 text-stone-700 rounded text-xs font-semibold uppercase"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-[#1e1b18] hover:bg-[#c5a059] text-white hover:text-[#1e1b18] rounded text-xs font-semibold uppercase tracking-wider transition-colors"
+                >
+                  Save Changes
                 </button>
               </div>
             </form>

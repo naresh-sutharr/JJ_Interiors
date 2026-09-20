@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 import { 
   Globe, 
   BarChart3, 
@@ -256,17 +257,12 @@ export const SEOAnalyticsAdminView: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label className="block font-semibold text-stone-700 mb-1">
-                OG Image URL (Social Share Preview)
-              </label>
-              <input
-                type="url"
-                value={formData.ogImageUrl}
-                onChange={(e) => setFormData({ ...formData, ogImageUrl: e.target.value })}
-                className="w-full px-3 py-2 border border-stone-300 text-sm font-mono focus:border-[#c5a059] focus:outline-none"
-              />
-            </div>
+            <ImageUploadControl
+              label="OG Image URL (Social Share Preview)"
+              value={formData.ogImageUrl || ''}
+              onChange={(url) => setFormData({ ...formData, ogImageUrl: url })}
+              placeholder="https://..."
+            />
 
             {/* Google Search Snippet Preview */}
             <div className="bg-stone-50 p-4 border border-stone-200 mt-6 space-y-1">

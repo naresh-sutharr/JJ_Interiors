@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 import { ServiceItem } from '../../types.ts';
 import { 
   Compass, 
@@ -194,17 +195,11 @@ export const ServicesAdminView: React.FC = () => {
                 />
               </div>
 
-              <div>
-                <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                  Image URL
-                </label>
-                <input
-                  type="url"
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  className="w-full px-3 py-2 border border-stone-300 rounded text-xs text-stone-900"
-                />
-              </div>
+              <ImageUploadControl
+                label="Image URL"
+                value={formData.image || ''}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+              />
 
               <div>
                 <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">

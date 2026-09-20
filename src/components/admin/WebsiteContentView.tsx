@@ -12,6 +12,7 @@ import {
   Sliders, 
   ExternalLink 
 } from 'lucide-react';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 
 export const WebsiteContentView: React.FC = () => {
   const { 
@@ -113,17 +114,11 @@ export const WebsiteContentView: React.FC = () => {
             ></textarea>
           </div>
 
-          <div>
-            <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-              Hero Background Imagery URL
-            </label>
-            <input
-              type="url"
-              value={heroImage}
-              onChange={(e) => setHeroImage(e.target.value)}
-              className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900 font-mono"
-            />
-          </div>
+          <ImageUploadControl
+            label="Hero Background Imagery URL"
+            value={heroImage || ''}
+            onChange={(url) => setHeroImage(url)}
+          />
 
           <div className="pt-2 flex justify-end">
             <button

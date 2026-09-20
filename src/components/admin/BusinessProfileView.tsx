@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 import { 
   Building2, 
   Save, 
@@ -113,15 +114,11 @@ export const BusinessProfileView: React.FC = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                Custom Logo URL (Public site override)
-              </label>
-              <input
-                type="url"
+              <ImageUploadControl
+                label="Custom Logo URL (Public site override)"
                 value={formData.logoUrl || ''}
-                onChange={(e) => setFormData({ ...formData, logoUrl: e.target.value })}
+                onChange={(url) => setFormData({ ...formData, logoUrl: url })}
                 placeholder="Leave blank to use default text logo"
-                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900 focus:outline-none focus:border-[#c5a059]"
               />
             </div>
 
@@ -149,14 +146,11 @@ export const BusinessProfileView: React.FC = () => {
               />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                UPI QR Code Image URL
-              </label>
-              <input
-                type="url"
+              <ImageUploadControl
+                label="UPI QR Code Image URL"
                 value={formData.upiQrUrl || ''}
-                onChange={(e) => setFormData({ ...formData, upiQrUrl: e.target.value })}
-                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
+                onChange={(url) => setFormData({ ...formData, upiQrUrl: url })}
+                placeholder="https://..."
               />
             </div>
             <div>
@@ -265,14 +259,11 @@ export const BusinessProfileView: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-[11px] uppercase tracking-wider font-bold text-stone-700 mb-1">
-                Owner Photo URL
-              </label>
-              <input
-                type="url"
-                value={formData.ownerPhoto}
-                onChange={(e) => setFormData({ ...formData, ownerPhoto: e.target.value })}
-                className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
+              <ImageUploadControl
+                label="Owner Photo URL"
+                value={formData.ownerPhoto || ''}
+                onChange={(url) => setFormData({ ...formData, ownerPhoto: url })}
+                placeholder="https://..."
               />
             </div>
 
