@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.tsx';
 import { Project } from '../../types.ts';
+import { ImageUploadControl } from '../common/ImageUploadControl.tsx';
 import { 
   Briefcase, 
   Plus, 

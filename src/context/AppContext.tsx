@@ -96,7 +96,9 @@ interface AppContextType {
   isAuthenticated: boolean;
   currentUser: AdminUser | null;
   login: (usernameOrEmail: string, password: string) => boolean;
+  loginAsync: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
+  authLoading: boolean;
   switchRole: (role: AdminRole) => void;
   isAdminLoginModalOpen: boolean;
   setIsAdminLoginModalOpen: (open: boolean) => void;
@@ -405,16 +407,31 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   }, [publicRoute]);
 
   // Auth State
-  const [currentUser, setCurrentUser] = useState<AdminUser | null>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEYS.AUTH);
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [currentUser, setCurrentUser] = useState<AdminUser | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
   const isAuthenticated = !!currentUser;
   const [isAdminLoginModalOpen, setIsAdminLoginModalOpen] = useState(false);
+
+  // Server-side Authentication check on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (res.ok) {
+          const data = await res.json();
+          setCurrentUser(data.user);
+        } else {
+          setCurrentUser(null);
+        }
+      } catch (err) {
+        setCurrentUser(null);
+      } finally {
+        setAuthLoading(false);
+      }
+    };
+    checkAuth();
+  }, []);
 
   // Modals & Public Overlays
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);
@@ -577,14 +594,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(systemSettings));
   }, [systemSettings]);
-
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem(STORAGE_KEYS.AUTH);
-    }
-  }, [currentUser]);
 
   // Saved / Bookmarked Projects
   const [savedProjectIds, setSavedProjectIds] = useState<string[]>(() => 
@@ -941,44 +950,43 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // Auth functions
   const login = (usernameOrEmail: string, pass: string): boolean => {
-    const cleanUser = usernameOrEmail.trim().toLowerCase();
-    // Allow demo admin / manager / staff credentials
-    let role: AdminRole = 'Administrator';
-    let name = 'Admin User';
-
-    if (cleanUser.includes('manager')) {
-      role = 'Manager';
-      name = 'Project Manager';
-    } else if (cleanUser.includes('staff')) {
-      role = 'Staff';
-      name = 'Design Staff';
-    } else {
-      role = 'Administrator';
-      name = 'Business Owner';
-    }
-
-    if (pass.length >= 4) {
-      const user: AdminUser = {
-        id: 'usr-' + Math.random().toString(36).substring(2, 7),
-        username: cleanUser,
-        email: cleanUser.includes('@') ? cleanUser : `${cleanUser}@jjinteriors.site`,
-        name: name,
-        role: role,
-      };
-      setCurrentUser(user);
-      setIsAdminLoginModalOpen(false);
-      navigateAdminTo('dashboard');
-      showToast(`Welcome back, ${name} (${role})!`);
-      return true;
-    }
-    showToast('Invalid password. Please enter at least 4 characters.', 'error');
-    return false;
+    // Synchronous signature, but we'll do async logic
+    // So we just return false here and handle async login in AdminLoginModal
+    // Let's change the return type to Promise<boolean> if possible, or just handle it directly.
+    return false; // The real login happens via async function below
   };
 
-  const logout = () => {
+  const loginAsync = async (email: string, pass: string): Promise<boolean> => {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password: pass })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setCurrentUser(data.user);
+        setIsAdminLoginModalOpen(false);
+        navigateAdminTo('dashboard');
+        showToast(`Welcome back! (${data.user.role})`);
+        return true;
+      } else {
+        showToast(data.error || 'Login failed', 'error');
+        return false;
+      }
+    } catch (err) {
+      showToast('Network error during login', 'error');
+      return false;
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch(e) {}
     setCurrentUser(null);
-    navigateTo('/');
-    showToast('Logged out securely from Business ERP.', 'info');
+    setAdminTab('dashboard');
+    showToast('Logged out successfully');
   };
 
   const switchRole = (role: AdminRole) => {
@@ -1491,7 +1499,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         isAuthenticated,
         currentUser,
         adminUser: currentUser,
+        authLoading,
         login,
+        loginAsync,
         logout,
         switchRole,
         isAdminLoginModalOpen,

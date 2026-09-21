@@ -9,6 +9,7 @@ import { ProjectsPage } from './pages/ProjectsPage.tsx';
 import { ProjectDetailPage } from './pages/ProjectDetailPage.tsx';
 import { TestimonialsPage } from './pages/TestimonialsPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';
+import { useSEO } from './hooks/useSEO.ts';
 
 import { ProcessPage } from './pages/ProcessPage.tsx';
 import { PWAInstallPrompt } from './components/public/PWAInstallPrompt.tsx';
@@ -48,44 +49,67 @@ import { ExpensesAdminView } from './components/admin/ExpensesAdminView.tsx';
 import { SuppliersAdminView } from './components/admin/SuppliersAdminView.tsx';
 import { SEOAnalyticsAdminView } from './components/admin/SEOAnalyticsAdminView.tsx';
 
+const UnauthenticatedAdminView: React.FC = () => {
+  const { setIsAdminLoginModalOpen } = useApp();
+  
+  useSEO({
+    title: 'Admin Login',
+    description: 'Private secure login.',
+    noindex: true
+  });
+
+  return (
+    <div className="min-h-screen bg-[#1c1917] text-[#faf8f5] flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-[#26221f] border border-[#c5a059]/40 p-8 shadow-2xl text-center space-y-6">
+        <div className="w-16 h-16 mx-auto rounded-full bg-[#c5a059]/15 border border-[#c5a059]/50 flex items-center justify-center text-[#c5a059] font-display text-2xl font-bold">
+          JJ
+        </div>
+        <div>
+          <h1 className="font-display text-2xl font-bold tracking-wide text-white">
+            J.J. INTERIORS &amp; MODUTECH
+          </h1>
+          <p className="text-xs text-stone-400 mt-1">
+            Studio Business Management &amp; Billing System
+          </p>
+        </div>
+
+        <div className="p-4 bg-black/40 border border-white/10 rounded text-left space-y-2">
+          <p className="text-xs text-stone-300 font-semibold uppercase tracking-wider">
+            Protected Studio Portal
+          </p>
+          <p className="text-xs text-stone-400 leading-relaxed">
+            Please sign in with administrative credentials to access CRM clients, project portfolios, and quotation/invoicing engines.
+          </p>
+        </div>
+
+        <button
+          onClick={() => setIsAdminLoginModalOpen(true)}
+          className="w-full py-3 bg-[#c5a059] hover:bg-[#d8b46d] text-[#141210] font-bold text-xs uppercase tracking-widest transition-colors rounded shadow-lg"
+        >
+          Open Secure Sign In
+        </button>
+      </div>
+      <AdminLoginModal />
+    </div>
+  );
+};
+
 const MainApplication: React.FC = () => {
-  const { viewMode, adminTab, isAuthenticated, setIsAdminLoginModalOpen, publicRoute } = useApp();
+  const { viewMode, adminTab, isAuthenticated, authLoading, setIsAdminLoginModalOpen, publicRoute } = useApp();
+
+  // Show loading state while checking session on mount
+  if (viewMode === 'admin' && authLoading) {
+    return (
+      <div className="min-h-screen bg-[#1c1917] flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-[#c5a059]/30 border-t-[#c5a059] rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   // If in admin mode but not yet authenticated, render login prompt inside layout
   if (viewMode === 'admin' && !isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#1c1917] text-[#faf8f5] flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-[#26221f] border border-[#c5a059]/40 p-8 shadow-2xl text-center space-y-6">
-          <div className="w-16 h-16 mx-auto rounded-full bg-[#c5a059]/15 border border-[#c5a059]/50 flex items-center justify-center text-[#c5a059] font-display text-2xl font-bold">
-            JJ
-          </div>
-          <div>
-            <h1 className="font-display text-2xl font-bold tracking-wide text-white">
-              J.J. INTERIORS &amp; MODUTECH
-            </h1>
-            <p className="text-xs text-stone-400 mt-1">
-              Studio Business Management &amp; Billing System
-            </p>
-          </div>
-
-          <div className="p-4 bg-black/40 border border-white/10 rounded text-left space-y-2">
-            <p className="text-xs text-stone-300 font-semibold uppercase tracking-wider">
-              Protected Studio Portal
-            </p>
-            <p className="text-xs text-stone-400 leading-relaxed">
-              Please sign in with administrative credentials to access CRM clients, project portfolios, and quotation/invoicing engines.
-            </p>
-          </div>
-
-          <button
-            onClick={() => setIsAdminLoginModalOpen(true)}
-            className="w-full py-3 bg-[#c5a059] hover:bg-[#d8b46d] text-[#141210] font-bold text-xs uppercase tracking-widest transition-colors rounded shadow-lg"
-          >
-            Open Secure Sign In
-          </button>
-        </div>
-        <AdminLoginModal />
-      </div>
+      <UnauthenticatedAdminView />
     );
   }
 

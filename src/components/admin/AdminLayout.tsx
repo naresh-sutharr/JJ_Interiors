@@ -51,7 +51,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     bills,
     siteVisits,
     setEditingBill,
-    setBillingPrefillClient
+    setBillingPrefillClient,
+    showToast
   } = useApp();
 
   useSEO({

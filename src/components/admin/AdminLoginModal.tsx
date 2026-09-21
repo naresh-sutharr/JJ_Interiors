@@ -6,29 +6,22 @@ export const AdminLoginModal: React.FC = () => {
   const { 
     isAdminLoginModalOpen, 
     setIsAdminLoginModalOpen, 
-    login, 
+    loginAsync, 
     showToast 
   } = useApp();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   if (!isAdminLoginModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login(username || 'admin@jjinteriors.site', password || 'admin123');
-  };
-
-  const handleQuickLogin = (role: 'admin' | 'manager' | 'staff') => {
-    if (role === 'admin') {
-      login('admin@jjinteriors.site', 'admin123');
-    } else if (role === 'manager') {
-      login('manager@jjinteriors.site', 'manager123');
-    } else {
-      login('staff@jjinteriors.site', 'staff123');
-    }
+    if (isLoading) return;
+    setIsLoading(true);
+    await loginAsync(username, password);
+    setIsLoading(false);
   };
 
   return (
@@ -100,19 +93,10 @@ export const AdminLoginModal: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-stone-400 pt-1">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="accent-[#c5a059] rounded"
-                />
-                <span>Remember session</span>
-              </label>
+            <div className="flex items-center justify-end text-xs text-stone-400 pt-1">
               <button
                 type="button"
-                onClick={() => showToast('In demo mode, please use the quick login buttons below.', 'info')}
+                onClick={() => showToast('Please contact support to reset credentials.', 'info')}
                 className="hover:text-[#c5a059] transition-colors"
               >
                 Forgot credentials?
@@ -121,47 +105,13 @@ export const AdminLoginModal: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#c5a059] hover:bg-[#d4b26f] text-[#141210] font-semibold text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2"
+              disabled={isLoading}
+              className={`w-full py-3 ${isLoading ? 'bg-[#917642] cursor-not-allowed' : 'bg-[#c5a059] hover:bg-[#d4b26f] cursor-pointer'} text-[#141210] font-semibold text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2 mt-2`}
             >
               <Lock className="w-3.5 h-3.5" />
-              <span>Authenticate &amp; Enter ERP</span>
+              <span>{isLoading ? 'Authenticating...' : 'Authenticate & Enter ERP'}</span>
             </button>
           </form>
-
-          {/* Quick One-Click Demo Role Selector */}
-          <div className="pt-5 border-t border-white/10">
-            <div className="text-[11px] uppercase tracking-wider text-stone-400 font-semibold mb-2.5 text-center">
-              One-Click Instant Access Roles:
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('admin')}
-                className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#c5a059] rounded text-left transition-colors cursor-pointer group"
-              >
-                <div className="text-xs font-semibold text-white group-hover:text-[#c5a059]">Administrator</div>
-                <div className="text-[10px] text-stone-400">Owner Full Access</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('manager')}
-                className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#c5a059] rounded text-left transition-colors cursor-pointer group"
-              >
-                <div className="text-xs font-semibold text-white group-hover:text-[#c5a059]">Manager</div>
-                <div className="text-[10px] text-stone-400">Projects &amp; CRM</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('staff')}
-                className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#c5a059] rounded text-left transition-colors cursor-pointer group"
-              >
-                <div className="text-xs font-semibold text-white group-hover:text-[#c5a059]">Staff</div>
-                <div className="text-[10px] text-stone-400">Estimates &amp; Items</div>
-              </button>
-            </div>
-          </div>
 
           <div className="text-[11px] text-stone-400 text-center flex items-center justify-center gap-1.5">
             <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
