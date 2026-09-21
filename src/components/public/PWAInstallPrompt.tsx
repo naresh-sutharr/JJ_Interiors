@@ -61,7 +61,7 @@ export const PWAInstallPrompt: React.FC = () => {
   if (!showPrompt) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-[#1e1b18] text-white z-[100] px-4 py-3 flex items-center justify-between shadow-lg animate-fade-in">
+    <div className="relative w-full bg-[#1e1b18] text-white z-[100] px-4 py-3 flex items-center justify-between shadow-lg animate-fade-in">
       <div className="flex items-center gap-3">
         <img src="/applogo.png" alt="App Logo" className="w-10 h-10 rounded-lg object-cover bg-white p-0.5" />
         <div>

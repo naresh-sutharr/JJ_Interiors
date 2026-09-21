@@ -146,6 +146,7 @@ const MainApplication: React.FC = () => {
   // Public Client Website Mode
   return (
     <div className="min-h-screen bg-[#faf8f5] text-[#1e1b18] antialiased selection:bg-[#c5a059]/20 selection:text-[#1e1b18]">
+      <PWAInstallPrompt />
       <PublicHeader />
       
       <main id="main-content" className="w-full">
@@ -164,7 +165,6 @@ const MainApplication: React.FC = () => {
 
       <PublicFooter />
 
-      <PWAInstallPrompt />
       <WhatsAppButton />
 
       {/* Public Interactive Modals */}
