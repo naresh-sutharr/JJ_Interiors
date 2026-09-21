@@ -21,8 +21,9 @@ export const AboutPage: React.FC = () => {
   const { businessProfile, trustStats, setIsConsultationModalOpen, navigateTo } = useApp();
 
   useSEO({
-    title: 'About Studio | Architectural Turnkey & Modutech Solutions',
-    description: `Discover the heritage and two-pillar philosophy of J.J. INTERIORS & MODUTECH. Founded by ${businessProfile.ownerName}, bridging artisan woodworking with European CNC precision.`,
+    title: 'About Mukesh Suthar | Expert Interior Designer in Surat',
+    description: 'Learn about Mukesh Suthar and the story behind J.J. INTERIORS & MODUTECH. We deliver high-quality residential and commercial interior design in Surat.',
+    keywords: 'Mukesh Suthar, interior designer in Surat, about JJ Interiors, commercial interior designer Surat',
     canonical: 'https://www.jjinteriors.site/about'
   });
 

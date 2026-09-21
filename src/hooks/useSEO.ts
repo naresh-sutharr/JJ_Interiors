@@ -8,6 +8,7 @@ interface SEOProps {
   type?: 'website' | 'article' | 'profile';
   image?: string;
   canonical?: string;
+  noindex?: boolean;
 }
 
 export const useSEO = ({
@@ -16,7 +17,8 @@ export const useSEO = ({
   keywords,
   type = 'website',
   image,
-  canonical
+  canonical,
+  noindex = false
 }: SEOProps) => {
   const { businessProfile } = useApp();
 
@@ -74,7 +76,24 @@ export const useSEO = ({
         document.head.appendChild(linkCanonical);
       }
       linkCanonical.setAttribute('href', canonical);
+    } else {
+      // Remove canonical if not provided to prevent stale tags on route change
+      const linkCanonical = document.querySelector('link[rel="canonical"]');
+      if (linkCanonical) linkCanonical.remove();
     }
 
-  }, [title, description, keywords, type, image, canonical, businessProfile]);
+    // 6. Robots NoIndex
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (noindex) {
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.setAttribute('name', 'robots');
+        document.head.appendChild(metaRobots);
+      }
+      metaRobots.setAttribute('content', 'noindex, nofollow');
+    } else {
+      if (metaRobots) metaRobots.setAttribute('content', 'index, follow');
+    }
+
+  }, [title, description, keywords, type, image, canonical, noindex, businessProfile]);
 };

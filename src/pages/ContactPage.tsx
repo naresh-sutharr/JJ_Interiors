@@ -20,8 +20,8 @@ export const ContactPage: React.FC = () => {
   const { businessProfile, addClient, showToast, navigateTo } = useApp();
 
   useSEO({
-    title: 'Contact Studio | Let\'s Build Your Space',
-    description: 'Get in touch with J.J. INTERIORS & MODUTECH for luxury interior architecture, turnkey execution, and factory-precision modular furniture in Surat.',
+    title: 'Contact J.J. Interiors | Interior Designer in Surat',
+    description: 'Get in touch with Mukesh Suthar and the team at J.J. Interiors. We provide the best turnkey interior design and modular furniture services in Surat, Gujarat.',
     canonical: 'https://www.jjinteriors.site/contact'
   });
 

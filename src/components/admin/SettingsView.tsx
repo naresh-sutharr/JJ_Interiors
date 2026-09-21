@@ -187,8 +187,6 @@ export const SettingsView: React.FC = () => {
           </div>
         </div>
 
-        </div>
-
         {/* Bank Details for Direct Client Invoicing */}
         <div className={`bg-white p-6 sm:p-8 border ${isEditing ? 'border-[#c5a059] ring-1 ring-[#c5a059]/20' : 'border-[#e2dcd4]'} shadow-sm space-y-4 transition-colors`}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-800 pb-2 border-b border-stone-200 flex items-center gap-2">
@@ -271,8 +269,6 @@ export const SettingsView: React.FC = () => {
                 className="w-full px-3 py-2 bg-[#faf8f5] border border-stone-300 rounded text-xs text-stone-900"
               />
             </div>
-          </div>
-
           </div>
 
           {isEditing && (

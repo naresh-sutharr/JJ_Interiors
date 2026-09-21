@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp, AdminTab } from '../../context/AppContext.tsx';
+import { useSEO } from '../../hooks/useSEO.ts';
 import { JJLogo } from '../common/JJLogo.tsx';
 import { 
   LayoutDashboard, 
@@ -52,6 +53,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     setEditingBill,
     setBillingPrefillClient
   } = useApp();
+
+  useSEO({
+    title: 'Admin Dashboard',
+    description: 'Private admin dashboard.',
+    noindex: true
+  });
 
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');

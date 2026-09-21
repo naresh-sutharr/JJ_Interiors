@@ -20,8 +20,9 @@ export const ServicesPage: React.FC = () => {
   const { services, setActiveServiceModal, setIsConsultationModalOpen, navigateTo } = useApp();
 
   useSEO({
-    title: 'Architectural & Interior Services | J.J. INTERIORS & MODUTECH',
-    description: 'Explore our comprehensive interior architecture services, including Modutech modular solutions, residential turnkey projects, and commercial fit-outs.',
+    title: 'Professional Interior Design & Custom Furniture Services in Surat',
+    description: 'We offer complete home interiors, modular kitchens, custom wardrobes, and office interior design services in Surat, crafted with precision.',
+    keywords: 'modular kitchen Surat, wardrobe designer Surat, office interior designer Surat, turnkey interior design Surat, home interior designer Surat',
     canonical: 'https://www.jjinteriors.site/services'
   });
 

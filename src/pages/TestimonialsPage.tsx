@@ -18,8 +18,8 @@ export const TestimonialsPage: React.FC = () => {
   const { testimonials, trustStats, businessProfile, setIsConsultationModalOpen, navigateTo } = useApp();
 
   useSEO({
-    title: 'Client Experiences & Testimonials | J.J. INTERIORS & MODUTECH',
-    description: 'Read genuine feedback from homeowners and businesses across Surat and Gujarat who trusted us with their interior architecture and modular execution.',
+    title: 'Client Reviews & Testimonials | J.J. Interiors Surat',
+    description: 'Read what our clients say about our residential and commercial interior design services, modular kitchens, and custom furniture quality.',
     canonical: 'https://www.jjinteriors.site/testimonials'
   });
 
