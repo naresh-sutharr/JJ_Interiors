@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useFirestoreSync } from '../hooks/useFirestoreSync';
 import { 
   BusinessProfile, 
   TrustStats, 
@@ -274,6 +275,21 @@ interface AppContextType {
   resetAllToDefaults: () => void;
 }
 
+// Helper loader from localStorage
+function loadStored<T>(key: string, defaultVal: T): T {
+  try {
+    const item = localStorage.getItem(key);
+    if (!item) return defaultVal;
+    const parsed = JSON.parse(item);
+    if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
+      return { ...defaultVal, ...parsed };
+    }
+    return parsed;
+  } catch {
+    return defaultVal;
+  }
+}
+
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
@@ -458,147 +474,71 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Helper loader from localStorage
-  function loadStored<T>(key: string, defaultVal: T): T {
-    try {
-      const item = localStorage.getItem(key);
-      if (!item) return defaultVal;
-      const parsed = JSON.parse(item);
-      if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
-        return { ...defaultVal, ...parsed };
-      }
-      return parsed;
-    } catch {
-      return defaultVal;
-    }
-  }
+
 
   // Data Collections
-  const [businessProfile, setBusinessProfile] = useState<BusinessProfile>(() => 
-    loadStored(STORAGE_KEYS.PROFILE, initialBusinessProfile)
-  );
+  const [businessProfile, setBusinessProfile] = useFirestoreSync<BusinessProfile>(STORAGE_KEYS.PROFILE, initialBusinessProfile);
 
-  // One-time guaranteed sync for updates
-  useEffect(() => {    // Important: Force migration on client side (v7) to load newest testinomials/projects/services
-    if (!localStorage.getItem('jj_migration_v7')) {
-      setProjects(initialProjects);
-      setBlogPosts(initialBlogPosts);
-      setTestimonials(initialTestimonials);
-      setServices(initialServices);
-      setBusinessProfile(initialBusinessProfile);
-      localStorage.setItem('jj_migration_v7', 'done');
-    }
-  }, []);
+  const [trustStats, setTrustStats] = useFirestoreSync<TrustStats>(STORAGE_KEYS.STATS, initialTrustStats);
 
-  const [trustStats, setTrustStats] = useState<TrustStats>(() => 
-    loadStored(STORAGE_KEYS.STATS, initialTrustStats)
-  );
+  const [projects, setProjects] = useFirestoreSync<Project[]>(STORAGE_KEYS.PROJECTS, initialProjects);
 
-  const [projects, setProjects] = useState<Project[]>(() => 
-    loadStored(STORAGE_KEYS.PROJECTS, initialProjects)
-  );
+  const [services, setServices] = useFirestoreSync<Service[]>(STORAGE_KEYS.SERVICES, initialServices);
 
-  const [services, setServices] = useState<Service[]>(() => 
-    loadStored(STORAGE_KEYS.SERVICES, initialServices)
-  );
+  const [clients, setClients] = useFirestoreSync<Client[]>(STORAGE_KEYS.CLIENTS, initialClients);
 
-  const [clients, setClients] = useState<Client[]>(() => 
-    loadStored(STORAGE_KEYS.CLIENTS, initialClients)
-  );
-
-  const [leads, setLeads] = useState<Lead[]>(() => 
-    loadStored(STORAGE_KEYS.LEADS, initialLeads)
-  );
+  const [leads, setLeads] = useFirestoreSync<Lead[]>(STORAGE_KEYS.LEADS, initialLeads);
 
   // Quick navigation and targeting state
   const [selectedClientIdForView, setSelectedClientIdForView] = useState<string | null>(null);
   const [selectedLeadIdForView, setSelectedLeadIdForView] = useState<string | null>(null);
 
-  const [catalogItems, setCatalogItems] = useState<CatalogItem[]>(() => 
-    loadStored(STORAGE_KEYS.CATALOG, initialCatalogItems)
-  );
+  const [catalogItems, setCatalogItems] = useFirestoreSync<CatalogItem[]>(STORAGE_KEYS.CATALOG, initialCatalogItems);
 
-  const [bills, setBills] = useState<BillDocument[]>(() => 
-    loadStored(STORAGE_KEYS.BILLS, initialBills)
-  );
+  const [bills, setBills] = useFirestoreSync<BillDocument[]>(STORAGE_KEYS.BILLS, initialBills);
 
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => 
-    loadStored(STORAGE_KEYS.TESTIMONIALS, initialTestimonials)
-  );
+  const [testimonials, setTestimonials] = useFirestoreSync<Testimonial[]>(STORAGE_KEYS.TESTIMONIALS, initialTestimonials);
 
-  const [faqs, setFaqs] = useState<FAQItem[]>(() => 
-    loadStored(STORAGE_KEYS.FAQS, initialFAQs)
-  );
+  const [faqs, setFaqs] = useFirestoreSync<FAQItem[]>(STORAGE_KEYS.FAQS, initialFAQs);
 
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(() => 
-    loadStored(STORAGE_KEYS.BLOG, initialBlogPosts)
-  );
+  const [blogPosts, setBlogPosts] = useFirestoreSync<BlogPost[]>(STORAGE_KEYS.BLOG, initialBlogPosts);
 
-  const [mediaItems, setMediaItems] = useState<MediaItem[]>(() => 
-    loadStored(STORAGE_KEYS.MEDIA, initialMediaItems)
-  );
+  const [mediaItems, setMediaItems] = useFirestoreSync<MediaItem[]>(STORAGE_KEYS.MEDIA, initialMediaItems);
 
-  const [systemSettings, setSystemSettings] = useState<SystemSettings>(() => 
-    loadStored(STORAGE_KEYS.SETTINGS, initialSystemSettings)
-  );
+  const [systemSettings, setSystemSettings] = useFirestoreSync<SystemSettings>(STORAGE_KEYS.SETTINGS, initialSystemSettings);
 
   // Sync state to localStorage
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.PROFILE, JSON.stringify(businessProfile));
-  }, [businessProfile]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(trustStats));
-  }, [trustStats]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(projects));
-  }, [projects]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SERVICES, JSON.stringify(services));
-  }, [services]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.CLIENTS, JSON.stringify(clients));
-  }, [clients]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.LEADS, JSON.stringify(leads));
-  }, [leads]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.CATALOG, JSON.stringify(catalogItems));
-  }, [catalogItems]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.BILLS, JSON.stringify(bills));
-  }, [bills]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.TESTIMONIALS, JSON.stringify(testimonials));
-  }, [testimonials]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.FAQS, JSON.stringify(faqs));
-  }, [faqs]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.BLOG, JSON.stringify(blogPosts));
-  }, [blogPosts]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(mediaItems));
-  }, [mediaItems]);
+  
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(systemSettings));
-  }, [systemSettings]);
+  
 
   // Saved / Bookmarked Projects
   const [savedProjectIds, setSavedProjectIds] = useState<string[]>(() => 
     loadStored(STORAGE_KEYS.SAVED_PROJECTS, [])
   );
+  
   useEffect(() => {
     localStorage.setItem(STORAGE_KEYS.SAVED_PROJECTS, JSON.stringify(savedProjectIds));
   }, [savedProjectIds]);
@@ -619,12 +559,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const isProjectSaved = (id: string) => savedProjectIds.includes(id);
 
   // Site Visits
-  const [siteVisits, setSiteVisits] = useState<SiteVisit[]>(() => 
-    loadStored(STORAGE_KEYS.SITE_VISITS, initialSiteVisits)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SITE_VISITS, JSON.stringify(siteVisits));
-  }, [siteVisits]);
+  const [siteVisits, setSiteVisits] = useFirestoreSync<SiteVisit[]>(STORAGE_KEYS.SITE_VISITS, initialSiteVisits);
+  
 
   const addSiteVisit = (visit: Omit<SiteVisit, 'id' | 'createdAt'>): string => {
     const id = 'sv-' + Math.random().toString(36).substring(2, 7);
@@ -663,12 +599,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   // Expenses & Suppliers
-  const [expenses, setExpenses] = useState<Expense[]>(() => 
-    loadStored(STORAGE_KEYS.EXPENSES, initialExpenses)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.EXPENSES, JSON.stringify(expenses));
-  }, [expenses]);
+  const [expenses, setExpenses] = useFirestoreSync<Expense[]>(STORAGE_KEYS.EXPENSES, initialExpenses);
+  
 
   const addExpense = (expense: Omit<Expense, 'id' | 'createdAt'>): string => {
     const id = 'exp-' + Math.random().toString(36).substring(2, 7);
@@ -699,12 +631,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     showToast('Expense record removed.');
   };
 
-  const [suppliers, setSuppliers] = useState<Supplier[]>(() => 
-    loadStored(STORAGE_KEYS.SUPPLIERS, initialSuppliers)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SUPPLIERS, JSON.stringify(suppliers));
-  }, [suppliers]);
+  const [suppliers, setSuppliers] = useFirestoreSync<Supplier[]>(STORAGE_KEYS.SUPPLIERS, initialSuppliers);
+  
 
   const addSupplier = (supplier: Omit<Supplier, 'id' | 'createdAt'>): string => {
     const id = 'sup-' + Math.random().toString(36).substring(2, 7);
@@ -729,12 +657,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   // Notifications & Drawer
-  const [notifications, setNotifications] = useState<NotificationItem[]>(() => 
-    loadStored(STORAGE_KEYS.NOTIFICATIONS, initialNotifications)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.NOTIFICATIONS, JSON.stringify(notifications));
-  }, [notifications]);
+  const [notifications, setNotifications] = useFirestoreSync<NotificationItem[]>(STORAGE_KEYS.NOTIFICATIONS, initialNotifications);
+  
 
   const [isNotificationDrawerOpen, setIsNotificationDrawerOpen] = useState(false);
   const unreadNotificationsCount = notifications.filter((n) => !n.read).length;
@@ -760,12 +684,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   // Audit Logs
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => 
-    loadStored(STORAGE_KEYS.AUDIT_LOGS, initialAuditLogs)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.AUDIT_LOGS, JSON.stringify(auditLogs));
-  }, [auditLogs]);
+  const [auditLogs, setAuditLogs] = useFirestoreSync<AuditLog[]>(STORAGE_KEYS.AUDIT_LOGS, initialAuditLogs);
+  
 
   const addAuditLog = (log: Omit<AuditLog, 'id' | 'timestamp'>) => {
     const now = new Date();
@@ -782,9 +702,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [paymentReceipts, setPaymentReceipts] = useState<PaymentReceipt[]>(() => 
     loadStored(STORAGE_KEYS.PAYMENT_RECEIPTS, [])
   );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.PAYMENT_RECEIPTS, JSON.stringify(paymentReceipts));
-  }, [paymentReceipts]);
+  
 
   const [activeReceipt, setActiveReceipt] = useState<PaymentReceipt | null>(null);
 
@@ -820,24 +738,16 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   // SEO & Analytics
-  const [seoSettings, setSEOSettings] = useState<SEOSettings>(() => 
-    loadStored(STORAGE_KEYS.SEO, initialSEOSettings)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.SEO, JSON.stringify(seoSettings));
-  }, [seoSettings]);
+  const [seoSettings, setSEOSettings] = useFirestoreSync<SEOSettings>(STORAGE_KEYS.SEO, initialSEOSettings);
+  
 
   const updateSEOSettings = (settings: Partial<SEOSettings>) => {
     setSEOSettings((prev) => ({ ...prev, ...settings }));
     showToast('SEO configurations updated.');
   };
 
-  const [analytics, setAnalytics] = useState<AnalyticsSummary>(() => 
-    loadStored(STORAGE_KEYS.ANALYTICS, initialAnalytics)
-  );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.ANALYTICS, JSON.stringify(analytics));
-  }, [analytics]);
+  const [analytics, setAnalytics] = useFirestoreSync<AnalyticsSummary>(STORAGE_KEYS.ANALYTICS, initialAnalytics);
+  
 
   const recordPageView = (path: string) => {
     setAnalytics((prev) => ({ ...prev, pageViews: prev.pageViews + 1 }));
@@ -877,9 +787,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [adminTheme, setAdminTheme] = useState<'dark' | 'light'>(() => 
     loadStored(STORAGE_KEYS.ADMIN_THEME, 'light')
   );
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.ADMIN_THEME, JSON.stringify(adminTheme));
-  }, [adminTheme]);
+  
 
   const toggleAdminTheme = () => {
     setAdminTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
