@@ -1,8 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
-import { signToken } from '../utils/auth';
 
-// Basic memory rate limiting (resets on serverless cold starts)
+function signToken(data: object): string {
+  const secret = process.env.SESSION_SECRET || 'fallback-dev-secret-do-not-use-in-prod';
+  const payload = Buffer.from(JSON.stringify(data)).toString('base64url');
+  const signature = crypto.createHmac('sha256', secret).update(payload).digest('base64url');
+  return `${payload}.${signature}`;
+}
 const rateLimit = new Map<string, { count: number, timestamp: number }>();
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
