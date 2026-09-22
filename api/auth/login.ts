@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
 import { signToken } from '../utils/auth';
-import { initialBusinessProfile } from '../../src/data/initialData';
 
 // Basic memory rate limiting (resets on serverless cold starts)
 const rateLimit = new Map<string, { count: number, timestamp: number }>();
@@ -37,8 +36,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Email and password are required' });
     }
 
-    // Configured admin email (fallback to business profile if env is malformed/missing)
-    const configuredEmail = process.env.ADMIN_EMAIL || initialBusinessProfile.email;
+    // Configured admin email
+    const configuredEmail = process.env.ADMIN_EMAIL || 'mukesh.jj.interiors@gmail.com';
     const configuredHash = process.env.ADMIN_PASSWORD_HASH;
 
     if (!configuredHash) {
@@ -69,7 +68,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const user = {
       id: 'admin-1',
       email: configuredEmail,
-      name: initialBusinessProfile.ownerName,
+      name: 'Mukesh Suthar',
       role: 'Administrator'
     };
     
