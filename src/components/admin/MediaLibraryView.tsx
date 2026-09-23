@@ -26,67 +26,6 @@ interface MediaAsset {
 export const MediaLibraryView: React.FC = () => {
   const { showToast, mediaItems, addMediaItem, updateMediaItem, deleteMediaItem } = useApp();
 
-  const [localAssets, setLocalAssets] = useState<any[]>([
-    {
-      id: 'm-1',
-      name: 'Vesu Penthouse Double Height Living Room',
-      url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
-      category: 'Living',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-2',
-      name: 'Modutech Minimalist Matte Black Modular Kitchen',
-      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
-      category: 'Kitchen',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-3',
-      name: 'Master Suite Fluted Headboard & Acoustical Wood',
-      url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-      category: 'Bedroom',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-4',
-      name: 'Diamond Trading Corporate Headquarters Surat',
-      url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-      category: 'Commercial',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-5',
-      name: 'Walk-In Modular Wardrobe with Tinted Glass & Backlit Warm LED',
-      url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
-      category: 'Wardrobe',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-6',
-      name: 'Handcrafted Fluted Marble Dining & Brass Chandelier',
-      url: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
-      category: 'Dining',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-7',
-      name: 'Modutech Precision CNC Edge Banding & Factory Joinery',
-      url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-      category: 'Factory',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-8',
-      name: 'Italian Statuario Marble Flooring & Brass Inlays',
-      url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-      category: 'Living',
-      dimensions: '1920x1080'
-    }
-  ]);
-
-  const allAssets = [...mediaItems, ...localAssets];
-  
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('ALL');
@@ -133,14 +72,7 @@ export const MediaLibraryView: React.FC = () => {
       return;
     }
     
-    if (editingItem.id.startsWith('m-')) {
-      // It's a local asset
-      setLocalAssets(localAssets.map(a => a.id === editingItem.id ? editingItem : a));
-      showToast('Local media asset updated!', 'success');
-    } else {
-      // It's a firestore asset
-      updateMediaItem(editingItem.id, editingItem);
-    }
+    updateMediaItem(editingItem.id, editingItem);
     
     setIsEditOpen(false);
     setEditingItem(null);
@@ -148,16 +80,11 @@ export const MediaLibraryView: React.FC = () => {
 
   const handleDeleteMedia = (id: string) => {
     if (window.confirm('Are you sure you want to delete this media asset?')) {
-      if (id.startsWith('m-')) {
-        setLocalAssets(localAssets.filter(a => a.id !== id));
-        showToast('Local media removed.', 'info');
-      } else {
-        deleteMediaItem(id);
-      }
+      deleteMediaItem(id);
     }
   };
 
-  const filteredAssets = allAssets.filter((a: any) => {
+  const filteredAssets = mediaItems.filter((a: any) => {
     const matchesSearch = (a.name || '').toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCat = categoryFilter === 'ALL' || a.category === categoryFilter;
     return matchesSearch && matchesCat;
