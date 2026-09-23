@@ -20,7 +20,7 @@ export const ContactPage: React.FC = () => {
   const { businessProfile, addClient, showToast, navigateTo } = useApp();
 
   useSEO({
-    title: 'Contact J.J. Interiors | Interior Designer in Surat',
+    title: 'Contact Mukesh Suthar | Hire Interior Designer in Surat',
     description: 'Get in touch with Mukesh Suthar and the team at J.J. Interiors. We provide the best turnkey interior design and modular furniture services in Surat, Gujarat.',
     canonical: 'https://www.jjinteriors.site/contact'
   });

@@ -22,8 +22,8 @@ export const AboutPage: React.FC = () => {
 
   useSEO({
     title: 'About Mukesh Suthar | Expert Interior Designer in Surat',
-    description: 'Learn about Mukesh Suthar and the story behind J.J. INTERIORS & MODUTECH. We deliver high-quality residential and commercial interior design in Surat.',
-    keywords: 'Mukesh Suthar, interior designer in Surat, about JJ Interiors, commercial interior designer Surat',
+    description: 'Learn about Mukesh Suthar and the story behind J.J. INTERIORS & MODUTECH. We deliver high-quality residential, modular, and commercial interior design in Surat.',
+    keywords: 'Mukesh Suthar, interior designer in Surat, about JJ Interiors, commercial interior designer Surat, modular furniture Surat',
     canonical: 'https://www.jjinteriors.site/about'
   });
 

@@ -21,8 +21,8 @@ export const ServicesPage: React.FC = () => {
 
   useSEO({
     title: 'Professional Interior Design & Custom Furniture Services in Surat',
-    description: 'We offer complete home interiors, modular kitchens, custom wardrobes, and office interior design services in Surat, crafted with precision.',
-    keywords: 'modular kitchen Surat, wardrobe designer Surat, office interior designer Surat, turnkey interior design Surat, home interior designer Surat',
+    description: 'Explore our services: Complete Home Interiors, Modular Kitchens, Custom Wardrobes, Living Room, Bedroom, Office & Commercial Interiors, and Turnkey Execution in Surat.',
+    keywords: 'Complete Home Interiors Surat, Modular Kitchens Surat, Wardrobes Surat, Living Room Interiors Surat, Bedroom Interiors, Office Interiors, Commercial Interiors, Custom Furniture Surat, Turnkey Interiors',
     canonical: 'https://www.jjinteriors.site/services'
   });
 

@@ -62,8 +62,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectSlu
   }, [project?.id, recordProjectView]);
 
   useSEO({
-    title: project ? `${project.title} | Interior Design Project in Surat` : 'Project Not Found | J.J. Interiors',
-    description: project ? `View the details of ${project.title} completed by Mukesh Suthar and the J.J. Interiors team. Beautiful turnkey interior design in ${project.location}.` : 'Project not found.',
+    title: project ? `${project.title} | ${project.category || 'Interior Design'} Project in ${project.location || 'Surat'}` : 'Project Not Found | J.J. Interiors',
+    description: project ? `View the details of ${project.title} completed by Mukesh Suthar and the J.J. Interiors team. Beautiful turnkey interior design in ${project.location || 'Surat'}.` : 'Project not found.',
     canonical: `https://www.jjinteriors.site/projects/${routeSlug}`,
     image: project?.coverImage
   });

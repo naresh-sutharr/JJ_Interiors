@@ -26,9 +26,9 @@ export const ProjectsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<FilterTab>('all');
 
   useSEO({
-    title: 'Our Portfolio | Best Interior Projects in Surat & Gujarat',
-    description: 'Explore our completed residential and commercial interior design projects. See how we transform spaces across Surat, Vadodara, and Gujarat.',
-    keywords: 'interior design Surat portfolio, home interior designer Surat, commercial interior projects Surat',
+    title: 'Interior Design Portfolio | Residential & Commercial Projects in Surat',
+    description: 'Explore our completed residential and commercial interior design projects. See how J.J. Interiors transforms spaces across Surat, Vadodara, and Gujarat.',
+    keywords: 'interior design Surat portfolio, home interior designer Surat, commercial interior projects Surat, modular kitchen projects Surat, office design Surat',
     canonical: 'https://www.jjinteriors.site/projects'
   });
 

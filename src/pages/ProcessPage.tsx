@@ -4,8 +4,8 @@ import { ProcessSection } from '../components/public/ProcessSection.tsx';
 
 export const ProcessPage: React.FC = () => {
   useSEO({
-    title: 'Our Working Process | Turnkey Interior Design Surat',
-    description: 'Understand the seamless process at J.J. Interiors & Modutech, from initial design consultation to final execution and handover.',
+    title: 'Our Interior Design Process | Turnkey Execution in Surat',
+    description: 'Understand the seamless interior design process at J.J. Interiors & Modutech in Surat, from initial design consultation to final turnkey execution and handover.',
     canonical: 'https://www.jjinteriors.site/process'
   });
 

@@ -15,9 +15,9 @@ import { ContactSection } from '../components/public/ContactSection.tsx';
 
 export const HomePage: React.FC = () => {
   useSEO({
-    title: 'Top Interior Designer in Surat | Modular Kitchens | J.J. Interiors',
-    description: 'J.J. INTERIORS & MODUTECH by Mukesh Suthar offers turnkey home interior design, custom modular kitchens, and office interiors in Surat, Vadodara, and Gujarat.',
-    keywords: 'interior designer in Surat, modular kitchen Surat, turnkey interior design Surat, home interior designer Surat, custom furniture Surat, Mukesh Suthar',
+    title: 'J.J. INTERIORS & MODUTECH | Interior Designer & Modular Furniture in Surat',
+    description: 'J.J. INTERIORS & MODUTECH by Mukesh Suthar creates thoughtfully designed residential spaces, custom modular kitchens, wardrobes, and office interiors in Surat.',
+    keywords: 'interior designer in Surat, modular kitchen Surat, turnkey interior design Surat, home interior designer Surat, custom furniture Surat, Mukesh Suthar Interiors',
     canonical: 'https://www.jjinteriors.site/'
   });
 
@@ -55,8 +55,8 @@ export const HomePage: React.FC = () => {
           "Saturday",
           "Sunday"
         ],
-        "opens": "00:00",
-        "closes": "23:59"
+        "opens": "09:00",
+        "closes": "20:00"
       },
       "sameAs": [
         "https://instagram.com/jjinteriors.modutech",
