@@ -6,6 +6,3 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(clients.claim());
 });
 
-self.addEventListener('fetch', (event) => {
-  // Pass-through fetch (minimal requirement for PWA installability)
-});
