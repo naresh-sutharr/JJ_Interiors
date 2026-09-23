@@ -54,7 +54,7 @@ export const ImageUploadControl: React.FC<ImageUploadControlProps> = ({
           if (ctx) {
             ctx.drawImage(img, 0, 0, width, height);
             // Compress to webp or jpeg
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
             resolve(dataUrl);
           } else {
             resolve(event.target?.result as string); // fallback
@@ -104,16 +104,17 @@ export const ImageUploadControl: React.FC<ImageUploadControlProps> = ({
             type="text"
             required={required && !value.startsWith('data:image')}
             placeholder={placeholder}
-            value={value.startsWith('data:image') ? 'Local Image Attached' : value}
+            value={value.startsWith('data:image') ? '[Local Image Attached - Clear to add URL]' : value}
             onChange={(e) => {
-              if (value.startsWith('data:image') && e.target.value !== 'Local Image Attached') {
-                onChange(e.target.value);
-              } else if (!value.startsWith('data:image')) {
-                onChange(e.target.value);
+              onChange(e.target.value);
+            }}
+            className={`w-full pl-9 pr-3 py-2 border border-stone-300 rounded text-xs text-stone-900 font-mono focus:border-[#c5a059] focus:outline-none ${value.startsWith('data:image') ? 'bg-stone-100 text-stone-500 cursor-pointer' : ''}`}
+            onClick={(e) => {
+              if (value.startsWith('data:image')) {
+                // Select all text to make it easy to delete and paste
+                (e.target as HTMLInputElement).select();
               }
             }}
-            readOnly={value.startsWith('data:image')}
-            className={`w-full pl-9 pr-3 py-2 border border-stone-300 rounded text-xs text-stone-900 font-mono focus:border-[#c5a059] focus:outline-none ${value.startsWith('data:image') ? 'bg-stone-100 text-stone-500' : ''}`}
           />
         </div>
         
