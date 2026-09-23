@@ -93,6 +93,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     },
     { id: 'profile', label: 'Business Profile', icon: <Building2 className="w-4 h-4" /> },
     { id: 'content', label: 'Website Content', icon: <FileEdit className="w-4 h-4" /> },
+    { id: 'services', label: 'Services & Packages', icon: <Layers className="w-4 h-4" /> },
     { id: 'testimonials', label: 'Testimonials', icon: <MessageSquare className="w-4 h-4" /> },
     { id: 'blog', label: 'Blog & Articles', icon: <Sparkles className="w-4 h-4" /> },
     { id: 'media', label: 'Media Library', icon: <ImageIcon className="w-4 h-4" /> }
