@@ -24,79 +24,19 @@ interface MediaAsset {
 }
 
 export const MediaLibraryView: React.FC = () => {
-  const { showToast } = useApp();
+  const { showToast, mediaItems, addMediaItem, deleteMediaItem, setMediaItems } = useApp();
   
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [isAddOpen, setIsAddOpen] = useState(false);
 
-  // Curated studio assets
-  const [assets, setAssets] = useState<MediaAsset[]>([
-    {
-      id: 'm-1',
-      title: 'Vesu Penthouse Double Height Living Room',
-      url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
-      category: 'Living',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-2',
-      title: 'Modutech Minimalist Matte Black Modular Kitchen',
-      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
-      category: 'Kitchen',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-3',
-      title: 'Master Suite Fluted Headboard & Acoustical Wood',
-      url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-      category: 'Bedroom',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-4',
-      title: 'Diamond Trading Corporate Headquarters Surat',
-      url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-      category: 'Commercial',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-5',
-      title: 'Walk-In Modular Wardrobe with Tinted Glass & Backlit Warm LED',
-      url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
-      category: 'Wardrobe',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-6',
-      title: 'Handcrafted Fluted Marble Dining & Brass Chandelier',
-      url: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
-      category: 'Dining',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-7',
-      title: 'Modutech Precision CNC Edge Banding & Factory Joinery',
-      url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
-      category: 'Factory',
-      dimensions: '1920x1080'
-    },
-    {
-      id: 'm-8',
-      title: 'Italian Statuario Marble Flooring & Brass Inlays',
-      url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-      category: 'Living',
-      dimensions: '1920x1080'
-    },
-  ]);
-
   const [newTitle, setNewTitle] = useState('');
   const [newUrl, setNewUrl] = useState('');
   const [newCat, setNewCat] = useState('Living');
 
   const [isEditOpen, setIsEditOpen] = useState(false);
-  const [editingItem, setEditingItem] = useState<MediaAsset | null>(null);
+  const [editingItem, setEditingItem] = useState<any | null>(null);
 
   const handleCopy = (id: string, url: string) => {
     if (navigator.clipboard) {
@@ -113,27 +53,26 @@ export const MediaLibraryView: React.FC = () => {
       showToast('Title and image URL are required.', 'error');
       return;
     }
-    const item: MediaAsset = {
-      id: `m-${Date.now()}`,
-      title: newTitle,
+    addMediaItem({
+      name: newTitle,
       url: newUrl,
       category: newCat,
-      dimensions: 'High-Res'
-    };
-    setAssets([item, ...assets]);
+      size: 'High-Res',
+      type: 'image/jpeg'
+    });
     setIsAddOpen(false);
     setNewTitle('');
     setNewUrl('');
-    showToast('Media asset registered successfully!', 'success');
   };
 
   const handleEditMedia = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingItem || !editingItem.title || !editingItem.url) {
+    if (!editingItem || !editingItem.name || !editingItem.url) {
       showToast('Title and image URL are required.', 'error');
       return;
     }
-    setAssets(assets.map(a => a.id === editingItem.id ? editingItem : a));
+    // Simple update implementation since AppContext doesn't expose updateMediaItem
+    setMediaItems(mediaItems.map((a: any) => a.id === editingItem.id ? editingItem : a));
     setIsEditOpen(false);
     setEditingItem(null);
     showToast('Media asset updated successfully!', 'success');
@@ -141,13 +80,12 @@ export const MediaLibraryView: React.FC = () => {
 
   const handleDeleteMedia = (id: string) => {
     if (window.confirm('Are you sure you want to delete this media asset?')) {
-      setAssets(assets.filter(a => a.id !== id));
-      showToast('Media asset deleted.', 'success');
+      deleteMediaItem(id);
     }
   };
 
-  const filteredAssets = assets.filter(a => {
-    const matchesSearch = a.title.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredAssets = mediaItems.filter((a: any) => {
+    const matchesSearch = (a.name || '').toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCat = categoryFilter === 'ALL' || a.category === categoryFilter;
     return matchesSearch && matchesCat;
   });
@@ -218,7 +156,7 @@ export const MediaLibraryView: React.FC = () => {
             <div className="relative aspect-[4/3] bg-stone-900 overflow-hidden">
               <img
                 src={asset.url}
-                alt={asset.title}
+                alt={asset.name}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-2.5 left-2.5">
@@ -230,12 +168,12 @@ export const MediaLibraryView: React.FC = () => {
 
             <div className="p-3.5 space-y-2">
               <h4 className="text-xs font-bold text-stone-900 line-clamp-2 leading-snug">
-                {asset.title}
+                {asset.name}
               </h4>
 
               <div className="flex items-center justify-between pt-1 border-t border-stone-100">
                 <span className="text-[10px] text-stone-400 font-mono">
-                  {asset.dimensions}
+                  {asset.dimensions || 'High-Res'}
                 </span>
 
                 <div className="flex items-center gap-1">
