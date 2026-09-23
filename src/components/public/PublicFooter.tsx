@@ -132,8 +132,19 @@ export const PublicFooter: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <div>
-            © {new Date().getFullYear()} J.J. INTERIORS &amp; MODUTECH. All rights reserved. Registered in Gujarat, India.
+          <div className="flex flex-col gap-1.5 text-center sm:text-left">
+            <span>© {new Date().getFullYear()} J.J. INTERIORS &amp; MODUTECH. All rights reserved. Registered in Gujarat, India.</span>
+            <span className="text-[#8c6f50]">
+              Designed &amp; Developed by{' '}
+              <a 
+                href="https://github.com/naresh-sutharr" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#c5a059] hover:text-white transition-colors font-medium"
+              >
+                Naresh Suthar
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center gap-6">
