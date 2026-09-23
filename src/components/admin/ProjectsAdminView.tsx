@@ -196,7 +196,7 @@ export const ProjectsAdminView: React.FC = () => {
             className="bg-white border border-[#e2dcd4] hover:border-[#c5a059] rounded overflow-hidden shadow-sm flex flex-col justify-between transition-all"
           >
             {/* Image Preview */}
-            <div className="relative aspect-[16/10] bg-stone-900 overflow-hidden">
+            <div className="relative aspect-[16/10] bg-stone-900 overflow-hidden shrink-0">
               <img
                 src={project.coverImage}
                 alt={project.title}

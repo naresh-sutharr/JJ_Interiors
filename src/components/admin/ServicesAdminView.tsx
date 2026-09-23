@@ -100,7 +100,7 @@ export const ServicesAdminView: React.FC = () => {
             key={service.id}
             className="bg-white border border-[#e2dcd4] rounded overflow-hidden shadow-sm flex flex-col justify-between"
           >
-            <div className="relative aspect-[16/9] bg-stone-900">
+            <div className="relative aspect-[16/9] bg-stone-900 shrink-0">
               <img
                 src={service.image}
                 alt={service.title}

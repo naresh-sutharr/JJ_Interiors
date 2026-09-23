@@ -162,7 +162,7 @@ export const ServicesPage: React.FC = () => {
                   }`}
                 >
                   {/* Photography Frame with Hover Zoom */}
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[#1e1b18]">
+                  <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-[#1e1b18]">
                     <img
                       src={service.image}
                       alt={service.title}

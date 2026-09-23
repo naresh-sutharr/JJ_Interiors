@@ -170,7 +170,7 @@ export const ProjectsPage: React.FC = () => {
                     className="group bg-white border border-[#e8dfd5] hover:border-[#c5a059] transition-all duration-500 overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl flex flex-col justify-between"
                   >
                     {/* Project Photograph */}
-                    <div className="relative aspect-[16/11] overflow-hidden bg-[#1e1b18]">
+                    <div className="relative aspect-[16/11] shrink-0 overflow-hidden bg-[#1e1b18]">
                       <img
                         src={project.coverImage}
                         alt={project.title}
