@@ -9,13 +9,13 @@ import { db } from '../firebase/config';
  * @param initialData The default data if the document doesn't exist.
  */
 export function useFirestoreSync<T>(key: string, initialData: T): [T, React.Dispatch<React.SetStateAction<T>>] {
-  const [state, setState] = useState<T>(initialData);
+  const [state, setState] = useState<T>(() => { try { const cached = localStorage.getItem('fs_sync_' + key); return cached ? JSON.parse(cached) : initialData; } catch { return initialData; } });
 
   // Subscribe to real-time updates
   useEffect(() => {
     const unsub = onSnapshot(doc(db, 'store', key), (docSnap) => {
       if (docSnap.exists()) {
-        setState(docSnap.data().data);
+        const data = docSnap.data().data; setState(data); try { localStorage.setItem('fs_sync_' + key, JSON.stringify(data)); } catch {}
       } else {
         // If it doesn't exist, seed it with the initialData
         // Only seed if we are on the client (prevents SSR issues if any)
