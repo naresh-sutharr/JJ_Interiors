@@ -240,7 +240,8 @@ interface AppContextType {
 
   mediaItems: MediaItem[];
   addMediaItem: (media: Omit<MediaItem, 'id' | 'uploadedAt'>) => void;
-  deleteMediaItem: (id: string) => void;
+  updateMediaItem: (id: string, updates: Partial<MediaItem>) => void;
+deleteMediaItem: (id: string) => void;
 
   systemSettings: SystemSettings;
   updateSystemSettings: (settings: Partial<SystemSettings>) => void;
@@ -1279,6 +1280,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     showToast(`Media "${media.name}" added to library.`);
   };
 
+  const updateMediaItem = (id: string, updates: Partial<MediaItem>) => {
+    setMediaItems((prev) => prev.map((m) => (m.id === id ? { ...m, ...updates } : m)));
+    showToast('Media updated successfully.', 'success');
+  };
+
   const deleteMediaItem = (id: string) => {
     setMediaItems((prev) => prev.filter((m) => m.id !== id));
     showToast('Media removed.', 'info');
@@ -1521,7 +1527,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         deleteBlogPost,
         mediaItems,
         addMediaItem,
-        deleteMediaItem,
+          updateMediaItem,
+          deleteMediaItem,
         systemSettings,
         updateSystemSettings,
         adminTheme,
